@@ -6,26 +6,29 @@
     <link href="../static/style.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <a href="${pageContext.request.contextPath}/"
-           class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                <use xlink:href="#bootstrap"></use>
-            </svg>
-        </a>
+<div>
+    <header class="header" data-sticky="scrollBar" data-sticky-class="show">
+        <nav class="nav">
+            <div class="container">
+                <div class="container-2">
+                    <ul class="test-ul">
+                        <li class="test-li">
+                            <a href="#" class="test-a">Главная</a>
+                        </li>
+                        <li class="test-li">
+                            <a href="#" class="test-a">Товары</a>
+                        </li>
+                        <li class="test-li">
+                            <a href="#" class="test-a">Акции</a>
+                        </li>
+                        <li class="test-li">
+                            <a href="#" class="test-a">О сайте</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-        <ul class="test">
-            <li><a href="#" class="nav-link px-2 link-secondary">Главная</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">Товары</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">Акции</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">О сайте</a></li>
-        </ul>
-
-        <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-primary me-2">Вход</button>
-            <button type="button" class="btn btn-primary">Регистрация</button>
-        </div>
     </header>
 </div>
 </body>
