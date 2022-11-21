@@ -11,11 +11,21 @@ public class DefaultController {
     @Autowired
     ProductTypeRepository productTypeRepository;
 
+    /**Эндпоинт на главную страницу веб-приложения
+     *
+     * @param model
+     * @return file index.html
+     */
     @GetMapping("/")
     public String index(Model model){
         return "index";
     }
 
+    /**Эндпоинт перехода на страницу продукта
+     *
+     * @param model
+     * @return file product.html
+     */
     @GetMapping("/product")
     public String getProduct(Model model){
         return "product";
