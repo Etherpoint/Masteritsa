@@ -13,7 +13,11 @@ public class DefaultController {
 
     @GetMapping("/")
     public String index(Model model){
-
         return "index";
+    }
+
+    @GetMapping("/product")
+    public String getProduct(Model model){
+        return "product";
     }
 }
