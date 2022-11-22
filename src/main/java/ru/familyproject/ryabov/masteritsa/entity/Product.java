@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 /**
  * Entity-класс товара со свойствами <b>id</b>, <b>name</b>, <b>price</b>, <b>image</b>, <b>description</b>, <b>productType</b>
+ * @see javax.persistence.Entity
  */
 @Entity(name = "product")
 public class Product {
