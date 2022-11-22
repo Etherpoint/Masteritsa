@@ -21,7 +21,7 @@ public class DefaultController {
         return "index";
     }
 
-    /**Эндпоинт перехода на страницу продукта
+    /**Эндпоинт перехода на страницу товара
      *
      * @param model
      * @return file product.html
