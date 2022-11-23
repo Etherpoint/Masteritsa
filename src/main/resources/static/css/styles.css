@@ -11277,8 +11277,8 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
-
-  .logo {
+}
+.logo {
     -webkit-tap-highlight-color: transparent;
     -webkit-text-size-adjust: 100%;
     --gray-dark: #343a40;
@@ -11331,9 +11331,9 @@ textarea.form-control-lg {
     position: relative !important;
     color: #fff;
     font-weight: 300;
-  }
+}
 
-  .logo-text {
+.logo-text {
     -webkit-tap-highlight-color: transparent;
     -webkit-text-size-adjust: 100%;
     --gray-dark: #343a40;
@@ -11379,5 +11379,4 @@ textarea.form-control-lg {
     color: #000;
     z-index: -1;
     font-size: 0;
-  }
 }
