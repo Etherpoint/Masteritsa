@@ -20,8 +20,9 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Все товары</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Модель 1</a></li>
-                        <li><a class="dropdown-item" href="#!">Модель 2</a></li>
+                        <div th:each="type : ${types}">
+                            <li><a class="dropdown-item" href="#!" th:text="${type.name}"></a></li>
+                        </div>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/sales">Акции</a></li>
