@@ -1,16 +1,18 @@
 package ru.familyproject.ryabov.masteritsa;
 
-import org.junit.jupiter.api.Disabled;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import ru.familyproject.ryabov.masteritsa.controller.DefaultController;
 
-//todo УБРАТЬ @DISABLED АННОТАЦИИ
+
 @SpringBootTest
-@Disabled
 class MasteritsaApplicationTests {
+    @Autowired
+    DefaultController controller;
 
     @Test
-    @Disabled
     void contextLoads() {
     }
 
