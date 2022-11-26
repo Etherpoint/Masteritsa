@@ -20,8 +20,8 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/filter/all">Все товары</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <div th:each="type : ${types}">
-                            <li><a class="dropdown-item" th:href="@{'/filter/'+${type.id}}" th:text="${type.name}"></a></li>
+                        <div th:each="map : ${map}">
+                            <li><a class="dropdown-item" th:href="@{'/filter/'+${map.key.id}}" th:text="${map.key.name}"></a></li>
                         </div>
                     </ul>
                 </li>
