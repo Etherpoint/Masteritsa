@@ -16,12 +16,12 @@
 
                 <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Главная</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Товары</a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Товары</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/filter/all">Все товары</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <div th:each="map : ${map}">
-                            <li><a class="dropdown-item" th:href="@{'/filter/'+${map.key.id}}" th:text="${map.key.name}"></a></li>
+                        <div th:each="type : ${types}">
+                            <li><a class="dropdown-item" th:href="@{'/filter/'+${type.id}}" th:text="${type.name}"></a></li>
                         </div>
                     </ul>
                 </li>

@@ -4,23 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.familyproject.ryabov.masteritsa.entity.Product;
 import ru.familyproject.ryabov.masteritsa.entity.ProductType;
-import ru.familyproject.ryabov.masteritsa.repository.ProductRepository;
 import ru.familyproject.ryabov.masteritsa.repository.ProductTypeRepository;
 import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 public class DefaultController {
     @Autowired
     ProductTypeRepository productTypeRepository;
-
-    @Autowired
-    ProductRepository productRepository;
 
     /**GET метод к главной странице сайта по эндпоинту <b>"/"</b>
      *
@@ -31,9 +22,7 @@ public class DefaultController {
     @GetMapping(Endpoints.MAIN_PAGE)
     public String index(Model model){
         Iterable<ProductType> types = productTypeRepository.findAll();
-        Map<ProductType, List<Product>> map = new HashMap<>();
-        types.forEach(type -> map.put(type, productRepository.findByProductType(type)));
-        model.addAttribute("map", map);
+        model.addAttribute("types", types);
         return "index";
     }
 
