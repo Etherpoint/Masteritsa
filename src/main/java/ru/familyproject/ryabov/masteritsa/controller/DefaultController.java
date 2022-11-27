@@ -34,7 +34,7 @@ public class DefaultController {
     public String index(Model model) {
         List<ProductType> types = productTypeService.getAll();
         model.addAttribute("types", types);
-        return "index";
+        return "main";
     }
 
     /**
