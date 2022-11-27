@@ -5,13 +5,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.familyproject.ryabov.masteritsa.entity.ProductType;
-import ru.familyproject.ryabov.masteritsa.repository.ProductTypeRepository;
+import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
 import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
+
+import java.util.List;
 
 @Controller
 public class DefaultController {
-    @Autowired
-    ProductTypeRepository productTypeRepository;
+    private final ProductTypeService service;
+
+    public DefaultController(@Autowired ProductTypeService service) {
+        this.service = service;
+    }
 
     /**GET метод к главной странице сайта по эндпоинту <b>"/"</b>
      *
@@ -21,7 +26,8 @@ public class DefaultController {
      */
     @GetMapping(Endpoints.MAIN_PAGE)
     public String index(Model model){
-        Iterable<ProductType> types = productTypeRepository.findAll();
+        //Iterable<ProductType> types = productTypeRepository.findAll();
+        List<ProductType> types = service.getAll();
         model.addAttribute("types", types);
         return "index";
     }
