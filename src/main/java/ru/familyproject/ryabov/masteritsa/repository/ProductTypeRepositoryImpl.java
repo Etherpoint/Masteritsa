@@ -36,9 +36,4 @@ public class ProductTypeRepositoryImpl implements ProductTypeRepository{
             return result.list();
         }
     }
-
-    @Override
-    public ProductType getById(Long id) {
-        return null;
-    }
 }
