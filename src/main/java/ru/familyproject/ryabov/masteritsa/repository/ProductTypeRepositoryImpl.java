@@ -32,7 +32,7 @@ public class ProductTypeRepositoryImpl implements ProductTypeRepository{
     @Override
     public List<ProductType> getAll() {
         try(Session session = sessionFactory.openSession()){
-            Query<ProductType> result = session.createQuery("SELECT pt FROM product_type pt", ProductType.class);
+            Query<ProductType> result = session.createQuery("SELECT pt FROM product_type pt ORDER BY pt.id", ProductType.class);
             return result.list();
         }
     }
