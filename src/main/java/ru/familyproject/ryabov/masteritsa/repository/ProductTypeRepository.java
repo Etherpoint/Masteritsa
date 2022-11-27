@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface ProductTypeRepository{
-        public List<ProductType> getAll();
+        List<ProductType> getAll();
 }
