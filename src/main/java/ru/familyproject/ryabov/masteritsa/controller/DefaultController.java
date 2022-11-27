@@ -12,34 +12,40 @@ import java.util.List;
 
 @Controller
 public class DefaultController {
-    private final ProductTypeService service;
 
-    public DefaultController(@Autowired ProductTypeService service) {
-        this.service = service;
+    /**
+     * Сервис для работы с БД
+     */
+    private final ProductTypeService productTypeService;
+
+    public DefaultController(@Autowired ProductTypeService productTypeService) {
+        this.productTypeService = productTypeService;
     }
 
-    /**GET метод к главной странице сайта по эндпоинту <b>"/"</b>
+    /**
+     * GET метод к главной странице сайта по эндпоинту <b>"/"</b>
      *
      * @param model
-     * @see Endpoints#MAIN_PAGE
      * @return file <b>index.html</b>
+     * @see Endpoints#MAIN_PAGE
+     * @see #productTypeService
      */
     @GetMapping(Endpoints.MAIN_PAGE)
-    public String index(Model model){
-        //Iterable<ProductType> types = productTypeRepository.findAll();
-        List<ProductType> types = service.getAll();
+    public String index(Model model) {
+        List<ProductType> types = productTypeService.getAll();
         model.addAttribute("types", types);
         return "index";
     }
 
-    /**GET метод к странице товара по эндпоинту <b>"/product"</b>
+    /**
+     * GET метод к странице товара по эндпоинту <b>"/product"</b>
      *
      * @param model
-     * @see Endpoints#PRODUCT
      * @return file <b>product.html</b>
+     * @see Endpoints#PRODUCT
      */
     @GetMapping(Endpoints.PRODUCT)
-    public String getProduct(Model model){
+    public String getProduct(Model model) {
         return "product";
     }
 }
