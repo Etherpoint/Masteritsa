@@ -32,7 +32,7 @@ public class FilterController {
         model.addAttribute("products", products);
         List<ProductType> types = productTypeService.getAll();
         model.addAttribute("types", types);
-        return "index";
+        return "products";
     }
 
     @GetMapping("/{id}")
@@ -41,6 +41,6 @@ public class FilterController {
         model.addAttribute("products", products);
         List<ProductType> types = productTypeService.getAll();
         model.addAttribute("types", types);
-        return "index";
+        return "products";
     }
 }

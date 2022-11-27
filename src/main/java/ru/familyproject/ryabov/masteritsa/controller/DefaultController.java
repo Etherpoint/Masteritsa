@@ -26,7 +26,7 @@ public class DefaultController {
      * GET метод к главной странице сайта по эндпоинту <b>"/"</b>
      *
      * @param model
-     * @return file <b>index.html</b>
+     * @return file <b>main.html</b>
      * @see Endpoints#MAIN_PAGE
      * @see #productTypeService
      */
