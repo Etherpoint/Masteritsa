@@ -9,12 +9,12 @@ import java.util.List;
 
 /**Сервис для работы с сущностью Product*/
 @Service public class ProductService {
-    /**Приватный объект класса <b>ProductRepositoryImpl</b>
+    /**Приватное поле работы с сущностями <b>Product</b> в БД
      * @see ProductRepositoryImpl
      */
     private final ProductRepositoryImpl repository;
 
-    /**Конструктор для инициализации переменной <b>repository</b>*/
+    /**Конструктор для инициализации поля <b>repository</b>*/
     public ProductService(@Autowired ProductRepositoryImpl repository) {
         this.repository = repository;
     }
