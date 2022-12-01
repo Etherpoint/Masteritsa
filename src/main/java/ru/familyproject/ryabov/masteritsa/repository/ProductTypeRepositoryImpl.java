@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Properties;
 
 @Repository
-public class ProductTypeRepositoryImpl implements ProductTypeRepository{
+public class ProductTypeRepositoryImpl implements ru.familyproject.ryabov.masteritsa.repository.ProductTypeRepository {
     SessionFactory sessionFactory;
 
     public ProductTypeRepositoryImpl() {
