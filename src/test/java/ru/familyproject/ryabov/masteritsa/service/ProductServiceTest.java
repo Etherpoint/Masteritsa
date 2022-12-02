@@ -14,7 +14,7 @@ class ProductServiceTest {
     @Autowired
     private ProductService productService;
     @MockBean
-    ProductRepositoryImpl repository;
+    private ProductRepositoryImpl repository;
 
     @Test
     void getAll() {
