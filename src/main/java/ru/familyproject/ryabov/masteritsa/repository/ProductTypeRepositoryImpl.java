@@ -14,7 +14,7 @@ import java.util.Properties;
 
 @Repository
 public class ProductTypeRepositoryImpl implements ru.familyproject.ryabov.masteritsa.repository.ProductTypeRepository {
-    SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
     public ProductTypeRepositoryImpl() {
         Properties properties = new Properties();

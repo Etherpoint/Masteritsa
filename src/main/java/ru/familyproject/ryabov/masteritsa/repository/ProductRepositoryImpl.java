@@ -15,7 +15,7 @@ import java.util.Properties;
 
 @Repository
 public class ProductRepositoryImpl implements ProductRepository{
-    SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
     public ProductRepositoryImpl() {
         Properties properties = new Properties();
