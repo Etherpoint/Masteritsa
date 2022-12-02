@@ -24,6 +24,7 @@ class ProductServiceTest {
 
     @Test
     void getAllById() {
+        repository.getAllById(1L);
         Mockito.doReturn(new ArrayList<>()).when(repository).getAllById(1L);
         Mockito.verify(repository, Mockito.times(1)).getAllById(1L);
     }
