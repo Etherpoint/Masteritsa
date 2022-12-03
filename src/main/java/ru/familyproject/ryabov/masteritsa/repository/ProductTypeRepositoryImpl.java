@@ -35,7 +35,7 @@ public class ProductTypeRepositoryImpl implements ru.familyproject.ryabov.master
     public List<ProductType> getAll() {
         try (Session session = sessionFactory.openSession()) {
             Query<ProductType> result = session.createQuery("SELECT pt FROM product_type pt ORDER BY pt.id", ProductType.class);
-            LOGGER.info("Method completed successfully");
+            LOGGER.info("Method getAll completed successfully");
             return result.list();
         }catch (Exception e){
             LOGGER.error("Error in method getAll");

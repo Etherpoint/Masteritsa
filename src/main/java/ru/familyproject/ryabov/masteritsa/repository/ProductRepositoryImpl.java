@@ -38,7 +38,7 @@ public class ProductRepositoryImpl implements ProductRepository{
     public List<Product> getAll() {
         try(Session session = sessionFactory.openSession()){
             Query<Product> result = session.createQuery("SELECT p FROM product p", Product.class);
-            LOGGER.info("Method completed successfully");
+            LOGGER.info("Method getAll completed successfully");
             return result.list();
         }catch (Exception e){
             LOGGER.error("Error in method getAll");
@@ -51,7 +51,7 @@ public class ProductRepositoryImpl implements ProductRepository{
         try(Session session = sessionFactory.openSession()){
             Query<Product> result = session.createQuery("SELECT p FROM product p WHERE p.productType.id = :id", Product.class);
             result.setParameter("id", id);
-            LOGGER.info("Method completed successfully");
+            LOGGER.info("Method getAllById completed successfully");
             return result.list();
         }catch (Exception e){
             LOGGER.error("Error in method getAll");
