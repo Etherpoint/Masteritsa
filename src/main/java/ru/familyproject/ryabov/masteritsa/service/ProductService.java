@@ -3,6 +3,7 @@ package ru.familyproject.ryabov.masteritsa.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.familyproject.ryabov.masteritsa.entity.Product;
+import ru.familyproject.ryabov.masteritsa.repository.ProductRepository;
 import ru.familyproject.ryabov.masteritsa.repository.ProductRepositoryImpl;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
     /**Приватное поле работы с сущностями <b>Product</b> в БД
      * @see ProductRepositoryImpl
      */
-    private final ProductRepositoryImpl repository;
+    private final ProductRepository repository;
 
     /**Конструктор для инициализации поля <b>repository</b>*/
     public ProductService(@Autowired ProductRepositoryImpl repository) {
