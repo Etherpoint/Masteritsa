@@ -1,5 +1,6 @@
 package ru.familyproject.ryabov.masteritsa.repository;
 
+import org.hibernate.QueryException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -43,7 +44,11 @@ public class ProductTypeRepositoryImpl implements ru.familyproject.ryabov.master
     public List<ProductType> getAll() {
         try (Session session = sessionFactory.openSession()) {
             Query<ProductType> result = session.createQuery("SELECT pt FROM product_type pt ORDER BY pt.id", ProductType.class);
+            LOGGER.info("Method completed successfully");
             return result.list();
+        }catch (Exception e){
+            LOGGER.error("Error in method getAll");
+            throw new QueryException(e);
         }
     }
 }
