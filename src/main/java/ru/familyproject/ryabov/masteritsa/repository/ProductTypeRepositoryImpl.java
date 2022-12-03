@@ -36,7 +36,7 @@ public class ProductTypeRepositoryImpl implements ru.familyproject.ryabov.master
             LOGGER.info("Configuration in ProductTypeRepositoryImpl was successful");
         } catch (Exception e) {
             LOGGER.error("Error while configuring sessionFactory");
-            throw new ConfigurationException(e.toString());
+            throw new ConfigurationException(e.getMessage());
         }
     }
 
