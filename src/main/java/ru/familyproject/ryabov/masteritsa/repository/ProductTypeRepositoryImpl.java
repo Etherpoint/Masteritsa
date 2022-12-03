@@ -1,11 +1,11 @@
 package ru.familyproject.ryabov.masteritsa.repository;
 
+import org.hibernate.HibernateException;
 import org.hibernate.QueryException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
-import org.hibernate.internal.util.config.ConfigurationException;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,9 +34,9 @@ public class ProductTypeRepositoryImpl implements ru.familyproject.ryabov.master
                     .addAnnotatedClass(ProductType.class)
                     .buildSessionFactory();
             LOGGER.info("Configuration in ProductTypeRepositoryImpl was successful");
-        } catch (Exception e) {
+        } catch (HibernateException e) {
             LOGGER.error("Error while configuring sessionFactory");
-            throw new ConfigurationException(e.getMessage());
+            throw new HibernateException(e);
         }
     }
 
