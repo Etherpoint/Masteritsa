@@ -39,8 +39,6 @@ public class DefaultController {
 
     /**
      * GET метод к странице товара по эндпоинту <b>"/product"</b>
-     *
-     * @param model
      * @return file <b>product.html</b>
      * @see Endpoints#PRODUCT
      */
