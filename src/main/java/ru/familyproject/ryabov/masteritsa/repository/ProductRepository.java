@@ -5,6 +5,9 @@ import ru.familyproject.ryabov.masteritsa.entity.Product;
 
 import java.util.List;
 
+/**Интерфейс для работы с сущностями <b>Product</b> в БД
+ * @see Product
+ */
 @Repository
 public interface ProductRepository{
     List<Product> getAll();

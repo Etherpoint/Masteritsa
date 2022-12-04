@@ -14,11 +14,20 @@ import ru.familyproject.ryabov.masteritsa.entity.ProductType;
 
 import java.util.List;
 
+/**Класс для работы с сущностями <b>Product</b> в БД
+ * @see ProductRepository
+ * @see Product
+ */
 @Repository
 public class ProductRepositoryImpl implements ProductRepository{
+    /**slf4j логгер*/
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductRepositoryImpl.class);
+    /**Интерфейс для работы с БД*/
     private final SessionFactory sessionFactory;
 
+    /**Конструктор с конфигурацией <b>sessionFactory</b>
+     * @see SessionFactory
+     */
     public ProductRepositoryImpl() {
         try{
             sessionFactory= new Configuration()
@@ -34,6 +43,8 @@ public class ProductRepositoryImpl implements ProductRepository{
 
 
     }
+
+    /**Метод для получения всего списка сущностей <b>Product</b>*/
     @Override
     public List<Product> getAll() {
         try(Session session = sessionFactory.openSession()){
@@ -46,6 +57,7 @@ public class ProductRepositoryImpl implements ProductRepository{
         }
     }
 
+    /**Метод для получения списка <b>Product</b> с id = productType.id*/
     @Override
     public List<Product> getAllById(Long id) {
         try(Session session = sessionFactory.openSession()){

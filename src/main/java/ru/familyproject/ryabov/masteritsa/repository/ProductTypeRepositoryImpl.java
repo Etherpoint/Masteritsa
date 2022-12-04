@@ -13,11 +13,25 @@ import ru.familyproject.ryabov.masteritsa.entity.ProductType;
 
 import java.util.List;
 
+/**
+ * Класс для работы с сущностями <b>ProductType</b> в БД
+ *
+ * @see ProductType
+ */
 @Repository
 public class ProductTypeRepositoryImpl implements ru.familyproject.ryabov.masteritsa.repository.ProductTypeRepository {
-    private final SessionFactory sessionFactory;
+    /**
+     * slf4j логгер
+     */
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductTypeRepositoryImpl.class);
+    /**
+     * Интерфейс для работы с БД
+     * */
+    private final SessionFactory sessionFactory;
 
+    /**
+     * Конструктор с конфигурацией sessionFactory
+     */
     public ProductTypeRepositoryImpl() {
         try {
             sessionFactory = new Configuration()
@@ -31,13 +45,16 @@ public class ProductTypeRepositoryImpl implements ru.familyproject.ryabov.master
         }
     }
 
+    /**
+     *Метод для получения всего списка сущностей ProductType
+     */
     @Override
     public List<ProductType> getAll() {
         try (Session session = sessionFactory.openSession()) {
             Query<ProductType> result = session.createQuery("SELECT pt FROM product_type pt ORDER BY pt.id", ProductType.class);
             LOGGER.info("Method getAll completed successfully");
             return result.list();
-        }catch (Exception e){
+        } catch (Exception e) {
             LOGGER.error("Error in method getAll");
             throw new QueryException(e);
         }
