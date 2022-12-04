@@ -12,11 +12,13 @@ import java.util.List;
 @Service
 public class ProductTypeService{
     /**Приватное поле работы с сущностями <b>ProductType</b> в БД
-     * @see ProductTypeRepositoryImpl
+     * @see ProductTypeRepository
      * */
     private final ProductTypeRepository repository;
 
-    /**Конструктор для инициализации поля <b>repository</b>*/
+    /**Конструктор для инициализации поля <b>repository</b>
+     * @see ProductTypeRepositoryImpl
+     */
     public ProductTypeService(@Autowired ProductTypeRepositoryImpl repository){
         this.repository = repository;
     }
