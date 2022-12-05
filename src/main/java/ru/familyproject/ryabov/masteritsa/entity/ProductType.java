@@ -22,6 +22,8 @@ public class ProductType {
     @Column(name = "name")
     private String name;
 
+    //------------------------------------------- конец entity свойств-------------------------------------------------
+
     public ProductType() {
     }
 
