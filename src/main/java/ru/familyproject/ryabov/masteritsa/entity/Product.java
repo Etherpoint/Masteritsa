@@ -4,6 +4,8 @@ package ru.familyproject.ryabov.masteritsa.entity;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -60,6 +62,16 @@ public class Product {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_type_id")
     private ProductType productType;
+
+    /**
+     * Поле для связи со всеми комментариями к данному продукту
+     * @see Comment
+     */
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
+    private List<Comment> comments = new ArrayList<>();
+
+    //------------------------------------------- конец entity свойств-------------------------------------------------
 
     public Product() {
     }
@@ -119,5 +131,13 @@ public class Product {
 
     public void setProductType(ProductType productType) {
         this.productType = productType;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }
