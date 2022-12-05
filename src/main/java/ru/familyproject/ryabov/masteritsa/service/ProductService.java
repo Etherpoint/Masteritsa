@@ -2,6 +2,7 @@ package ru.familyproject.ryabov.masteritsa.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.familyproject.ryabov.masteritsa.entity.Comment;
 import ru.familyproject.ryabov.masteritsa.entity.Product;
 import ru.familyproject.ryabov.masteritsa.repository.ProductRepository;
 import ru.familyproject.ryabov.masteritsa.repository.ProductRepositoryImpl;
@@ -32,5 +33,13 @@ import java.util.List;
      */
     public List<Product> getAllById(Long id){
         return repository.getAllById(id);
+    }
+
+    public List<Comment> getAllCommentsById(Long id){
+        return repository.getAllCommentsById(id);
+    }
+
+    public Product getById(Long id){
+        return repository.getById(id);
     }
 }

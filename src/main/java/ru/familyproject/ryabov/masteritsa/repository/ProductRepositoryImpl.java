@@ -9,8 +9,10 @@ import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+import ru.familyproject.ryabov.masteritsa.entity.Comment;
 import ru.familyproject.ryabov.masteritsa.entity.Product;
 import ru.familyproject.ryabov.masteritsa.entity.ProductType;
+import ru.familyproject.ryabov.masteritsa.entity.User;
 
 import java.util.List;
 
@@ -34,6 +36,8 @@ public class ProductRepositoryImpl implements ProductRepository{
                     .configure()
                     .addAnnotatedClass(Product.class)
                     .addAnnotatedClass(ProductType.class)
+                    .addAnnotatedClass(Comment.class)
+                    .addAnnotatedClass(User.class)
                     .buildSessionFactory();
             LOGGER.info("Configuration in ProductRepositoryImpl was successful");
         }catch (HibernateException e){
@@ -70,4 +74,32 @@ public class ProductRepositoryImpl implements ProductRepository{
             throw new QueryException(e);
         }
     }
+
+    @Override
+    public List<Comment> getAllCommentsById(Long id) {
+        try(Session session = sessionFactory.openSession()){
+            Query<Comment> result = session.createQuery("SELECT c FROM comment c WHERE c.product.id= :id", Comment.class);
+            result.setParameter("id", id);
+            LOGGER.info("Method getAllCommentsById completed successfully");
+            return result.list();
+        }catch (Exception e){
+            LOGGER.error("Error in method getAllCommentsById");
+            throw new QueryException(e);
+        }
+    }
+
+    @Override
+    public Product getById(Long id) {
+        try(Session session = sessionFactory.openSession()){
+            Query<Product> result = session.createQuery("SELECT p FROM product p WHERE p.id = :id", Product.class);
+            result.setParameter("id", id);
+            LOGGER.info("Method getAllCommentsById completed successfully");
+            return result.uniqueResult();
+        }catch (Exception e){
+            LOGGER.error("Error in method getAllCommentsById");
+            throw new QueryException(e);
+        }
+    }
+
+
 }
