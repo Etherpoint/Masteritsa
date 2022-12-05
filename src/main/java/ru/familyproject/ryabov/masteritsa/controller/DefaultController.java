@@ -36,14 +36,4 @@ public class DefaultController {
         model.addAttribute("types", types);
         return "main";
     }
-
-    /**
-     * GET метод к странице товара по эндпоинту <b>"/product"</b>
-     * @return file <b>product.html</b>
-     * @see Endpoints#PRODUCT
-     */
-    @GetMapping(Endpoints.PRODUCT)
-    public String getProduct(Model model) {
-        return "product";
-    }
 }
