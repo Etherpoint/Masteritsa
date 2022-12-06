@@ -1,7 +1,6 @@
 package ru.familyproject.ryabov.masteritsa.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity(name = "comment")
 public class Comment {
@@ -11,7 +10,7 @@ public class Comment {
     @Column(name = "description")
     private String description;
     @Column(name = "date_of_create")
-    private Date dateOfCreate;
+    private String dateOfCreate;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
@@ -42,11 +41,11 @@ public class Comment {
         this.description = description;
     }
 
-    public Date getDateOfCreate() {
+    public String getDateOfCreate() {
         return dateOfCreate;
     }
 
-    public void setDateOfCreate(Date dateOfCreate) {
+    public void setDateOfCreate(String dateOfCreate) {
         this.dateOfCreate = dateOfCreate;
     }
 
