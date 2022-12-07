@@ -57,11 +57,12 @@ public class FilterController {
     }
 
     /**
-     * GET метод для загрузки определенного типа товара по эндпоинту <b>"/{id}"</b>
+     * GET метод для загрузки определенного типа товара по эндпоинту <b>"products/{id}"</b>
      * @return file <b>products.html</b>
-     * @see Endpoints#FILTER_BY_ID
+     * @see Endpoints#FILTER
+     * @see Endpoints#FIND_BY_ID
      */
-    @GetMapping(Endpoints.FILTER_BY_ID)
+    @GetMapping(Endpoints.FIND_BY_ID)
     public String getAllProductsById(Model model,@PathVariable Long id){
         List<Product> products = service.getAllById(id);
         model.addAttribute("products", products);
