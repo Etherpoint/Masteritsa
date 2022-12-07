@@ -2,15 +2,30 @@ package ru.familyproject.ryabov.masteritsa.entity;
 
 import javax.persistence.*;
 
+/**
+ * Entity-класс пользователя со свойствами <b>id</b>, <b>name</b>, <b>image</b>
+ *
+ * @see Entity
+ */
 @Entity(name = "users")
 public class User {
+
+    /**
+     * Поле id в базе данных
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Поле никнейма пользователя
+     */
     @Column(name = "username")
     private String name;
 
+    /**
+     * Поле пути к аватару пользователя
+     */
     @Column(name = "image")
     private String image;
 

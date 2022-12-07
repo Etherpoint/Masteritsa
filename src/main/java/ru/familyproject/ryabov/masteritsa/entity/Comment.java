@@ -2,20 +2,42 @@ package ru.familyproject.ryabov.masteritsa.entity;
 
 import javax.persistence.*;
 
+/**
+ * Entity-класс комментария со свойствами <b>id</b>, <b>description</b>, <b>dateOfCreate</b>, <b>user</b>, <b>product</b>
+ * @see Entity
+ */
 @Entity(name = "comment")
 public class Comment {
+
+    /**
+     * Поле id в базе данных
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    /**
+     * Поле текста комментария
+     */
     @Column(name = "description")
     private String description;
+
+    /**
+     * Поле с датой создания комментария
+     */
     @Column(name = "date_of_create")
     private String dateOfCreate;
 
+    /**
+     * Поле для связи с пользователем данного комментария
+     */
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
+    /**
+     * Поле для связи с продуктом, к которому написан комментарий
+     */
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")
     private Product product;

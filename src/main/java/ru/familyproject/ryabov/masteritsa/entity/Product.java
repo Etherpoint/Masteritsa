@@ -9,9 +9,10 @@ import java.util.List;
 
 
 /**
- * Entity-класс товара со свойствами <b>id</b>, <b>name</b>, <b>price</b>, <b>image</b>, <b>description</b>, <b>color</b>, <b>productType</b>
+ * Entity-класс товара со свойствами <b>id</b>, <b>name</b>, <b>price</b>, <b>image</b>,
+ * <b>description</b>, <b>color</b>, <b>productType</b>, <b>comments</b>
  *
- * @see javax.persistence.Entity
+ * @see Entity
  */
 @Entity(name = "product")
 public class Product {
