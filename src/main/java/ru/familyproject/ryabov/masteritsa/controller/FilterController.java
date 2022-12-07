@@ -16,14 +16,14 @@ import java.util.List;
 
 /**
  * Контроллер для фильтрации товаров<br>
- * Для всех методов этого контроллера добавляется начальная приписка <b>"/products"</b> к эндпоинту
+ * Для всех методов этого контроллера добавляется начальная приписка <b>"/products/"</b> к эндпоинту
  * @see Endpoints#FILTER
  */
 @Controller
 @RequestMapping(Endpoints.FILTER)
 public class FilterController {
     /**
-     * Сервис для работы сущностями <b>Product</b> в БД
+     * Сервис для работы с сущностями <b>Product</b> в БД
      */
     private final ProductService service;
     /**

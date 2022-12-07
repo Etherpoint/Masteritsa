@@ -15,6 +15,11 @@ import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
 
 import java.util.List;
 
+/**
+ * Констроллер для отображения страницы товара<br>
+ * Для всех методов этого контроллера добавляется начальная приписка <b>"/product/"</b>
+ * @see Endpoints#PRODUCT
+ */
 @Controller
 @RequestMapping(Endpoints.PRODUCT)
 public class ProductController {

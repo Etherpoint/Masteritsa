@@ -10,14 +10,21 @@ import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
 
 import java.util.List;
 
+/**
+ * Контроллер для отображения главной страницы сайта
+ */
 @Controller
 public class DefaultController {
 
     /**
-     * Сервис для работы с БД
+     * Сервис для работы с сущностями <b>ProductType</b> в БД
      */
     private final ProductTypeService productTypeService;
 
+    /**
+     * Конструктор для инициализации сервиса
+     * @param productTypeService
+     */
     public DefaultController(@Autowired ProductTypeService productTypeService) {
         this.productTypeService = productTypeService;
     }
