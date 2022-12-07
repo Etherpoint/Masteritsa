@@ -27,6 +27,8 @@ public class CommentRepositoryImpl implements CommentRepository{
         try{
             sessionFactory= new Configuration()
                     .configure()
+                    .addAnnotatedClass(Product.class)
+                    .addAnnotatedClass(ProductType.class)
                     .addAnnotatedClass(Comment.class)
                     .addAnnotatedClass(User.class)
                     .buildSessionFactory();
