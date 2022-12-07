@@ -15,6 +15,5 @@ public interface ProductRepository{
 
     List<Product> getAllById(Long id);
 
-    List<Comment> getAllCommentsById(Long id);
     Product getById(Long id);
 }
