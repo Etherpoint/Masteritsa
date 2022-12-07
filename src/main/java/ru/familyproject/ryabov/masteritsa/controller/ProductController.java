@@ -18,9 +18,20 @@ import java.util.List;
 @Controller
 @RequestMapping(Endpoints.PRODUCT)
 public class ProductController {
+    /**
+     * Сервис для работы с сущностями <b>Product</b> в БД
+     */
     private final ProductService productService;
+    /**
+     * Сервис для работы с сущностями <b>ProductType</b> в БД
+     */
     private final ProductTypeService productTypeService;
 
+    /**
+     * Конструктор для инициализации сервисов
+     * @param productService
+     * @param productTypeService
+     */
     public ProductController(@Autowired ProductService productService, @Autowired ProductTypeService productTypeService) {
         this.productService = productService;
         this.productTypeService = productTypeService;
@@ -30,8 +41,9 @@ public class ProductController {
      * GET метод к странице товара по эндпоинту <b>"/product/{id}"</b>
      * @return file <b>product.html</b>
      * @see Endpoints#PRODUCT
+     * @see Endpoints#FIND_BY_ID
      */
-    @GetMapping(Endpoints.FILTER_BY_ID)
+    @GetMapping(Endpoints.FIND_BY_ID)
     public String getProduct(Model model, @PathVariable Long id) {
         List<Comment> comments = productService.getAllCommentsById(id);
         List<ProductType> types = productTypeService.getAll();
