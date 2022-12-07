@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.familyproject.ryabov.masteritsa.entity.Comment;
 import ru.familyproject.ryabov.masteritsa.entity.Product;
+import ru.familyproject.ryabov.masteritsa.repository.CommentRepository;
 import ru.familyproject.ryabov.masteritsa.repository.ProductRepository;
 import ru.familyproject.ryabov.masteritsa.repository.ProductRepositoryImpl;
+import ru.familyproject.ryabov.masteritsa.repository.CommentRepositoryImpl;
 
 import java.util.List;
 
@@ -14,32 +16,45 @@ import java.util.List;
     /**Приватное поле работы с сущностями <b>Product</b> в БД
      * @see ProductRepository
      */
-    private final ProductRepository repository;
+    private final ProductRepository productRepository;
+
+    /**Приватное поле работы с сущностями <b>Comment</b> в БД
+     * @see CommentRepository
+     */
+    private final CommentRepository commentRepository;
 
     /**Конструктор для инициализации поля <b>repository</b>
      * @see ProductRepositoryImpl
+     * @see CommentRepositoryImpl
      */
-    public ProductService(@Autowired ProductRepositoryImpl repository) {
-        this.repository = repository;
+    public ProductService(@Autowired ProductRepository productRepository, @Autowired CommentRepository commentRepository) {
+        this.productRepository = productRepository;
+        this.commentRepository = commentRepository;
     }
 
     /**Метод для получения всего списка продуктов из БД*/
     public List<Product> getAll(){
-        return repository.getAll();
+        return productRepository.getAll();
     }
 
-    /**Метод для получения всех товаров, с product_type_id = id
-     * @see Product#getProductType()
+    /**
+     * Метод для получения всех товаров, с product_type_id = id
      */
     public List<Product> getAllById(Long id){
-        return repository.getAllById(id);
+        return productRepository.getAllById(id);
     }
 
+    /**
+     * Метод для получения всех комментариев для товара с product_id = id
+     */
     public List<Comment> getAllCommentsById(Long id){
-        return repository.getAllCommentsById(id);
+        return commentRepository.getAllCommentsById(id);
     }
 
+    /**
+     * Метод для получения товара с product_id = id
+     */
     public Product getById(Long id){
-        return repository.getById(id);
+        return productRepository.getById(id);
     }
 }

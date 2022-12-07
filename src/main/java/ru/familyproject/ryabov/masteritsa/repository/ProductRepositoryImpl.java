@@ -76,19 +76,6 @@ public class ProductRepositoryImpl implements ProductRepository{
     }
 
     @Override
-    public List<Comment> getAllCommentsById(Long id) {
-        try(Session session = sessionFactory.openSession()){
-            Query<Comment> result = session.createQuery("SELECT c FROM comment c WHERE c.product.id= :id", Comment.class);
-            result.setParameter("id", id);
-            LOGGER.info("Method getAllCommentsById completed successfully");
-            return result.list();
-        }catch (Exception e){
-            LOGGER.error("Error in method getAllCommentsById");
-            throw new QueryException(e);
-        }
-    }
-
-    @Override
     public Product getById(Long id) {
         try(Session session = sessionFactory.openSession()){
             Query<Product> result = session.createQuery("SELECT p FROM product p WHERE p.id = :id", Product.class);
