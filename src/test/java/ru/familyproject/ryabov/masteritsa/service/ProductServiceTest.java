@@ -29,21 +29,21 @@ class ProductServiceTest {
 
     @Test
     void getListOfProductsWhenCallsMethod_getAllById() {
-        productRepository.getAllById(1L);
+        productService.getAllById(1L);
         Mockito.doReturn(new ArrayList<Product>()).when(productRepository).getAllById(1L);
         Mockito.verify(productRepository, Mockito.times(1)).getAllById(1L);
     }
 
     @Test
     void getListOfCommentsWhenCallsMethod_getAllCommentsById(){
-        commentRepository.getAllCommentsById(1L);
+        productService.getAllCommentsById(1L);
         Mockito.doReturn(new ArrayList<Comment>()).when(commentRepository).getAllCommentsById(1L);
         Mockito.verify(commentRepository, Mockito.times(1)).getAllCommentsById(1L);
     }
 
     @Test
     void getProductWhenCallsMethod_getById(){
-        productRepository.getById(1L);
+        productService.getById(1L);
         Mockito.doReturn(new Product()).when(productRepository).getById(1L);
         Mockito.verify(productRepository, Mockito.times(1)).getById(1L);
     }
