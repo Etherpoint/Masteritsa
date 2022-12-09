@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.ui.Model;
 import ru.familyproject.ryabov.masteritsa.entity.ProductType;
 import ru.familyproject.ryabov.masteritsa.service.ProductService;
 import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
@@ -30,8 +29,6 @@ class DefaultControllerTest {
     ProductTypeService productTypeService;
     @MockBean
     ProductService productService;
-    @MockBean
-    Model model;
 
     private List<ProductType> types;
 
@@ -44,7 +41,7 @@ class DefaultControllerTest {
     }
 
     @Test
-    void doReturnMainPageWhen() throws Exception {
+    void doReturnMainPageWhenCallMethod_index() throws Exception {
         Mockito.when(productTypeService.getAll()).thenReturn(types);
         given(productTypeService.getAll()).willReturn(types);
         this.mockMvc.perform(get("/"));
