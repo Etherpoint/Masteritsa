@@ -77,6 +77,17 @@ public class Product {
     public Product() {
     }
 
+    public Product(Long id, String name, Double price, String image, String description, String color, ProductType productType, List<Comment> comments) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.image = image;
+        this.description = description;
+        this.color = color;
+        this.productType = productType;
+        this.comments = comments;
+    }
+
     public Long getId() {
         return id;
     }
