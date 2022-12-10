@@ -36,12 +36,8 @@ class FilterControllerTest {
     void init(){
         this.types = new ArrayList<>();
         types.add(new ProductType(1L, "Корона 1"));
-        types.add(new ProductType(2L, "Корона 2"));
-        types.add(new ProductType(3L, "Корона 3"));
 
         this.products = new ArrayList<>();
-        products.add(new Product());
-        products.add(new Product());
         products.add(new Product());
     }
 

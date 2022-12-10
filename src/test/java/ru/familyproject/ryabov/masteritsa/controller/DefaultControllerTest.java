@@ -35,8 +35,6 @@ class DefaultControllerTest {
     void init(){
         this.types = new ArrayList<>();
         types.add(new ProductType(1L, "Корона 1"));
-        types.add(new ProductType(2L, "Корона 2"));
-        types.add(new ProductType(3L, "Корона 3"));
     }
 
     @Test
