@@ -46,9 +46,9 @@ public class CommentRepositoryImpl implements CommentRepository{
             result.setParameter("id", id);
             LOGGER.info("Method getAllCommentsById completed successfully");
             return result.list();
-        }catch (Exception e){
-            LOGGER.error("Error in method getAllCommentsById");
-            throw new QueryException(e);
+        } catch (HibernateException e) {
+            LOGGER.error("Error when opened session on sessionFactory in method getAllCommentsById from CommentRepositoryImpl");
+            throw new HibernateException(e);
         }
     }
 }

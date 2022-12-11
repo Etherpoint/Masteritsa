@@ -55,9 +55,9 @@ public class ProductRepositoryImpl implements ProductRepository{
             Query<Product> result = session.createQuery("SELECT p FROM product p", Product.class);
             LOGGER.info("Method getAll completed successfully");
             return result.list();
-        }catch (Exception e){
-            LOGGER.error("Error in method getAll");
-            throw new QueryException(e);
+        } catch (HibernateException e) {
+            LOGGER.error("Error when opened session on sessionFactory in method getAll from ProductRepositoryImpl");
+            throw new HibernateException(e);
         }
     }
 
@@ -69,9 +69,9 @@ public class ProductRepositoryImpl implements ProductRepository{
             result.setParameter("id", id);
             LOGGER.info("Method getAllById completed successfully");
             return result.list();
-        }catch (Exception e){
-            LOGGER.error("Error in method getAll");
-            throw new QueryException(e);
+        } catch (HibernateException e) {
+            LOGGER.error("Error when opened session on sessionFactory in method getAllById from ProductRepositoryImpl");
+            throw new HibernateException(e);
         }
     }
 
@@ -80,11 +80,11 @@ public class ProductRepositoryImpl implements ProductRepository{
         try(Session session = sessionFactory.openSession()){
             Query<Product> result = session.createQuery("SELECT p FROM product p WHERE p.id = :id", Product.class);
             result.setParameter("id", id);
-            LOGGER.info("Method getAllCommentsById completed successfully");
+            LOGGER.info("Method getById completed successfully");
             return result.uniqueResult();
-        }catch (Exception e){
-            LOGGER.error("Error in method getAllCommentsById");
-            throw new QueryException(e);
+        } catch (HibernateException e) {
+            LOGGER.error("Error when opened session on sessionFactory in method getById from ProductRepositoryImpl");
+            throw new HibernateException(e);
         }
     }
 
