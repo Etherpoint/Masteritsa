@@ -1,7 +1,6 @@
 package ru.familyproject.ryabov.masteritsa.repository;
 
 import org.hibernate.HibernateException;
-import org.hibernate.QueryException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
