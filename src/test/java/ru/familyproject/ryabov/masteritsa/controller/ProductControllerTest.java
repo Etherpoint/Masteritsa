@@ -54,6 +54,7 @@ class ProductControllerTest {
                 "Зеленый",
                 types.get(0),
                 comments);
+        Mockito.when(productService.getById(1L)).thenReturn(product);
     }
 
     @Test
@@ -72,7 +73,6 @@ class ProductControllerTest {
 
     @Test
     void getProductWhereIdEqualsOne_WhenCallsMethod_getById_WithParameterEqualsOne_InMethodGetProduct() throws Exception {
-        Mockito.when(productService.getById(1L)).thenReturn(product);
         this.mockMvc.perform(get("/product/1"));
         Mockito.verify(productService, Mockito.times(1)).getById(1L);
     }
