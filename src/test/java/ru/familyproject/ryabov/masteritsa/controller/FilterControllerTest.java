@@ -1,7 +1,6 @@
 package ru.familyproject.ryabov.masteritsa.controller;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +15,9 @@ import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.mockito.Mockito.*;
 
 @WebMvcTest
 class FilterControllerTest {
