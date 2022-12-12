@@ -38,7 +38,7 @@ class DefaultControllerTest {
     }
 
     @Test
-    void doReturnMainPageWhenCallMethod_index() throws Exception {
+    void getAllProductTypesOnMainPageWhenCallsMethod_index() throws Exception {
         Mockito.when(productTypeService.getAll()).thenReturn(types);
         this.mockMvc.perform(get("/"));
         verify(productTypeService, times(1)).getAll();

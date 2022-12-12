@@ -1,6 +1,7 @@
 package ru.familyproject.ryabov.masteritsa.controller;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,18 +44,30 @@ class FilterControllerTest {
 
 
     @Test
-    void doReturnProductsPageWhenCallsMethod_getAllProducts() throws Exception {
+    void getAllProducts_WhenCallsMethod_getAll_InMethodGetAllProducts() throws Exception {
         Mockito.when(productTypeService.getAll()).thenReturn(types);
         this.mockMvc.perform(get("/products/all"));
         verify(productTypeService, times(1)).getAll();
     }
 
     @Test
-    void doReturnProductsPageWhenCallsMethod_getAllProductsById() throws Exception {
+    void getAllProductTypes_WhenCallsMethod_getAll_InMethodGetAllProducts() throws Exception {
         Mockito.when(productTypeService.getAll()).thenReturn(types);
-        Mockito.when(productService.getAllById(1L)).thenReturn(products);
+        this.mockMvc.perform(get("/products/all"));
+        verify(productTypeService, times(1)).getAll();
+    }
+
+    @Test
+    void getAllProductTypes_WhenCallsMethod_getAll_InMethodGetAllProductsById() throws Exception {
+        Mockito.when(productTypeService.getAll()).thenReturn(types);
         this.mockMvc.perform(get("/products/1"));
         verify(productTypeService, times(1)).getAll();
+    }
+
+    @Test
+    void getAllProductsWhereIdEqualsOne_WhenCallsMethod_getAllProductsById_WithParameterEqualsOne_InMethodGetAllProductsById() throws Exception {
+        Mockito.when(productService.getAllById(1L)).thenReturn(products);
+        this.mockMvc.perform(get("/products/1"));
         verify(productService, times(1)).getAllById(1L);
     }
 }

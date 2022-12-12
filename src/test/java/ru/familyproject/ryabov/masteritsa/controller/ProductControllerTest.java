@@ -17,6 +17,8 @@ import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 @WebMvcTest
@@ -53,16 +55,25 @@ class ProductControllerTest {
                 types.get(0),
                 comments);
     }
+
     @Test
-    void doReturnProductPageWhenCallsMethod_getProduct() throws Exception {
-        Mockito.when(productService.getAllCommentsById(1L)).thenReturn(comments);
+    void getAllProductTypesPageWhenCallsMethod_getAllProductsById_InMethodGetProduct() throws Exception {
         Mockito.when(productTypeService.getAll()).thenReturn(types);
-        Mockito.when(productService.getById(1L)).thenReturn(product);
-
         this.mockMvc.perform(get("/product/1"));
+        verify(productTypeService, times(1)).getAll();
+    }
 
+    @Test
+    void getAllCommentsWhereIdEqualsOne_WhenCallsMethod_getAllCommentsById_WithParameterEqualsOne_InMethodGetProduct() throws Exception {
+        Mockito.when(productService.getAllCommentsById(1L)).thenReturn(comments);
+        this.mockMvc.perform(get("/product/1"));
         Mockito.verify(productService, Mockito.times(1)).getAllCommentsById(1L);
+    }
+
+    @Test
+    void getProductWhereIdEqualsOne_WhenCallsMethod_getById_WithParameterEqualsOne_InMethodGetProduct() throws Exception {
+        Mockito.when(productService.getById(1L)).thenReturn(product);
+        this.mockMvc.perform(get("/product/1"));
         Mockito.verify(productService, Mockito.times(1)).getById(1L);
-        Mockito.verify(productTypeService, Mockito.times(1)).getAll();
     }
 }
