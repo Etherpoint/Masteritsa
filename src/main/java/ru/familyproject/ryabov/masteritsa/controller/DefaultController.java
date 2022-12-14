@@ -12,6 +12,10 @@ import java.util.List;
 
 /**
  * Контроллер для отображения главной страницы сайта
+ *
+ * @author Danila Ryabov
+ *
+ * @version 1.0
  */
 @Controller
 public class DefaultController {

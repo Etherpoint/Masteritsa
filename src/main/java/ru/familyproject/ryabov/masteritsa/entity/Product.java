@@ -13,6 +13,10 @@ import java.util.List;
  * <b>description</b>, <b>color</b>, <b>productType</b>, <b>comments</b>
  *
  * @see Entity
+ *
+ * @author Danila Ryabov
+ *
+ * @version 1.0
  */
 @Entity(name = "product")
 public class Product {

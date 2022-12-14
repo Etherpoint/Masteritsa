@@ -15,6 +15,14 @@ import ru.familyproject.ryabov.masteritsa.entity.User;
 
 import java.util.List;
 
+/**Класс для работы с сущностями <b>Comment</b> в БД
+ * @see CommentRepository
+ * @see Comment
+ *
+ * @author Danila Ryabov
+ *
+ * @version 1.0
+ */
 @Repository
 public class CommentRepositoryImpl implements CommentRepository{
     /**slf4j логгер*/

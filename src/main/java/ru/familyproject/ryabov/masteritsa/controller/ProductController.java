@@ -19,6 +19,10 @@ import java.util.List;
  * Констроллер для отображения страницы товара<br>
  * Для всех методов этого контроллера добавляется начальная приписка <b>"/product"</b>
  * @see Endpoints#PRODUCT
+ *
+ * @author Danila Ryabov
+ *
+ * @version 1.0
  */
 @Controller
 @RequestMapping(Endpoints.PRODUCT)

@@ -11,7 +11,13 @@ import ru.familyproject.ryabov.masteritsa.repository.CommentRepositoryImpl;
 
 import java.util.List;
 
-/**Сервис для работы с сущностью Product*/
+/**
+ * Сервис для работы с сущностью Product
+ * @see Product
+ * @author Danila Ryabov
+ *
+ * @version 1.0
+ */
 @Service public class ProductService {
     /**Приватное поле работы с сущностями <b>Product</b> в БД
      * @see ProductRepository

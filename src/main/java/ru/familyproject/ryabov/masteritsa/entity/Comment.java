@@ -5,6 +5,10 @@ import javax.persistence.*;
 /**
  * Entity-класс комментария со свойствами <b>id</b>, <b>description</b>, <b>dateOfCreate</b>, <b>user</b>, <b>product</b>
  * @see Entity
+ *
+ * @author Danila Ryabov
+ *
+ * @version 1.0
  */
 @Entity(name = "comment")
 public class Comment {

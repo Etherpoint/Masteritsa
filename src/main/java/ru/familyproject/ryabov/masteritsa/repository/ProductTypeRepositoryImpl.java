@@ -14,8 +14,12 @@ import java.util.List;
 
 /**
  * Класс для работы с сущностями <b>ProductType</b> в БД
- *
+ * @see ProductTypeRepository
  * @see ProductType
+ *
+ * @author Danila Ryabov
+ *
+ * @version 1.0
  */
 @Repository
 public class ProductTypeRepositoryImpl implements ru.familyproject.ryabov.masteritsa.repository.ProductTypeRepository {
@@ -25,7 +29,7 @@ public class ProductTypeRepositoryImpl implements ru.familyproject.ryabov.master
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductTypeRepositoryImpl.class);
     /**
      * Интерфейс для работы с БД
-     * */
+     */
     private final SessionFactory sessionFactory;
 
     /**

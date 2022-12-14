@@ -18,6 +18,10 @@ import java.util.List;
 /**Класс для работы с сущностями <b>Product</b> в БД
  * @see ProductRepository
  * @see Product
+ *
+ * @author Danila Ryabov
+ *
+ * @version 1.0
  */
 @Repository
 public class ProductRepositoryImpl implements ProductRepository{

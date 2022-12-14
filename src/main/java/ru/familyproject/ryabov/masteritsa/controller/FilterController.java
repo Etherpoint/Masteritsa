@@ -18,6 +18,10 @@ import java.util.List;
  * Контроллер для фильтрации товаров<br>
  * Для всех методов этого контроллера добавляется начальная приписка <b>"/products"</b> к эндпоинту
  * @see Endpoints#FILTER
+ *
+ * @author Danila Ryabov
+ *
+ * @version 1.0
  */
 @Controller
 @RequestMapping(Endpoints.FILTER)

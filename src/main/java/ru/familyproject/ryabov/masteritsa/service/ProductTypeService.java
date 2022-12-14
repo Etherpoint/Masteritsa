@@ -8,7 +8,12 @@ import ru.familyproject.ryabov.masteritsa.repository.ProductTypeRepositoryImpl;
 
 import java.util.List;
 
-/**Сервис для работы с сущностями <b>ProductType</b>*/
+/**
+ * Сервис для работы с сущностями <b>ProductType</b>
+ * @author Danila Ryabov
+ *
+ * @version 1.0
+ */
 @Service
 public class ProductTypeService{
     /**Приватное поле работы с сущностями <b>ProductType</b> в БД

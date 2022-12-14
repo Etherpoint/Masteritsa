@@ -2,10 +2,16 @@ package ru.familyproject.ryabov.masteritsa.entity;
 
 import javax.persistence.*;
 
+//todo изменить описание полей сущности в javadoc
+
 /**
  * Entity-класс пользователя со свойствами <b>id</b>, <b>name</b>, <b>image</b>
  *
  * @see Entity
+ *
+ * @author Danila Ryabov
+ *
+ * @version 1.0
  */
 @Entity(name = "users")
 public class User {
@@ -46,6 +52,12 @@ public class User {
      */
     @Column(name = "password")
     private String password;
+
+    /**Поле подтверждения пароля
+     *@see Transient
+     */
+    @Transient
+    private String confirmPassword;
 
     /**
      * Поле имейла пользователя
@@ -111,5 +123,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }

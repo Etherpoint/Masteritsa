@@ -5,6 +5,10 @@ import javax.persistence.*;
 
 /**Entity-класс типа товара с полями <b>name</b>, <b>id</b>
  * @see Entity
+ *
+ * @author Danila Ryabov
+ *
+ * @version 1.0
  */
 @Entity(name = "product_type")
 public class ProductType {
