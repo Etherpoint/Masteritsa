@@ -26,7 +26,7 @@ import java.util.List;
 @Repository
 public class CommentRepositoryImpl implements CommentRepository{
     /**slf4j логгер*/
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProductRepositoryImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CommentRepositoryImpl.class);
     /**Интерфейс для работы с БД*/
     private final SessionFactory sessionFactory;
 
