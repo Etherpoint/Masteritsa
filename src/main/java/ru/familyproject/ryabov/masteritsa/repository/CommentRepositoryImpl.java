@@ -42,20 +42,20 @@ public class CommentRepositoryImpl implements CommentRepository{
             LOGGER.info("Configuration in CommentRepositoryImpl was successful");
         }catch (HibernateException e){
             LOGGER.error("Error while configuring sessionFactory");
-            throw new HibernateException(e);
+            throw new HibernateException("Error while configuring sessionFactory");
         }
     }
-
     @Override
     public List<Comment> getAllCommentsById(Long id) {
         try(Session session = sessionFactory.openSession()){
             Query<Comment> result = session.createQuery("SELECT c FROM comment c WHERE c.product.id= :id", Comment.class);
+            System.out.println(result);
             result.setParameter("id", id);
             LOGGER.info("Method getAllCommentsById completed successfully");
             return result.list();
         } catch (HibernateException e) {
             LOGGER.error("Error when opened session on sessionFactory in method getAllCommentsById from CommentRepositoryImpl");
-            throw new HibernateException(e);
+            throw new HibernateException("Error when opened session on sessionFactory in method getAllCommentsById from CommentRepositoryImpl");
         }
     }
 }
