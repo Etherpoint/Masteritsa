@@ -14,7 +14,7 @@ class CommentRepositoryImplTest {
     @Autowired
     CommentRepositoryImpl commentRepository;
     @Test
-    void successfullyGetCommentsWithProductIdEqualsOne_WhenCallsMethod_getAllCommentsById_WithParameterEqualsOne() throws NoSuchFieldException, IllegalAccessException {
+    void successfullyGetCommentsWithProductIdEqualsOne_WhenCallsMethod_getAllCommentsById_WithParameterEqualsOne(){
         Assertions.assertNotNull(commentRepository.getAllCommentsById(anyLong()));
     }
     @Test
