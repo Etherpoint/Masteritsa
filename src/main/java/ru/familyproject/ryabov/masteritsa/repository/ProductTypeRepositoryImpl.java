@@ -3,23 +3,22 @@ package ru.familyproject.ryabov.masteritsa.repository;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import ru.familyproject.ryabov.masteritsa.entity.ProductType;
+import ru.familyproject.ryabov.masteritsa.utils.MySessionFactory;
 
 import java.util.List;
 
 /**
  * Класс для работы с сущностями <b>ProductType</b> в БД
- * @see ProductTypeRepository
- * @see ProductType
  *
  * @author Danila Ryabov
- *
  * @version 1.0
+ * @see ProductTypeRepository
+ * @see ProductType
  */
 @Repository
 public class ProductTypeRepositoryImpl implements ru.familyproject.ryabov.masteritsa.repository.ProductTypeRepository {
@@ -33,23 +32,18 @@ public class ProductTypeRepositoryImpl implements ru.familyproject.ryabov.master
     private final SessionFactory sessionFactory;
 
     /**
-     * Конструктор с конфигурацией sessionFactory
+     * Конструкторы с конфигурацией sessionFactory
      */
     public ProductTypeRepositoryImpl() {
-        try {
-            sessionFactory = new Configuration()
-                    .configure()
-                    .addAnnotatedClass(ProductType.class)
-                    .buildSessionFactory();
-            LOGGER.info("Configuration in ProductTypeRepositoryImpl was successful");
-        } catch (HibernateException e) {
-            LOGGER.error("Error while configuring sessionFactory");
-            throw new HibernateException(e);
-        }
+        sessionFactory = MySessionFactory.getSessionFactory();
+    }
+
+    public ProductTypeRepositoryImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
     /**
-     *Метод для получения всего списка сущностей ProductType
+     * Метод для получения всего списка сущностей ProductType
      */
     @Override
     public List<ProductType> getAll() {
