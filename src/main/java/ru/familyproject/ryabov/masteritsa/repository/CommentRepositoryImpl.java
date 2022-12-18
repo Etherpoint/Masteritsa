@@ -36,6 +36,9 @@ public class CommentRepositoryImpl implements CommentRepository{
     public CommentRepositoryImpl(SessionFactory sessionFactory){
         this.sessionFactory = sessionFactory;
     }
+    /**
+     * Метод для получения списка комментариев <b>Comment</b>, где id продукта = параметру метода
+     */
     @Override
     public List<Comment> getAllCommentsById(Long id) {
         try(Session session = sessionFactory.openSession()){
