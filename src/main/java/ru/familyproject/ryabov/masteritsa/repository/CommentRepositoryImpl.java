@@ -3,15 +3,12 @@ package ru.familyproject.ryabov.masteritsa.repository;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import ru.familyproject.ryabov.masteritsa.entity.Comment;
-import ru.familyproject.ryabov.masteritsa.entity.Product;
-import ru.familyproject.ryabov.masteritsa.entity.ProductType;
-import ru.familyproject.ryabov.masteritsa.entity.User;
+import ru.familyproject.ryabov.masteritsa.utils.MySessionFactory;
 
 import java.util.List;
 
@@ -30,30 +27,26 @@ public class CommentRepositoryImpl implements CommentRepository{
     /**Интерфейс для работы с БД*/
     private final SessionFactory sessionFactory;
 
+    /**Конструкторы с конфигурацией <b>sessionFactory</b>
+     * @see SessionFactory
+     */
     public CommentRepositoryImpl() {
-        try{
-            sessionFactory= new Configuration()
-                    .configure()
-                    .addAnnotatedClass(Product.class)
-                    .addAnnotatedClass(ProductType.class)
-                    .addAnnotatedClass(Comment.class)
-                    .addAnnotatedClass(User.class)
-                    .buildSessionFactory();
-            LOGGER.info("Configuration in CommentRepositoryImpl was successful");
-        }catch (HibernateException e){
-            LOGGER.error("Error while configuring sessionFactory");
-            throw new HibernateException("Error while configuring sessionFactory");
-        }
+        sessionFactory = MySessionFactory.getSessionFactory();
+    }
+    public CommentRepositoryImpl(SessionFactory sessionFactory){
+        this.sessionFactory = sessionFactory;
     }
     @Override
     public List<Comment> getAllCommentsById(Long id) {
         try(Session session = sessionFactory.openSession()){
             Query<Comment> result = session.createQuery("SELECT c FROM comment c WHERE c.product.id= :id", Comment.class);
-            System.out.println(result);
             result.setParameter("id", id);
             LOGGER.info("Method getAllCommentsById completed successfully");
             return result.list();
-        } catch (HibernateException e) {
+        }catch (IllegalArgumentException iae){
+            LOGGER.error("Error mapping query when created query in method getAllCommentsById from CommentRepositoryImpl");
+            throw new IllegalArgumentException("Error mapping query when created query in method getAllCommentsById from CommentRepositoryImpl");
+        } catch (HibernateException e ) {
             LOGGER.error("Error when opened session on sessionFactory in method getAllCommentsById from CommentRepositoryImpl");
             throw new HibernateException("Error when opened session on sessionFactory in method getAllCommentsById from CommentRepositoryImpl");
         }

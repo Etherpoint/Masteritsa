@@ -3,15 +3,12 @@ package ru.familyproject.ryabov.masteritsa.repository;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
-import ru.familyproject.ryabov.masteritsa.entity.Comment;
 import ru.familyproject.ryabov.masteritsa.entity.Product;
-import ru.familyproject.ryabov.masteritsa.entity.ProductType;
-import ru.familyproject.ryabov.masteritsa.entity.User;
+import ru.familyproject.ryabov.masteritsa.utils.MySessionFactory;
 
 import java.util.List;
 
@@ -30,25 +27,14 @@ public class ProductRepositoryImpl implements ProductRepository{
     /**Интерфейс для работы с БД*/
     private final SessionFactory sessionFactory;
 
-    /**Конструктор с конфигурацией <b>sessionFactory</b>
+    /**Конструкторы с конфигурацией <b>sessionFactory</b>
      * @see SessionFactory
      */
     public ProductRepositoryImpl() {
-        try{
-            sessionFactory= new Configuration()
-                    .configure()
-                    .addAnnotatedClass(Product.class)
-                    .addAnnotatedClass(ProductType.class)
-                    .addAnnotatedClass(Comment.class)
-                    .addAnnotatedClass(User.class)
-                    .buildSessionFactory();
-            LOGGER.info("Configuration in ProductRepositoryImpl was successful");
-        }catch (HibernateException e){
-            LOGGER.error("Error while configuring sessionFactory");
-            throw new HibernateException(e);
-        }
-
-
+        sessionFactory = MySessionFactory.getSessionFactory();
+    }
+    public ProductRepositoryImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
     /**Метод для получения всего списка сущностей <b>Product</b>*/
