@@ -12,24 +12,31 @@ import ru.familyproject.ryabov.masteritsa.repository.CommentRepositoryImpl;
 import java.util.List;
 
 /**
- * Сервис для работы с сущностью Product
+ * EN: Service for working with the entity Product<br>
+ * RU: Сервис для работы с сущностью Product
  * @see Product
  * @author Danila Ryabov
  *
  * @version 1.0
  */
 @Service public class ProductService {
-    /**Приватное поле работы с сущностями <b>Product</b> в БД
+    /**
+     * EN: Private field for working with <b>Product</b> entities in the database<br>
+     * RU: Приватное поле работы с сущностями <b>Product</b> в БД
      * @see ProductRepository
      */
     private final ProductRepository productRepository;
 
-    /**Приватное поле работы с сущностями <b>Comment</b> в БД
+    /**
+     * EN: Private field for working with <b>Comment</b> entities in the database<br>
+     * RU: Приватное поле работы с сущностями <b>Comment</b> в БД
      * @see CommentRepository
      */
     private final CommentRepository commentRepository;
 
-    /**Конструктор для инициализации поля <b>repository</b>
+    /**
+     * EN: Constructor for field initialization <b>repository</b><br>
+     * RU: Конструктор для инициализации поля <b>repository</b>
      * @see ProductRepositoryImpl
      * @see CommentRepositoryImpl
      */
@@ -38,27 +45,33 @@ import java.util.List;
         this.commentRepository = commentRepository;
     }
 
-    /**Метод для получения всего списка продуктов из БД*/
+    /**
+     * EN: Method for getting the entire list of products from the database<br>
+     * RU: Метод для получения всего списка продуктов из БД
+     */
     public List<Product> getAll(){
         return productRepository.getAll();
     }
 
     /**
-     * Метод для получения всех товаров, с product_type_id = id
+     * EN: Method for getting all products, with product_type_id = id<br>
+     * RU: Метод для получения всех товаров, с product_type_id = id
      */
     public List<Product> getAllById(Long id){
         return productRepository.getAllById(id);
     }
 
     /**
-     * Метод для получения всех комментариев для товара с product_id = id
+     * EN: Method for getting all comments for a product with product_id = id<br>
+     * RU: Метод для получения всех комментариев для товара с product_id = id
      */
     public List<Comment> getAllCommentsById(Long id){
         return commentRepository.getAllCommentsById(id);
     }
 
     /**
-     * Метод для получения товара с product_id = id
+     * EN: Method for getting a product with product_id = id<br>
+     * RU: Метод для получения товара с product_id = id
      */
     public Product getById(Long id){
         return productRepository.getById(id);

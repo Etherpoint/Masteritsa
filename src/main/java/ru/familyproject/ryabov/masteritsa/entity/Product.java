@@ -9,7 +9,10 @@ import java.util.List;
 
 
 /**
- * Entity-класс товара со свойствами <b>id</b>, <b>name</b>, <b>price</b>, <b>image</b>,
+ * EN: Product entity class with properties <b>id</b>, <b>name</b>, <b>price</b>, <b>image</b>,
+ * <b>description</b>, <b>color</b>, <b>productType</b>, <b>comments</b><br>
+ *
+ * RU: Entity-класс товара со свойствами <b>id</b>, <b>name</b>, <b>price</b>, <b>image</b>,
  * <b>description</b>, <b>color</b>, <b>productType</b>, <b>comments</b>
  *
  * @see Entity
@@ -22,45 +25,52 @@ import java.util.List;
 public class Product {
 
     /**
-     * Поле id в базе данных
+     * EN:The id field in the database<br>
+     * RU:Поле id в базе данных
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
-     * Поле названия товара
+     * EN: Product name field<br>
+     * RU: Поле названия товара
      */
     @Column(name = "name")
     private String name;
 
     /**
-     * Поле цены товара
+     * EN: Product price field<br>
+     * RU: Поле цены товара
      */
     @Column(name = "price")
     private Double price;
 
     /**
-     * Поле названия картинки товара
+     * EN: Product image name field<br>
+     * RU: Поле названия картинки товара
      */
     @Column(name = "image")
     private String image;
 
     /**
-     * Поле описания товара
+     * EN: Product description field<br>
+     * RU: Поле описания товара
      */
     @Column(name = "description", length = 65535)
     @Type(type = "text")
     private String description;
 
     /**
-     * Поле цвета товара
+     * EN: Product color field<br>
+     * RU: Поле цвета товара
      */
     @Column(name = "color")
     private String color;
 
     /**
-     * Поле для связи с объектом класса <b>ProductType</b>
+     * EN: Field for connection with an object of class <b>ProductType</b><br>
+     * RU: Поле для связи с объектом класса <b>ProductType</b>
      *
      * @see ProductType
      */
@@ -69,7 +79,8 @@ public class Product {
     private ProductType productType;
 
     /**
-     * Поле для связи со всеми комментариями к данному продукту
+     * EN: Field for communication with all comments on this product<br>
+     * RU: Поле для связи со всеми комментариями к данному продукту
      * @see Comment
      */
     @OneToMany(cascade = CascadeType.ALL)

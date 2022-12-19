@@ -16,7 +16,10 @@ import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
 import java.util.List;
 
 /**
- * Констроллер для отображения страницы товара<br>
+ * EN: Controller for displaying the product page<br>
+ * For all methods of this controller, the initial postscript <b>"/product"</b> is added<br>
+ * <P></P>
+ * RU: Констроллер для отображения страницы товара<br>
  * Для всех методов этого контроллера добавляется начальная приписка <b>"/product"</b>
  * @see Endpoints#PRODUCT
  *
@@ -28,18 +31,19 @@ import java.util.List;
 @RequestMapping(Endpoints.PRODUCT)
 public class ProductController {
     /**
-     * Сервис для работы с сущностями <b>Product</b> в БД
+     * EN: Service for working with entities <b>Product</b> in the database<br>
+     * RU: Сервис для работы с сущностями <b>Product</b> в БД
      */
     private final ProductService productService;
     /**
-     * Сервис для работы с сущностями <b>ProductType</b> в БД
+     * EN: Service for working with entities <b>ProductType</b> in the database<br>
+     * RU: Сервис для работы с сущностями <b>ProductType</b> в БД
      */
     private final ProductTypeService productTypeService;
 
     /**
-     * Конструктор для инициализации сервисов
-     * @param productService
-     * @param productTypeService
+     * EN: Constructor for service initialization<br>
+     * RU: Конструктор для инициализации сервисов
      */
     public ProductController(@Autowired ProductService productService, @Autowired ProductTypeService productTypeService) {
         this.productService = productService;
@@ -47,7 +51,8 @@ public class ProductController {
     }
 
     /**
-     * GET метод к странице товара по эндпоинту <b>"/product/{id}"</b>
+     * EN: GET method to the product page by endpoint <b>"/product/{id}"</b><br>
+     * RU: GET метод к странице товара по эндпоинту <b>"/product/{id}"</b>
      * @return file <b>product.html</b>
      * @see Endpoints#PRODUCT
      * @see Endpoints#FIND_BY_ID

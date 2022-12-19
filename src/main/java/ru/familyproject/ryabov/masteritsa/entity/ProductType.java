@@ -3,7 +3,9 @@ package ru.familyproject.ryabov.masteritsa.entity;
 
 import javax.persistence.*;
 
-/**Entity-класс типа товара с полями <b>name</b>, <b>id</b>
+/**
+ * EN: Entity class of product type with fields <b>name</b>, <b>id</b><br>
+ * RU: Entity-класс типа товара с полями <b>name</b>, <b>id</b>
  * @see Entity
  *
  * @author Danila Ryabov
@@ -14,14 +16,16 @@ import javax.persistence.*;
 public class ProductType {
 
     /**
-     * Поле id в базе данных
+     * EN: The id field in the database<br>
+     * RU: Поле id в базе данных
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
-     * Поле названия типа товара
+     * EN: Product type name field<br>
+     * RU: Поле названия типа товара
      */
     @Column(name = "name")
     private String name;

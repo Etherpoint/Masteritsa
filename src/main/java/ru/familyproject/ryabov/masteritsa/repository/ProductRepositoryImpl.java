@@ -12,7 +12,9 @@ import ru.familyproject.ryabov.masteritsa.utils.MySessionFactory;
 
 import java.util.List;
 
-/**Класс для работы с сущностями <b>Product</b> в БД
+/**
+ * EN: Class for working with entities <b>Product</b> in the database<br>
+ * RU: Класс для работы с сущностями <b>Product</b> в БД
  * @see ProductRepository
  * @see Product
  *
@@ -22,12 +24,17 @@ import java.util.List;
  */
 @Repository
 public class ProductRepositoryImpl implements ProductRepository{
-    /**slf4j логгер*/
+    /**slf4j logger*/
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductRepositoryImpl.class);
-    /**Интерфейс для работы с БД*/
+    /**
+     * EN: Interface for working with the database<br>
+     * RU: Интерфейс для работы с БД
+     */
     private final SessionFactory sessionFactory;
 
-    /**Конструкторы с конфигурацией <b>sessionFactory</b>
+    /**
+     * EN: Constructors with configuration <b>sessionFactory</b><br>
+     * RU: Конструкторы с конфигурацией <b>sessionFactory</b>
      * @see SessionFactory
      */
     public ProductRepositoryImpl() {
@@ -37,7 +44,10 @@ public class ProductRepositoryImpl implements ProductRepository{
         this.sessionFactory = sessionFactory;
     }
 
-    /**Метод для получения всего списка сущностей <b>Product</b>*/
+    /**
+     * EN: Method for getting the entire list of <b>Product</b> entities<br>
+     * RU: Метод для получения всего списка сущностей <b>Product</b>
+     */
     @Override
     public List<Product> getAll() {
         try(Session session = sessionFactory.openSession()){
@@ -50,7 +60,10 @@ public class ProductRepositoryImpl implements ProductRepository{
         }
     }
 
-    /**Метод для получения списка <b>Product</b> с id = productType.id*/
+    /**
+     * EN: Method for getting the <b>Product</b> list with id = productType.id<br>
+     * RU: Метод для получения списка <b>Product</b> с id = productType.id
+     */
     @Override
     public List<Product> getAllById(Long id) {
         try(Session session = sessionFactory.openSession()){
@@ -64,6 +77,10 @@ public class ProductRepositoryImpl implements ProductRepository{
         }
     }
 
+    /**
+     * EN: Method for getting a product with id = product.id<br>
+     * RU: Метод для получения продукта с id = product.id
+     */
     @Override
     public Product getById(Long id) {
         try(Session session = sessionFactory.openSession()){
@@ -76,6 +93,4 @@ public class ProductRepositoryImpl implements ProductRepository{
             throw new HibernateException(e);
         }
     }
-
-
 }

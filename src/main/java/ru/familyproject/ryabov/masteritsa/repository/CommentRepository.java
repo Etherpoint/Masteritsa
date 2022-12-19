@@ -5,7 +5,9 @@ import ru.familyproject.ryabov.masteritsa.entity.Comment;
 
 import java.util.List;
 
-/**Интерфейс для работы с сущностями <b>Comment</b> в БД
+/**
+ * EN: Interface for working with <b>Comment</b> entities in the database<br>
+ * RU: Интерфейс для работы с сущностями <b>Comment</b> в БД
  * @see Comment
  *
  * @author Danila Ryabov

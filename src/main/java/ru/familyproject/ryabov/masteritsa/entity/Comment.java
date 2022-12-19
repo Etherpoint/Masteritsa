@@ -3,7 +3,8 @@ package ru.familyproject.ryabov.masteritsa.entity;
 import javax.persistence.*;
 
 /**
- * Entity-класс комментария со свойствами <b>id</b>, <b>description</b>, <b>dateOfCreate</b>, <b>user</b>, <b>product</b>
+ * EN: Comment entity class with properties <b>id</b>, <b>description</b>, <b>dateOfCreate</b>, <b>user</b>, <b>product</b><br>
+ * RU: Entity-класс комментария со свойствами <b>id</b>, <b>description</b>, <b>dateOfCreate</b>, <b>user</b>, <b>product</b>
  * @see Entity
  *
  * @author Danila Ryabov
@@ -14,33 +15,38 @@ import javax.persistence.*;
 public class Comment {
 
     /**
-     * Поле id в базе данных
+     * EN: The id field in the database<br>
+     * RU: Поле id в базе данных
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
-     * Поле текста комментария
+     * EN: Comment text field<br>
+     * RU: Поле текста комментария
      */
     @Column(name = "description")
     private String description;
 
     /**
-     * Поле с датой создания комментария
+     * EN: Field with the date of creation of the comment<br>
+     * RU: Поле с датой создания комментария
      */
     @Column(name = "date_of_create")
     private String dateOfCreate;
 
     /**
-     * Поле для связи с пользователем данного комментария
+     * EN: Field for communication with the user of this comment<br>
+     * RU: Поле для связи с пользователем данного комментария
      */
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
     /**
-     * Поле для связи с продуктом, к которому написан комментарий
+     * EN: Field for communication with the product to which the comment is written<br>
+     * RU: Поле для связи с продуктом, к которому написан комментарий
      */
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")

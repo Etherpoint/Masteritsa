@@ -15,7 +15,10 @@ import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
 import java.util.List;
 
 /**
- * Контроллер для фильтрации товаров<br>
+ * EN:Controller for filtering goods<br>
+ * For all methods of this controller, the initial postscript <b>"/products"</b> is added to the endpoint<br>
+ * <P></P>
+ * RU:Контроллер для фильтрации товаров<br>
  * Для всех методов этого контроллера добавляется начальная приписка <b>"/products"</b> к эндпоинту
  * @see Endpoints#FILTER
  *
@@ -27,19 +30,19 @@ import java.util.List;
 @RequestMapping(Endpoints.FILTER)
 public class FilterController {
     /**
-     * Сервис для работы с сущностями <b>Product</b> в БД
+     * EN: Service for working with entities <b>Product</b> in the database<br>
+     * RU: Сервис для работы с сущностями <b>Product</b> в БД
      */
     private final ProductService service;
     /**
-     * Сервис для работы с сущностями <b>ProductType</b> в БД
+     * EN: Service for working with entities <b>ProductType</b> in the database<br>
+     * RU: Сервис для работы с сущностями <b>ProductType</b> в БД
      */
     private final ProductTypeService productTypeService;
 
     /**
-     * Конструктор для инициализации сервисов
-     *
-     * @param service
-     * @param productTypeService
+     * EN: Constructor for service initialization<br>
+     * RU: Конструктор для инициализации сервисов
      */
     public FilterController(@Autowired ProductService service, @Autowired ProductTypeService productTypeService) {
         this.service = service;
@@ -47,7 +50,8 @@ public class FilterController {
     }
 
     /**
-     * GET метод для загрузки всех товаров по эндпоинту <b>"/all"</b>
+     * EN: GET method for loading all products by endpoint <b>"/all"</b><br>
+     * RU: GET метод для загрузки всех товаров по эндпоинту <b>"/all"</b>
      * @return file <b>products.html</b>
      * @see Endpoints#FILTER_ALL
      */
@@ -61,7 +65,8 @@ public class FilterController {
     }
 
     /**
-     * GET метод для загрузки определенного типа товара по эндпоинту <b>"products/{id}"</b>
+     * EN: GET method for loading a certain type of product by endpoint <b>"products/{id}"</b><br>
+     * RU: GET метод для загрузки определенного типа товара по эндпоинту <b>"products/{id}"</b>
      * @return file <b>products.html</b>
      * @see Endpoints#FILTER
      * @see Endpoints#FIND_BY_ID

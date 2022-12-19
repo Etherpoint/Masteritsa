@@ -2,10 +2,12 @@ package ru.familyproject.ryabov.masteritsa.entity;
 
 import javax.persistence.*;
 
-//todo изменить описание полей сущности в javadoc
-
 /**
- * Entity-класс пользователя со свойствами <b>id</b>, <b>name</b>, <b>image</b>
+ * EN: User entity class with properties <b>id</b>, <b>name</b>, <b>firstName</b>, <b>lastName</b>, <b>image</b>,
+ * <b>password</b>, <b>confirmPassword</b>, <b>email</b><br>
+ *
+ * RU: Entity-класс пользователя со свойствами <b>id</b>, <b>name</b>, <b>firstName</b>, <b>lastName</b>, <b>image</b>,
+ * <b>password</b>, <b>confirmPassword</b>, <b>email</b>
  *
  * @see Entity
  *
@@ -17,50 +19,59 @@ import javax.persistence.*;
 public class User {
 
     /**
-     * Поле id в базе данных
+     * EN: The id field in the database<br>
+     * RU: Поле id в базе данных
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
-     * Поле никнейма пользователя
+     * EN: User nickname field<br>
+     * RU: Поле никнейма пользователя
      */
     @Column(name = "username")
     private String name;
 
     /**
-     * Поле имени пользователя
+     * EN: User first name field<br>
+     * RU: Поле имени пользователя
      */
     @Column(name = "firstname")
     private String firstName;
 
     /**
-     * Поле фамилии пользователя
+     * EN: User last name field<br>
+     * RU: Поле фамилии пользователя
      */
     @Column(name = "lastname")
     private String lastName;
 
     /**
-     * Поле пути к аватару пользователя
+     * EN: Field of the path to the user's avatar<br>
+     * RU: Поле пути к аватару пользователя
      */
     @Column(name = "image")
     private String image;
 
     /**
-     * Поле пароля пользователя
+     * EN: User password field<br>
+     * RU: Поле пароля пользователя
      */
     @Column(name = "password")
     private String password;
 
-    /**Поле подтверждения пароля
+    /**
+     * EN: Password confirmation field<br>
+     * RU: Поле подтверждения пароля
      *@see Transient
      */
     @Transient
     private String confirmPassword;
 
     /**
-     * Поле имейла пользователя
+     * EN: User email field<br>
+     * RU: Поле имейла пользователя
      */
     @Column(name = "email")
     private String email;

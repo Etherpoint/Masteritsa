@@ -6,7 +6,8 @@ import ru.familyproject.ryabov.masteritsa.entity.ProductType;
 import java.util.List;
 
 /**
- * Интерфейс для работы с сущностями <b>ProductType</b> в БД
+ * EN: Interface for working with entities <b>ProductType</b> in the database<br>
+ * RU: Интерфейс для работы с сущностями <b>ProductType</b> в БД
  *
  * @see ProductType
  *

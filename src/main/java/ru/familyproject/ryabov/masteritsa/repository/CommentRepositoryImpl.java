@@ -12,7 +12,9 @@ import ru.familyproject.ryabov.masteritsa.utils.MySessionFactory;
 
 import java.util.List;
 
-/**Класс для работы с сущностями <b>Comment</b> в БД
+/**
+ * EN: Class for working with entities <b>Comment</b> in the database<br>
+ * RU: Класс для работы с сущностями <b>Comment</b> в БД
  * @see CommentRepository
  * @see Comment
  *
@@ -22,12 +24,17 @@ import java.util.List;
  */
 @Repository
 public class CommentRepositoryImpl implements CommentRepository{
-    /**slf4j логгер*/
+    /**slf4j logger*/
     private static final Logger LOGGER = LoggerFactory.getLogger(CommentRepositoryImpl.class);
-    /**Интерфейс для работы с БД*/
+    /**
+     * EN: Interface for working with the database<br>
+     * RU: Интерфейс для работы с БД
+     */
     private final SessionFactory sessionFactory;
 
-    /**Конструкторы с конфигурацией <b>sessionFactory</b>
+    /**
+     * EN: Constructors with <b>sessionFactory</b> configuration<br>
+     * RU: Конструкторы с конфигурацией <b>sessionFactory</b>
      * @see SessionFactory
      */
     public CommentRepositoryImpl() {
@@ -37,7 +44,8 @@ public class CommentRepositoryImpl implements CommentRepository{
         this.sessionFactory = sessionFactory;
     }
     /**
-     * Метод для получения списка комментариев <b>Comment</b>, где id продукта = параметру метода
+     * EN: Method for getting a list of comments <b>Comment</b>, where product id = method parameter<br>
+     * RU: Метод для получения списка комментариев <b>Comment</b>, где id продукта = параметру метода
      */
     @Override
     public List<Comment> getAllCommentsById(Long id) {

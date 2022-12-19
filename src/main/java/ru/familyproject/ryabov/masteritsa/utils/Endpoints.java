@@ -1,6 +1,8 @@
 package ru.familyproject.ryabov.masteritsa.utils;
 
-/**Класс, содержащий все эндпоинты для веб-приложения
+/**
+ * EN: Class containing all endpoints for a web application<br>
+ * RU: Класс, содержащий все эндпоинты для веб-приложения
  * @author Danila Ryabov
  *
  * @version 1.0

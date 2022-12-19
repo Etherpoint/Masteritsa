@@ -13,7 +13,8 @@ import ru.familyproject.ryabov.masteritsa.utils.MySessionFactory;
 import java.util.List;
 
 /**
- * Класс для работы с сущностями <b>ProductType</b> в БД
+ * EN: Class for working with entities <b>ProductType</b> in the database<br>
+ * RU: Класс для работы с сущностями <b>ProductType</b> в БД
  *
  * @author Danila Ryabov
  * @version 1.0
@@ -23,16 +24,18 @@ import java.util.List;
 @Repository
 public class ProductTypeRepositoryImpl implements ru.familyproject.ryabov.masteritsa.repository.ProductTypeRepository {
     /**
-     * slf4j логгер
+     * slf4j logger
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductTypeRepositoryImpl.class);
     /**
-     * Интерфейс для работы с БД
+     * EN: Interface for working with the database<br>
+     * RU: Интерфейс для работы с БД
      */
     private final SessionFactory sessionFactory;
 
     /**
-     * Конструкторы с конфигурацией sessionFactory
+     * EN: Constructors with sessionFactory configuration<br>
+     * RU: Конструкторы с конфигурацией sessionFactory
      */
     public ProductTypeRepositoryImpl() {
         sessionFactory = MySessionFactory.getSessionFactory();
@@ -43,7 +46,8 @@ public class ProductTypeRepositoryImpl implements ru.familyproject.ryabov.master
     }
 
     /**
-     * Метод для получения всего списка сущностей ProductType
+     * EN: Method for getting the entire list of ProductType entities<br>
+     * RU: Метод для получения всего списка сущностей ProductType
      */
     @Override
     public List<ProductType> getAll() {

@@ -5,7 +5,9 @@ import ru.familyproject.ryabov.masteritsa.entity.Product;
 
 import java.util.List;
 
-/**Интерфейс для работы с сущностями <b>Product</b> в БД
+/**
+ * EN: Interface for working with <b>Product</b> entities in the database<br>
+ * RU: Интерфейс для работы с сущностями <b>Product</b> в БД
  * @see Product
  *
  * @author Danila Ryabov

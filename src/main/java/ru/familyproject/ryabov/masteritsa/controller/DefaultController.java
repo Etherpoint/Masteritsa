@@ -11,7 +11,8 @@ import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
 import java.util.List;
 
 /**
- * Контроллер для отображения главной страницы сайта
+ * EN: Controller for displaying the main page of the site <br>
+ * RU: Контроллер для отображения главной страницы сайта
  *
  * @author Danila Ryabov
  *
@@ -21,22 +22,23 @@ import java.util.List;
 public class DefaultController {
 
     /**
-     * Сервис для работы с сущностями <b>ProductType</b> в БД
+     * EN: Service for working with <b>ProductType</b> entities in the database<br>
+     * RU: Сервис для работы с сущностями <b>ProductType</b> в БД
      */
     private final ProductTypeService productTypeService;
 
     /**
-     * Конструктор для инициализации сервиса
-     * @param productTypeService
+     * EN: Service initialization constructor<br>
+     * RU: Конструктор для инициализации сервиса
      */
     public DefaultController(@Autowired ProductTypeService productTypeService) {
         this.productTypeService = productTypeService;
     }
 
     /**
-     * GET метод к главной странице сайта по эндпоинту <b>"/"</b>
+     * EN: GET method to the main page of the site by endpoint <b>"/"</b><br>
+     * RU: GET метод к главной странице сайта по эндпоинту <b>"/"</b>
      *
-     * @param model
      * @return file <b>main.html</b>
      * @see Endpoints#MAIN_PAGE
      * @see #productTypeService
