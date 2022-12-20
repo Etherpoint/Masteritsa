@@ -2,7 +2,6 @@ package ru.familyproject.ryabov.masteritsa.repository;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -26,16 +25,8 @@ class CommentRepositoryImplTest {
     }
 
     @Test
-    void successfullyGetCommentsWithProductIdEqualsOne_WhenCallsMethod_getAllCommentsById_WithParameterEqualsOne(){
+    void successfullyGetComments_WhenCallsMethod_getAllCommentsById(){
         Assertions.assertNotNull(commentRepository.getAllCommentsById(1L));
-    }
-    @Test
-    void getErrorMessageErrorMappingQueryAndThrowIllegalArgumentExceptionWhenSessionCreatedQuery(){
-        SessionFactory sessionFactoryEmpty = new Configuration().configure().buildSessionFactory();
-        commentRepository = new CommentRepositoryImpl(sessionFactoryEmpty);
-        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class,
-                () -> commentRepository.getAllCommentsById(1L));
-        Assertions.assertEquals("Error mapping query when created query in method getAllCommentsById from CommentRepositoryImpl", exception.getMessage());
     }
     @Test
     void getErrorMessageErrorWhenOpenedSessionAndThrowHibernateExceptionWhenSessionFactoryOpenSession(){
