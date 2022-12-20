@@ -54,10 +54,7 @@ public class CommentRepositoryImpl implements CommentRepository{
             result.setParameter("id", id);
             LOGGER.info("Method getAllCommentsById completed successfully");
             return result.list();
-        }catch (IllegalArgumentException iae){
-            LOGGER.error("Error mapping query when created query in method getAllCommentsById from CommentRepositoryImpl");
-            throw new IllegalArgumentException("Error mapping query when created query in method getAllCommentsById from CommentRepositoryImpl");
-        } catch (HibernateException e ) {
+        }catch (HibernateException e ) {
             LOGGER.error("Error when opened session on sessionFactory in method getAllCommentsById from CommentRepositoryImpl");
             throw new HibernateException("Error when opened session on sessionFactory in method getAllCommentsById from CommentRepositoryImpl");
         }
