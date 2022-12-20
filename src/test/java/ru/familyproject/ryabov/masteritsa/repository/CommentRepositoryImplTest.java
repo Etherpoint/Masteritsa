@@ -29,11 +29,13 @@ class CommentRepositoryImplTest {
         Assertions.assertNotNull(commentRepository.getAllCommentsById(1L));
     }
     @Test
-    void getErrorMessageErrorWhenOpenedSessionAndThrowHibernateExceptionWhenSessionFactoryOpenSession(){
+    void getErrorMessage_ErrorWhenOpenedSession_AndThrowHibernateException_WhenSessionFactoryOpenSessionInMethodGetAllCommentsById(){
         commentRepository = new CommentRepositoryImpl(sessionFactory);
         when(sessionFactory.openSession()).thenThrow(HibernateException.class);
         HibernateException exception = Assertions.assertThrows(HibernateException.class,
                 () -> commentRepository.getAllCommentsById(1L));
-        Assertions.assertEquals("Error when opened session on sessionFactory in method getAllCommentsById from CommentRepositoryImpl", exception.getMessage());
+        Assertions.
+                assertEquals("Error when opened session on sessionFactory in method getAllCommentsById from CommentRepositoryImpl",
+                        exception.getMessage());
     }
 }
