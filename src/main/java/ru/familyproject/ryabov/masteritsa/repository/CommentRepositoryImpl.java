@@ -56,7 +56,7 @@ public class CommentRepositoryImpl implements CommentRepository{
             return result.list();
         }catch (HibernateException e ) {
             LOGGER.error("Error when opened session on sessionFactory in method getAllCommentsById from CommentRepositoryImpl");
-            throw new HibernateException("Error when opened session on sessionFactory in method getAllCommentsById from CommentRepositoryImpl");
+            throw new HibernateException("Error when opened session on sessionFactory in method getAllCommentsById from CommentRepositoryImpl", e);
         }
     }
 }

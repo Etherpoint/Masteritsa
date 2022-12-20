@@ -57,7 +57,7 @@ public class ProductTypeRepositoryImpl implements ru.familyproject.ryabov.master
             return result.list();
         } catch (HibernateException e) {
             LOGGER.error("Error when opened session on sessionFactory in method getAll from ProductTypeRepositoryImpl");
-            throw new HibernateException(e);
+            throw new HibernateException("Error when opened session on sessionFactory in method getAll from ProductTypeRepositoryImpl", e);
         }
     }
 }

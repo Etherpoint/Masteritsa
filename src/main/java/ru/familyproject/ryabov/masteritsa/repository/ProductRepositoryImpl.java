@@ -56,7 +56,7 @@ public class ProductRepositoryImpl implements ProductRepository{
             return result.list();
         } catch (HibernateException e) {
             LOGGER.error("Error when opened session on sessionFactory in method getAll from ProductRepositoryImpl");
-            throw new HibernateException(e);
+            throw new HibernateException("Error when opened session on sessionFactory in method getAll from ProductRepositoryImpl", e);
         }
     }
 
@@ -73,7 +73,7 @@ public class ProductRepositoryImpl implements ProductRepository{
             return result.list();
         } catch (HibernateException e) {
             LOGGER.error("Error when opened session on sessionFactory in method getAllById from ProductRepositoryImpl");
-            throw new HibernateException(e);
+            throw new HibernateException("Error when opened session on sessionFactory in method getAllById from ProductRepositoryImpl", e);
         }
     }
 
@@ -90,7 +90,7 @@ public class ProductRepositoryImpl implements ProductRepository{
             return result.uniqueResult();
         } catch (HibernateException e) {
             LOGGER.error("Error when opened session on sessionFactory in method getById from ProductRepositoryImpl");
-            throw new HibernateException(e);
+            throw new HibernateException("Error when opened session on sessionFactory in method getById from ProductRepositoryImpl", e);
         }
     }
 }
