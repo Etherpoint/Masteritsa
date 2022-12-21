@@ -17,12 +17,9 @@ import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.core.StringContains.containsString;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest
 class ProductControllerTest {
@@ -78,18 +75,5 @@ class ProductControllerTest {
     void getProductWhereIdEqualsOne_WhenCallsMethod_getById_WithParameterEqualsOne_InMethodGetProduct() throws Exception {
         this.mockMvc.perform(get("/product/1"));
         Mockito.verify(productService, Mockito.times(1)).getById(1L);
-    }
-
-    @Test
-    void contentLoadingWhenCallsMethodGetProduct() throws Exception {
-        when(productTypeService.getAll()).thenReturn(types);
-        when(productService.getById(1L)).thenReturn(product);
-        when(productService.getAllCommentsById(1L)).thenReturn(comments);
-        this.mockMvc.perform(get("/product/1"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Корона 1")))
-                .andExpect(content().string(containsString("image.png")))
-                .andExpect(content().string(containsString("Тестовый комментарий")));
     }
 }

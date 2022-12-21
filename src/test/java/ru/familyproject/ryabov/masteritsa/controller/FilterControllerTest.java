@@ -81,35 +81,4 @@ class FilterControllerTest {
         this.mockMvc.perform(get("/products/1"));
         verify(productService, times(1)).getAllById(1L);
     }
-
-    @Test
-    void contentLoadingWhenCallsMethodGetAllProducts() throws Exception {
-        Mockito.when(productService.getAll()).thenReturn(products);
-        Mockito.when(productTypeService.getAll()).thenReturn(types);
-        this.mockMvc.perform(get("/products/all"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Корона 1")))
-                .andExpect(content().string(containsString("Корона 2")))
-                .andExpect(content().string(containsString("ТестКорона1")))
-                .andExpect(content().string(containsString("ТестКорона2")));
-        verify(productTypeService, times(1)).getAll();
-        verify(productService, times(1)).getAll();
-    }
-
-    @Test
-    void contentLoadingWhenCallsMethodGetAllProductsById() throws Exception {
-        Mockito.when(productService.getAllById(1L)).thenReturn(List.of(products.get(0)));
-        Mockito.when(productService.getAllById(2L)).thenReturn(List.of(products.get(1)));
-        when(productTypeService.getAll()).thenReturn(types);
-        this.mockMvc.perform(get("/products/1"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Корона 1")))
-                .andExpect(content().string(containsString("Корона 2")))
-                .andExpect(content().string(containsString("ТестКорона1")));
-        verify(productTypeService, times(1)).getAll();
-        verify(productService, times(1)).getAllById(1L);
-        verify(productService, times(0)).getAllById(2L);
-    }
 }
