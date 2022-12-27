@@ -1403,6 +1403,9 @@ textarea.form-control-sm {
     padding-left: 3rem !important;
   }
 }
+.border-top-0 {
+  border-top: 0 !important;
+}
 .logo {
     -webkit-tap-highlight-color: transparent;
     -webkit-text-size-adjust: 100%;
