@@ -1406,6 +1406,25 @@ textarea.form-control-sm {
 .border-top-0 {
   border-top: 0 !important;
 }
+.justify-content-center {
+  justify-content: center !important;
+}
+.g-4,
+.gx-4 {
+  --bs-gutter-x: 1.5rem;
+}
+.row-cols-2 > * {
+  flex: 0 0 auto;
+  width: 50%;
+}
+.row-cols-md-3 > * {
+  flex: 0 0 auto;
+  width: 33.3333333333%;
+}
+.row-cols-xl-4 > * {
+  flex: 0 0 auto;
+  width: 25%;
+}
 .logo {
     -webkit-tap-highlight-color: transparent;
     -webkit-text-size-adjust: 100%;
