@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Главная страница</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+  <link href="/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+<nav th:replace="header :: content"></nav>
+<section>
+  <header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+      <div class="text-center text-white">
+        <h1 class="display-4 fw-bolder">Данный сайт предназначен для презентации и удобной иллюстрации украшений ручной работы.</h1>
+        <h1 class="display-4 fw-bolder">Для того, чтобы заказать короны, обращайтесь в телеграмм</h1>
+      </div>
+    </div>
+  </header>
+</section>
+<footer th:replace="footer :: content"></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/scripts.js"></script>
+</body>
+</html>
