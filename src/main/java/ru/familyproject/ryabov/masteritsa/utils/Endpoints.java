@@ -13,4 +13,7 @@ public class Endpoints {
     public static final String FILTER = "/products";
     public static final String FILTER_ALL = "/all";
     public static final String FIND_BY_ID = "/{id}";
+    public static final String ABOUT = "/about";
+    public static final String SALES = "/sales";
+
 }
