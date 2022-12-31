@@ -22,7 +22,7 @@ import java.util.List;
  * @see ProductType
  */
 @Repository
-public class ProductTypeRepositoryImpl implements ru.familyproject.ryabov.masteritsa.repository.ProductTypeRepository {
+public class ProductTypeRepositoryImpl implements ProductTypeRepository {
     /**
      * slf4j logger
      */
