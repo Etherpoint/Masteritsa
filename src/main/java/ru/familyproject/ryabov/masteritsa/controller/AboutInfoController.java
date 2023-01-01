@@ -1,6 +1,9 @@
 package ru.familyproject.ryabov.masteritsa.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
 
@@ -18,7 +21,8 @@ public class AboutInfoController {
      * @return file about.html
      */
     @GetMapping(Endpoints.ABOUT)
-    public String getInfo(){
+    public String getInfo(Model model, @AuthenticationPrincipal User user){
+        model.addAttribute("user", user);
         return "about";
     }
 }
