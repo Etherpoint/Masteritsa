@@ -16,6 +16,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 @WebMvcTest
@@ -36,7 +37,7 @@ class DefaultControllerTest {
     @Test
     void getAllProductTypesOnMainPageWhenCallsMethod_index() throws Exception {
         Mockito.when(productTypeService.getAll()).thenReturn(types);
-        this.mockMvc.perform(get("/"));
+        this.mockMvc.perform(get("/").with(user("u")));
         verify(productTypeService, times(1)).getAll();
     }
 }

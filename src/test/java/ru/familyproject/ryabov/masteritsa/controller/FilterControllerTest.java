@@ -17,6 +17,7 @@ import java.util.List;
 
 import static org.hamcrest.core.StringContains.containsString;
 import static org.mockito.Mockito.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -52,7 +53,7 @@ class FilterControllerTest {
     @Test
     void getAllProducts_WhenCallsMethod_getAll_InMethodGetAllProducts() throws Exception {
         Mockito.when(productService.getAll()).thenReturn(products);
-        this.mockMvc.perform(get("/products/all"))
+        this.mockMvc.perform(get("/products/all").with(user("u")))
                 .andDo(print())
                 .andExpect(status().isOk());
         verify(productService, times(1)).getAll();
@@ -61,7 +62,7 @@ class FilterControllerTest {
     @Test
     void getAllProductTypes_WhenCallsMethod_getAll_InMethodGetAllProducts() throws Exception {
         Mockito.when(productTypeService.getAll()).thenReturn(types);
-        this.mockMvc.perform(get("/products/all"))
+        this.mockMvc.perform(get("/products/all").with(user("u")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Корона 1")));
@@ -71,14 +72,14 @@ class FilterControllerTest {
     @Test
     void getAllProductTypes_WhenCallsMethod_getAll_InMethodGetAllProductsById() throws Exception {
         Mockito.when(productTypeService.getAll()).thenReturn(types);
-        this.mockMvc.perform(get("/products/1"));
+        this.mockMvc.perform(get("/products/1").with(user("u")));
         verify(productTypeService, times(1)).getAll();
     }
 
     @Test
     void getAllProductsWhereIdEqualsOne_WhenCallsMethod_getAllProductsById_WithParameterEqualsOne_InMethodGetAllProductsById() throws Exception {
         Mockito.when(productService.getAllById(1L)).thenReturn(products);
-        this.mockMvc.perform(get("/products/1"));
+        this.mockMvc.perform(get("/products/1").with(user("u")));
         verify(productService, times(1)).getAllById(1L);
     }
 }

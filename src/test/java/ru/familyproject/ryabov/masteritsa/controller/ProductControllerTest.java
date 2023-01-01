@@ -19,6 +19,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 @WebMvcTest
@@ -60,20 +61,20 @@ class ProductControllerTest {
     @Test
     void getAllProductTypesPageWhenCallsMethod_getAllProductsById_InMethodGetProduct() throws Exception {
         Mockito.when(productTypeService.getAll()).thenReturn(types);
-        this.mockMvc.perform(get("/product/1"));
+        this.mockMvc.perform(get("/product/1").with(user("u")));
         verify(productTypeService, times(1)).getAll();
     }
 
     @Test
     void getAllCommentsWhereIdEqualsOne_WhenCallsMethod_getAllCommentsById_WithParameterEqualsOne_InMethodGetProduct() throws Exception {
         Mockito.when(productService.getAllCommentsById(1L)).thenReturn(comments);
-        this.mockMvc.perform(get("/product/1"));
+        this.mockMvc.perform(get("/product/1").with(user("u")));
         Mockito.verify(productService, Mockito.times(1)).getAllCommentsById(1L);
     }
 
     @Test
     void getProductWhereIdEqualsOne_WhenCallsMethod_getById_WithParameterEqualsOne_InMethodGetProduct() throws Exception {
-        this.mockMvc.perform(get("/product/1"));
+        this.mockMvc.perform(get("/product/1").with(user("u")));
         Mockito.verify(productService, Mockito.times(1)).getById(1L);
     }
 }
