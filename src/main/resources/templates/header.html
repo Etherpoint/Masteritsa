@@ -39,7 +39,7 @@
             <form class="d-flex" action="/login">
                 <button class="btn btn-outline-dark m-1" type="submit">
                     <i class="bi-cart-fill me-1"></i>
-                    <a>Войти</a>
+                    <a th:text="${user}!=null ? ${user.getUsername()} : 'Войти'"></a>
                 </button>
             </form>
         </div>
