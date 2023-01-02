@@ -1,6 +1,7 @@
 package ru.familyproject.ryabov.masteritsa.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * EN: User entity class with properties <b>id</b>, <b>name</b>, <b>firstName</b>, <b>lastName</b>, <b>image</b>,
@@ -76,7 +77,15 @@ public class User {
     @Column(name = "email")
     private String email;
 
-//------------------------------------------- конец entity свойств-------------------------------------------------
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
+    //------------------------------------------- конец entity свойств-------------------------------------------------
     public User() {
     }
 
@@ -142,5 +151,13 @@ public class User {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
