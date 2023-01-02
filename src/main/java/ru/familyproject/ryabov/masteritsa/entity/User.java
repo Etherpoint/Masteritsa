@@ -78,6 +78,11 @@ public class User {
     private String email;
 
 
+    /**
+     * EN: field for communication with the collection of user roles<br>
+     * RU: поле для связи с коллекцией ролей пользователя
+     * @see Role
+     */
     @ManyToMany
     @JoinTable(
             name = "user_roles",
