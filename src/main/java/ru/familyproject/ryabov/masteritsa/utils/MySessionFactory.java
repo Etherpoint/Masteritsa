@@ -2,10 +2,7 @@ package ru.familyproject.ryabov.masteritsa.utils;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import ru.familyproject.ryabov.masteritsa.entity.Comment;
-import ru.familyproject.ryabov.masteritsa.entity.Product;
-import ru.familyproject.ryabov.masteritsa.entity.ProductType;
-import ru.familyproject.ryabov.masteritsa.entity.User;
+import ru.familyproject.ryabov.masteritsa.entity.*;
 
 /**
  * EN: Singleton class for configuration <b>SessionFactory</b><br>
@@ -22,6 +19,7 @@ public class MySessionFactory {
                 .addAnnotatedClass(ProductType.class)
                 .addAnnotatedClass(Comment.class)
                 .addAnnotatedClass(User.class)
+                .addAnnotatedClass(Role.class)
                 .buildSessionFactory();
     }
 
