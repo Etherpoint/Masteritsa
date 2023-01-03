@@ -79,15 +79,13 @@ public class User {
 
 
     /**
-     * EN: field for communication with the collection of user roles<br>
-     * RU: поле для связи с коллекцией ролей пользователя
+     * EN: Field for communication with the collection of user roles<br>
+     * RU: Поле для связи с коллекцией ролей пользователя
      * @see Role
      */
-    @ManyToMany
-    @JoinTable(
-            name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.LAZY)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
     //------------------------------------------- конец entity свойств-------------------------------------------------
