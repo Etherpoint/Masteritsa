@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 /**
- * EN: User entity class with properties <b>id</b>, <b>name</b>, <b>users</b><br>
- * RU: Entity-класс пользователя со свойствами <b>id</b>, <b>name</b>, <b>users</b>
+ * EN: User roles entity class with properties <b>id</b>, <b>name</b>, <b>users</b><br>
+ * RU: Entity-класс ролей пользователя со свойствами <b>id</b>, <b>name</b>, <b>users</b>
  *
  * @see Entity
  *
