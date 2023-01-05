@@ -1,23 +1,26 @@
 package ru.familyproject.ryabov.masteritsa.entity;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 
 /**
  * EN: User entity class with properties <b>id</b>, <b>name</b>, <b>firstName</b>, <b>lastName</b>, <b>image</b>,
  * <b>password</b>, <b>confirmPassword</b>, <b>email</b><br>
- *
+ * <p>
  * RU: Entity-класс пользователя со свойствами <b>id</b>, <b>name</b>, <b>firstName</b>, <b>lastName</b>, <b>image</b>,
  * <b>password</b>, <b>confirmPassword</b>, <b>email</b>
  *
- * @see Entity
- *
  * @author Danila Ryabov
- *
  * @version 1.0
+ * @see Entity
  */
 @Entity(name = "users")
-public class User {
+
+public class User implements UserDetails {
 
     /**
      * EN: The id field in the database<br>
@@ -65,7 +68,8 @@ public class User {
     /**
      * EN: Password confirmation field<br>
      * RU: Поле подтверждения пароля
-     *@see Transient
+     *
+     * @see Transient
      */
     @Transient
     private String confirmPassword;
@@ -81,12 +85,22 @@ public class User {
     /**
      * EN: Field for communication with the collection of user roles<br>
      * RU: Поле для связи с коллекцией ролей пользователя
+     *
      * @see Role
      */
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.LAZY)
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
-    @Enumerated(EnumType.STRING)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+    /**
+     * EN: User status field (enabled/deactivated)<br>
+     * RU: Поле состояния пользователя (активирован/деактивирован)
+     */
+    @Column(name = "enabled")
+    private boolean enabled;
 
     //------------------------------------------- конец entity свойств-------------------------------------------------
     public User() {
@@ -132,8 +146,33 @@ public class User {
         this.image = image;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getRoles();
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return getName();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
 
     public void setPassword(String password) {
@@ -162,5 +201,13 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }
