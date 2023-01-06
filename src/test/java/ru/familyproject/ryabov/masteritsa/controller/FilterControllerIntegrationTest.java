@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.core.StringContains.containsString;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -23,13 +24,15 @@ class FilterControllerIntegrationTest {
 
     @Test
     void contentLoadingWhenCallsMethodGetAllProducts() throws Exception {
-        this.mockMvc.perform(get("/products/all"))
+        this.mockMvc.perform(get("/products/all")
+                        .with(user("Наталья")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Корона Славяночка")))
                 .andExpect(content().string(containsString("Корона Карнавал")))
                 .andExpect(content().string(containsString("image-1.jpg")))
-                .andExpect(content().string(containsString("image-2.jpg")));
+                .andExpect(content().string(containsString("image-2.jpg")))
+                .andExpect(content().string(containsString("Наталья")));
     }
 
     @ParameterizedTest
@@ -38,11 +41,13 @@ class FilterControllerIntegrationTest {
             "9,Корона Карнавал,image-2.jpg"
     })
     void contentLoadingWhenCallsMethodGetAllProductsByIdEqualsOne(String id, String name, String imageSrc) throws Exception {
-        this.mockMvc.perform(get("/products/" + id))
+        this.mockMvc.perform(get("/products/" + id)
+                        .with(user("Наталья")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString(name)))
-                .andExpect(content().string(containsString(imageSrc)));
+                .andExpect(content().string(containsString(imageSrc)))
+                .andExpect(content().string(containsString("Наталья")));
     }
 
     @ParameterizedTest
@@ -57,6 +62,7 @@ class FilterControllerIntegrationTest {
                 () -> this.mockMvc.perform(get("/products/" + id))
                         .andDo(print())
                         .andExpect(status().isOk())
-                        .andExpect(content().string(containsString(unfoundInfo))));
+                        .andExpect(content().string(containsString(unfoundInfo)))
+                        .andExpect(content().string(containsString("Наталья"))));
     }
 }

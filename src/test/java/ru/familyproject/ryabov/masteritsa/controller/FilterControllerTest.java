@@ -11,6 +11,7 @@ import ru.familyproject.ryabov.masteritsa.entity.Product;
 import ru.familyproject.ryabov.masteritsa.entity.ProductType;
 import ru.familyproject.ryabov.masteritsa.service.ProductService;
 import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
+import ru.familyproject.ryabov.masteritsa.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class FilterControllerTest {
     @Autowired
     private MockMvc mockMvc;
+    @MockBean
+    UserService service;
     @MockBean
     ProductService productService;
     @MockBean
@@ -53,7 +56,7 @@ class FilterControllerTest {
     @Test
     void getAllProducts_WhenCallsMethod_getAll_InMethodGetAllProducts() throws Exception {
         Mockito.when(productService.getAll()).thenReturn(products);
-        this.mockMvc.perform(get("/products/all").with(user("u")))
+        this.mockMvc.perform(get("/products/all").with(user("Наталья")))
                 .andDo(print())
                 .andExpect(status().isOk());
         verify(productService, times(1)).getAll();
@@ -62,7 +65,7 @@ class FilterControllerTest {
     @Test
     void getAllProductTypes_WhenCallsMethod_getAll_InMethodGetAllProducts() throws Exception {
         Mockito.when(productTypeService.getAll()).thenReturn(types);
-        this.mockMvc.perform(get("/products/all").with(user("u")))
+        this.mockMvc.perform(get("/products/all").with(user("Наталья")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Корона 1")));
@@ -72,14 +75,14 @@ class FilterControllerTest {
     @Test
     void getAllProductTypes_WhenCallsMethod_getAll_InMethodGetAllProductsById() throws Exception {
         Mockito.when(productTypeService.getAll()).thenReturn(types);
-        this.mockMvc.perform(get("/products/1").with(user("u")));
+        this.mockMvc.perform(get("/products/1").with(user("Наталья")));
         verify(productTypeService, times(1)).getAll();
     }
 
     @Test
     void getAllProductsWhereIdEqualsOne_WhenCallsMethod_getAllProductsById_WithParameterEqualsOne_InMethodGetAllProductsById() throws Exception {
         Mockito.when(productService.getAllById(1L)).thenReturn(products);
-        this.mockMvc.perform(get("/products/1").with(user("u")));
+        this.mockMvc.perform(get("/products/1").with(user("Наталья")));
         verify(productService, times(1)).getAllById(1L);
     }
 }

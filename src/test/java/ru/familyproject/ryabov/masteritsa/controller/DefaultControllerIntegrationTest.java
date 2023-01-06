@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.core.StringContains.containsString;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -19,10 +20,12 @@ class DefaultControllerIntegrationTest {
     private MockMvc mockMvc;
     @Test
     void contentLoadingWhenCallsMethodIndex() throws Exception {
-        this.mockMvc.perform(get("/"))
+        this.mockMvc.perform(get("/")
+                        .with(user("Наталья")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Главная страница")))
-                .andExpect(content().string(containsString("Славяночка")));
+                .andExpect(content().string(containsString("Славяночка")))
+                .andExpect(content().string(containsString("Наталья")));
     }
 }

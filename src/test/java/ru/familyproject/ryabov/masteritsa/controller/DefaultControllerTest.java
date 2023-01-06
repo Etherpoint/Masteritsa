@@ -30,14 +30,15 @@ class DefaultControllerTest {
     private List<ProductType> types;
 
     @BeforeEach
-    void init(){
+    void init() {
         this.types = new ArrayList<>();
         types.add(new ProductType(1L, "Корона 1"));
     }
     @Test
     void getAllProductTypesOnMainPageWhenCallsMethod_index() throws Exception {
         Mockito.when(productTypeService.getAll()).thenReturn(types);
-        this.mockMvc.perform(get("/").with(user("u")));
+        this.mockMvc.perform(get("/")
+                .with(user("Наталья")));
         verify(productTypeService, times(1)).getAll();
     }
 }

@@ -13,6 +13,7 @@ import ru.familyproject.ryabov.masteritsa.entity.ProductType;
 import ru.familyproject.ryabov.masteritsa.entity.User;
 import ru.familyproject.ryabov.masteritsa.service.ProductService;
 import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
+import ru.familyproject.ryabov.masteritsa.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 class ProductControllerTest {
     @Autowired
     MockMvc mockMvc;
+
+    @MockBean
+    UserService service;
 
     @MockBean
     ProductService productService;
@@ -61,20 +65,20 @@ class ProductControllerTest {
     @Test
     void getAllProductTypesPageWhenCallsMethod_getAllProductsById_InMethodGetProduct() throws Exception {
         Mockito.when(productTypeService.getAll()).thenReturn(types);
-        this.mockMvc.perform(get("/product/1").with(user("u")));
+        this.mockMvc.perform(get("/product/1").with(user("Наталья")));
         verify(productTypeService, times(1)).getAll();
     }
 
     @Test
     void getAllCommentsWhereIdEqualsOne_WhenCallsMethod_getAllCommentsById_WithParameterEqualsOne_InMethodGetProduct() throws Exception {
         Mockito.when(productService.getAllCommentsById(1L)).thenReturn(comments);
-        this.mockMvc.perform(get("/product/1").with(user("u")));
+        this.mockMvc.perform(get("/product/1").with(user("Наталья")));
         Mockito.verify(productService, Mockito.times(1)).getAllCommentsById(1L);
     }
 
     @Test
     void getProductWhereIdEqualsOne_WhenCallsMethod_getById_WithParameterEqualsOne_InMethodGetProduct() throws Exception {
-        this.mockMvc.perform(get("/product/1").with(user("u")));
+        this.mockMvc.perform(get("/product/1").with(user("Наталья")));
         Mockito.verify(productService, Mockito.times(1)).getById(1L);
     }
 }
