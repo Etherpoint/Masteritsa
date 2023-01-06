@@ -1,7 +1,7 @@
 package ru.familyproject.ryabov.masteritsa.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +21,7 @@ public class SaleController {
      * @return file sales.html
      */
     @GetMapping(Endpoints.SALES)
-    public String getSales(Model model, @AuthenticationPrincipal User user){
+    public String getSales(Model model, @AuthenticationPrincipal UserDetails user){
         model.addAttribute("user", user);
         return "sales";
     }

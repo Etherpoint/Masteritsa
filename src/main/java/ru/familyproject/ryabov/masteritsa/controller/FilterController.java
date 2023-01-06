@@ -2,7 +2,7 @@ package ru.familyproject.ryabov.masteritsa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,7 +58,7 @@ public class FilterController {
      * @see Endpoints#FILTER_ALL
      */
     @GetMapping(Endpoints.FILTER_ALL)
-    public String getAllProducts(Model model,@AuthenticationPrincipal User user) {
+    public String getAllProducts(Model model,@AuthenticationPrincipal UserDetails user) {
         List<Product> products = service.getAll();
         model.addAttribute("products", products);
         List<ProductType> types = productTypeService.getAll();
@@ -75,7 +75,7 @@ public class FilterController {
      * @see Endpoints#FIND_BY_ID
      */
     @GetMapping(Endpoints.FIND_BY_ID)
-    public String getAllProductsById(Model model,@PathVariable Long id, @AuthenticationPrincipal User user){
+    public String getAllProductsById(Model model,@PathVariable Long id, @AuthenticationPrincipal UserDetails user){
         List<Product> products = service.getAllById(id);
         model.addAttribute("products", products);
         List<ProductType> types = productTypeService.getAll();

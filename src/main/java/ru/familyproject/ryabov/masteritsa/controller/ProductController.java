@@ -2,7 +2,7 @@ package ru.familyproject.ryabov.masteritsa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,7 +60,7 @@ public class ProductController {
      * @see Endpoints#FIND_BY_ID
      */
     @GetMapping(Endpoints.FIND_BY_ID)
-    public String getProduct(Model model, @PathVariable Long id, @AuthenticationPrincipal User user) {
+    public String getProduct(Model model, @PathVariable Long id, @AuthenticationPrincipal UserDetails user) {
         List<Comment> comments = productService.getAllCommentsById(id);
         List<ProductType> types = productTypeService.getAll();
         Product product = productService.getById(id);
