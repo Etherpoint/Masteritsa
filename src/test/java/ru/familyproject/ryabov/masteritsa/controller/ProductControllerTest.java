@@ -13,7 +13,6 @@ import ru.familyproject.ryabov.masteritsa.entity.ProductType;
 import ru.familyproject.ryabov.masteritsa.entity.User;
 import ru.familyproject.ryabov.masteritsa.service.ProductService;
 import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
-import ru.familyproject.ryabov.masteritsa.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +26,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 class ProductControllerTest {
     @Autowired
     MockMvc mockMvc;
-
-    @MockBean
-    UserService service;
-
     @MockBean
     ProductService productService;
 
