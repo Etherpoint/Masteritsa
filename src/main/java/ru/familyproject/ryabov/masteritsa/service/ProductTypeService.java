@@ -19,7 +19,7 @@ import java.util.List;
 public class ProductTypeService{
     /**
      * EN: Private field for working with <b>ProductType</b> entities in the database<br>
-     * RU: Приватное поле работы с сущностями <b>ProductType</b> в БД
+     * RU: Приватное поле для работы с сущностями <b>ProductType</b> в БД
      * @see ProductTypeRepository
      */
     private final ProductTypeRepository repository;
@@ -27,7 +27,7 @@ public class ProductTypeService{
     /**
      * EN: Constructor for field initialization <b>repository</b><br>
      * RU: Конструктор для инициализации поля <b>repository</b>
-     * @see ProductTypeRepositoryImpl
+     * @see #repository
      */
     public ProductTypeService(@Autowired ProductTypeRepositoryImpl repository){
         this.repository = repository;
