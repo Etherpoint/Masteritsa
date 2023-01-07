@@ -9,11 +9,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.familyproject.ryabov.masteritsa.entity.Role;
 import ru.familyproject.ryabov.masteritsa.entity.User;
+import ru.familyproject.ryabov.masteritsa.repository.RoleRepository;
+import ru.familyproject.ryabov.masteritsa.repository.RoleRepositoryImpl;
 import ru.familyproject.ryabov.masteritsa.repository.UserRepository;
 import ru.familyproject.ryabov.masteritsa.repository.UserRepositoryImpl;
 
 import java.util.HashSet;
-import java.util.Set;
 
 /**
  * EN: Service for working with entities <b>User</b><br>
@@ -36,6 +37,9 @@ public class UserService implements UserDetailsService {
     @Autowired
     private final UserRepository userRepository;
 
+    @Autowired
+    private final RoleRepository roleRepository;
+
     /**
      * EN: Method that returns an object for encrypting passwords<br>
      * RU: Метод, возвращающий объект для шифрования паролей
@@ -50,8 +54,9 @@ public class UserService implements UserDetailsService {
      * RU: Конструктор для инициализации поля <b>userRepository</b>
      * @see #userRepository
      */
-    public UserService(@Autowired UserRepositoryImpl userRepository) {
+    public UserService(@Autowired UserRepositoryImpl userRepository, @Autowired RoleRepositoryImpl roleRepository) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
     }
 
     /**
@@ -61,8 +66,9 @@ public class UserService implements UserDetailsService {
      */
     public void save(User user){
         user.setPassword(passwordEncoder().encode(user.getPassword()));
-        Set<Role> roles = new HashSet<>();
-        //roles.add(new Role())
+        user.setEnabled(true);
+        HashSet<Role> roles = new HashSet<>();
+        roles.add(roleRepository.getRoleByName("USER"));
         user.setRoles(roles);
         userRepository.save(user);
     }
@@ -85,10 +91,6 @@ public class UserService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user==null){
-            throw new UsernameNotFoundException("user not found");
-        }
-        return user;
+        return userRepository.findByUsername(username);
     }
 }
