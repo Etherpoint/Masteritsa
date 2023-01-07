@@ -24,6 +24,8 @@ class DefaultControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @MockBean
+    RegistrationController registrationController;
+    @MockBean
     ProductTypeService productTypeService;
     @MockBean
     ProductService productService;

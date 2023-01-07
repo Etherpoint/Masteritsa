@@ -27,6 +27,8 @@ class ProductControllerTest {
     @Autowired
     MockMvc mockMvc;
     @MockBean
+    RegistrationController registrationController;
+    @MockBean
     ProductService productService;
 
     @MockBean

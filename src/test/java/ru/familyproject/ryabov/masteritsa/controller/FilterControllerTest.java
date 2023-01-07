@@ -28,6 +28,8 @@ class FilterControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @MockBean
+    RegistrationController registrationController;
+    @MockBean
     ProductService productService;
     @MockBean
     ProductTypeService productTypeService;
