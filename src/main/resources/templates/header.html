@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <!-- Navigation-->
 <div th:fragment="content">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -50,10 +50,9 @@
                        th:text="${user}!=null ? ${user.getUsername()} : 'Войти'"
                        href="/login"></a>
                 </form>
-                <form class="d-flex" th:if="${user}!=null">
-                    <i class="bi-cart-fill me-1"></i>
-                    <a class="btn btn-outline-dark m-1"
-                       href="/logout">Выйти</a>
+
+                <form class="d-flex" th:if="${user}!=null" th:action="@{/logout}" method="post">
+                    <input class="btn btn-outline-dark m-1" type="submit" value="Выйти"/>
                 </form>
             </div>
         </div>
