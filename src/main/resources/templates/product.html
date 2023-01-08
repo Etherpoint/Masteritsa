@@ -39,7 +39,11 @@
                                 <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Введите свой комментарий"></textarea></form>
                                 <!-- Single comment-->
                                 <div class="d-flex" th:each="comment : ${comments}">
-                                    <div class="flex-shrink-0"><img class="rounded-circle" th:src="@{'/images/'+ ${comment.user.image}}" th:width="50px"/></div>
+                                    <div class="flex-shrink-0">
+                                        <img class="rounded-circle"
+                                             th:src="@{'/images/account-images/'+ ${comment.user.image}}"
+                                             th:width="50px"/>
+                                    </div>
                                     <div class="ms-3">
                                         <div class="fw-bold" th:text="${comment.user.name}"></div>
                                         <p th:text="${comment.description}"></p>
