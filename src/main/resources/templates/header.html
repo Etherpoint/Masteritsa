@@ -47,7 +47,12 @@
                 <form class="d-flex">
                     <i class="bi-cart-fill me-1"></i>
                     <a class="btn btn-outline-dark m-1"
-                       th:text="${user}!=null ? ${user.getUsername()} : 'Войти'"
+                       th:if="${user}!=null"
+                       th:href="@{'/account/'+${user.id}}"
+                       th:text="${user.getUsername()}"></a>
+                    <a class="btn btn-outline-dark m-1"
+                       th:if="${user}==null"
+                       th:text="Войти"
                        href="/login"></a>
                 </form>
 
