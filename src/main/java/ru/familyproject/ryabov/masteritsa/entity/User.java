@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.io.File;
 import java.util.Collection;
 import java.util.Set;
 
@@ -57,6 +58,17 @@ public class User implements UserDetails {
      */
     @Column(name = "image")
     private String image;
+
+    @Transient
+    private File fileImage;
+
+    public File getFileImage() {
+        return fileImage;
+    }
+
+    public void setFileImage(File fileImage) {
+        this.fileImage = fileImage;
+    }
 
     /**
      * EN: User password field<br>
