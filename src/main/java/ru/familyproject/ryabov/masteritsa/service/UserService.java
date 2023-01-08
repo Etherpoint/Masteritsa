@@ -20,11 +20,9 @@ import java.util.HashSet;
  * EN: Service for working with entities <b>User</b><br>
  * RU: Сервис для работы с сущностями <b>User</b>
  *
- * @see UserDetailsService
- *
  * @author Danila Ryabov
- *
  * @version 1.0
+ * @see UserDetailsService
  */
 @Service
 public class UserService implements UserDetailsService {
@@ -45,13 +43,14 @@ public class UserService implements UserDetailsService {
      * RU: Метод, возвращающий объект для шифрования паролей
      */
     @Autowired
-    PasswordEncoder passwordEncoder(){
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     /**
      * EN: Constructor for field initialization <b>userRepository</b><br>
      * RU: Конструктор для инициализации поля <b>userRepository</b>
+     *
      * @see #userRepository
      */
     public UserService(@Autowired UserRepositoryImpl userRepository, @Autowired RoleRepositoryImpl roleRepository) {
@@ -62,9 +61,15 @@ public class UserService implements UserDetailsService {
     /**
      * EN: Method for saving the entity <b>User</b> in the database<br>
      * RU: Метод для сохранения сущности <b>User</b> в БД
+     *
      * @see UserRepositoryImpl#save(User)
      */
-    public void save(User user){
+    public void save(User user) {
+        //todo Добавить сохранения картинки в папку
+/*        File fileImage = user.getFileImage();
+        String resultFileName = UUID.randomUUID() + fileImage.getName();
+        user.setImage(resultFileName);*/
+
         user.setPassword(passwordEncoder().encode(user.getPassword()));
         user.setEnabled(true);
         HashSet<Role> roles = new HashSet<>();
@@ -79,7 +84,7 @@ public class UserService implements UserDetailsService {
      *
      * @see UserRepositoryImpl#delete(User)
      */
-    public void delete(User user){
+    public void delete(User user) {
         userRepository.delete(user);
     }
 
