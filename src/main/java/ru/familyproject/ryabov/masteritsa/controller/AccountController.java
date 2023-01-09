@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.familyproject.ryabov.masteritsa.entity.User;
+import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
 
 /**
  * EN: Controller for displaying a page with information about the user<br>
@@ -18,7 +19,7 @@ import ru.familyproject.ryabov.masteritsa.entity.User;
  * @version 1.0
  */
 @Controller
-@RequestMapping("/account/")
+@RequestMapping(Endpoints.ACCOUNT)
 public class AccountController {
 
     /**
@@ -27,7 +28,7 @@ public class AccountController {
      *
      * @return file account.html
      */
-    @GetMapping("{id}")
+    @GetMapping(Endpoints.FIND_BY_ID)
     public String getAccount(@AuthenticationPrincipal UserDetails user, @PathVariable Long id, Model model) {
         if (!((User) user).getId().equals(id)){
             throw new RuntimeException("ID АККАУНТА НЕ СОВПАДАЕТ С ЭНДПОИНТОМ");
