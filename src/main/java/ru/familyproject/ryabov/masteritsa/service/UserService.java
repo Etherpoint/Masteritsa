@@ -79,7 +79,7 @@ public class UserService implements UserDetailsService {
      *
      * @see UserRepositoryImpl#delete(User)
      */
-    public void delete(User user) {
+    @SuppressWarnings("unused")public void delete(User user) {
         userRepository.delete(user);
     }
 

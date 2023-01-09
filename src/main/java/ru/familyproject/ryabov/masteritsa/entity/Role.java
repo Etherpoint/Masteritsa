@@ -58,11 +58,11 @@ public class Role implements GrantedAuthority {
         this.name = name;
     }
 
-    public Set<User> getUsers() {
+    @SuppressWarnings("unused")public Set<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    @SuppressWarnings("unused")public void setUsers(Set<User> users) {
         this.users = users;
     }
 

@@ -77,7 +77,7 @@ public class Comment {
         return description;
     }
 
-    public void setDescription(String description) {
+    @SuppressWarnings("unused")public void setDescription(String description) {
         this.description = description;
     }
 
@@ -85,7 +85,7 @@ public class Comment {
         return dateOfCreate;
     }
 
-    public void setDateOfCreate(String dateOfCreate) {
+    @SuppressWarnings("unused")public void setDateOfCreate(String dateOfCreate) {
         this.dateOfCreate = dateOfCreate;
     }
 
