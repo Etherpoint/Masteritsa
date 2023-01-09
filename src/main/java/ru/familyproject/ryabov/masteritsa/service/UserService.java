@@ -65,11 +65,6 @@ public class UserService implements UserDetailsService {
      * @see UserRepositoryImpl#save(User)
      */
     public void save(User user) {
-        //todo Добавить сохранения картинки в папку
-/*        File fileImage = user.getFileImage();
-        String resultFileName = UUID.randomUUID() + fileImage.getName();
-        user.setImage(resultFileName);*/
-
         user.setPassword(passwordEncoder().encode(user.getPassword()));
         user.setEnabled(true);
         HashSet<Role> roles = new HashSet<>();
