@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-    <form class="form-signin" th:action="@{/registration}" method="post">
+    <form class="form-signin" enctype="multipart/form-data" th:action="@{/registration}" method="post">
         <h2 class="form-signin-heading">Создание аккаунта</h2>
         <div class="alert alert-danger" role="alert" th:if="${param.error}">
             Неверные учетные данные пользователя.
@@ -18,8 +18,8 @@
         </div>
         <!-- Поле аватара -->
         <p>
-            <label class="col-md-4 control-label" for="fileImage"></label>
-            <input type="file" id="fileImage" name="fileImage" class="form-control">
+            <label class="col-md-4 control-label" for="file"></label>
+            <input type="file" id="file" name="file" class="form-control">
         </p>
         <!-- Поле логина -->
         <p>
