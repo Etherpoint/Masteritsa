@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.familyproject.ryabov.masteritsa.entity.ProductType;
+import ru.familyproject.ryabov.masteritsa.entity.User;
 import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
+import ru.familyproject.ryabov.masteritsa.service.UserService;
 import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
 
 import java.util.List;
@@ -28,13 +30,20 @@ public class DefaultController {
      * RU: Сервис для работы с сущностями <b>ProductType</b> в БД
      */
     private final ProductTypeService productTypeService;
+    /**
+     * EN: Service for working with Entities <b>User</b> in the database<br>
+     * RU: Сервис для работы с сущностями <b>User</b> в БД
+     */
+    private final UserService userService;
 
     /**
-     * EN: Service initialization constructor<br>
-     * RU: Конструктор для инициализации сервиса
+     * EN: Services initialization constructor<br>
+     * RU: Конструктор для инициализации сервисов
      */
-    public DefaultController(@Autowired ProductTypeService productTypeService) {
+    public DefaultController(@Autowired ProductTypeService productTypeService,
+                             @Autowired UserService userService){
         this.productTypeService = productTypeService;
+        this.userService = userService;
     }
 
     /**
@@ -48,7 +57,11 @@ public class DefaultController {
     @GetMapping(Endpoints.MAIN_PAGE)
     public String index(Model model, @AuthenticationPrincipal UserDetails user) {
         List<ProductType> types = productTypeService.getAll();
-        model.addAttribute("user", user);
+        User entityUser = null;
+        if (user != null){
+            entityUser = (User) userService.loadUserByUsername(user.getUsername());
+        }
+        model.addAttribute("user", entityUser);
         model.addAttribute("types", types);
         return "main";
     }

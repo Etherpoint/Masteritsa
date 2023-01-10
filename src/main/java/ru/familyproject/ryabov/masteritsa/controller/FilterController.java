@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.familyproject.ryabov.masteritsa.entity.Product;
 import ru.familyproject.ryabov.masteritsa.entity.ProductType;
+import ru.familyproject.ryabov.masteritsa.entity.User;
 import ru.familyproject.ryabov.masteritsa.service.ProductService;
 import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
+import ru.familyproject.ryabov.masteritsa.service.UserService;
 import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
 
 import java.util.List;
@@ -41,14 +43,22 @@ public class FilterController {
      * RU: Сервис для работы с сущностями <b>ProductType</b> в БД
      */
     private final ProductTypeService productTypeService;
+    /**
+     * EN: Service for working with Entities <b>User</b> in the database<br>
+     * RU: Сервис для работы с сущностями <b>User</b> в БД
+     */
+    private final UserService userService;
 
     /**
-     * EN: Constructor for service initialization<br>
+     * EN: Services initialization constructor<br>
      * RU: Конструктор для инициализации сервисов
      */
-    public FilterController(@Autowired ProductService service, @Autowired ProductTypeService productTypeService) {
+    public FilterController(@Autowired ProductService service,
+                            @Autowired ProductTypeService productTypeService,
+                            @Autowired UserService userService) {
         this.service = service;
         this.productTypeService = productTypeService;
+        this.userService = userService;
     }
 
     /**
@@ -60,10 +70,14 @@ public class FilterController {
     @GetMapping(Endpoints.FILTER_ALL)
     public String getAllProducts(Model model,@AuthenticationPrincipal UserDetails user) {
         List<Product> products = service.getAll();
+        User entityUser = null;
+        if (user != null){
+            entityUser = (User) userService.loadUserByUsername(user.getUsername());
+        }
         model.addAttribute("products", products);
         List<ProductType> types = productTypeService.getAll();
         model.addAttribute("types", types);
-        model.addAttribute("user", user);
+        model.addAttribute("user", entityUser);
         return "products";
     }
 
@@ -77,10 +91,14 @@ public class FilterController {
     @GetMapping(Endpoints.FIND_BY_ID)
     public String getAllProductsById(Model model,@PathVariable Long id, @AuthenticationPrincipal UserDetails user){
         List<Product> products = service.getAllById(id);
+        User entityUser = null;
+        if (user != null){
+            entityUser = (User) userService.loadUserByUsername(user.getUsername());
+        }
         model.addAttribute("products", products);
         List<ProductType> types = productTypeService.getAll();
         model.addAttribute("types", types);
-        model.addAttribute("user", user);
+        model.addAttribute("user", entityUser);
         return "products";
     }
 }
