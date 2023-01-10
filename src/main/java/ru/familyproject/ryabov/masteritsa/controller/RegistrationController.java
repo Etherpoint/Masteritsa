@@ -59,8 +59,11 @@ public class RegistrationController {
     @PostMapping(Endpoints.REGISTRATION)
     public String addUser(User user, @RequestParam("file") MultipartFile file){
         UserDetails userByUsername = userService.loadUserByUsername(user.getUsername());
-        uploadImage(user, file);
         if (userByUsername == null){
+            if (!file.isEmpty()){
+                uploadImage(user, file);
+            }
+            user.setImage("avatar.png");
             userService.save(user);
         }
         return "redirect:/";
