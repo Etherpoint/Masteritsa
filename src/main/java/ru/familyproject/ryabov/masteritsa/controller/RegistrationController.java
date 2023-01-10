@@ -62,8 +62,9 @@ public class RegistrationController {
         if (userByUsername == null){
             if (!file.isEmpty()){
                 uploadImage(user, file);
+            }else {
+                user.setImage("avatar.png");
             }
-            user.setImage("avatar.png");
             userService.save(user);
         }
         return "redirect:/";
