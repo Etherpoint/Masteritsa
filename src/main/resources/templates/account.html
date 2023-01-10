@@ -16,7 +16,7 @@
         />
     </figure>
 
-    <form class="form-signin" enctype="multipart/form-data" th:action="@{'/account/' + ${user.id}}" method="post" autocomplete="off">
+    <form class="form-signin" enctype="multipart/form-data" action="/edit" method="post" autocomplete="on">
         <h2 class="form-signin-heading">Данные аккаунта</h2>
         <div class="alert alert-danger" role="alert" th:if="${param.error}">
             Неверные учетные данные пользователя.
