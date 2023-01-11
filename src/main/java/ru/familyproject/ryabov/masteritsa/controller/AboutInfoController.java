@@ -40,7 +40,7 @@ public class AboutInfoController {
     public String getInfo(Model model, @AuthenticationPrincipal UserDetails user){
         User entityUser = null;
         if (user != null){
-            entityUser = (User) userService.loadUserByUsername(user.getUsername());
+            entityUser = userService.loadUserByUsername(user.getUsername());
         }
         model.addAttribute("user", entityUser);
         return "about";
