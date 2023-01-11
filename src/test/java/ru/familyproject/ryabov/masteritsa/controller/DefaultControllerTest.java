@@ -10,6 +10,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import ru.familyproject.ryabov.masteritsa.entity.ProductType;
 import ru.familyproject.ryabov.masteritsa.service.ProductService;
 import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
+import ru.familyproject.ryabov.masteritsa.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ class DefaultControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @MockBean
-    RegistrationController registrationController;
+    UserService userService;
     @MockBean
     ProductTypeService productTypeService;
     @MockBean
@@ -39,8 +40,7 @@ class DefaultControllerTest {
     @Test
     void getAllProductTypesOnMainPageWhenCallsMethod_index() throws Exception {
         Mockito.when(productTypeService.getAll()).thenReturn(types);
-        this.mockMvc.perform(get("/")
-                .with(user("Наталья")));
+        this.mockMvc.perform(get("/").with(user("Наталья")));
         verify(productTypeService, times(1)).getAll();
     }
 }

@@ -11,12 +11,14 @@ import ru.familyproject.ryabov.masteritsa.entity.Product;
 import ru.familyproject.ryabov.masteritsa.entity.ProductType;
 import ru.familyproject.ryabov.masteritsa.service.ProductService;
 import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
+import ru.familyproject.ryabov.masteritsa.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.core.StringContains.containsString;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -28,12 +30,11 @@ class FilterControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @MockBean
-    RegistrationController registrationController;
+    UserService userService;
     @MockBean
     ProductService productService;
     @MockBean
     ProductTypeService productTypeService;
-
     private List<ProductType> types;
 
     private List<Product> products;
@@ -50,7 +51,6 @@ class FilterControllerTest {
         products.add(new Product(1L, "ТестКорона1", 100.0D, "img1.img", "Описание", "Зеленый", type1, new ArrayList<>()));
         products.add(new Product(2L, "ТестКорона2", 150.0D, "img2.img", "Описание", "Зеленый", type1, new ArrayList<>()));
     }
-
 
     @Test
     void getAllProducts_WhenCallsMethod_getAll_InMethodGetAllProducts() throws Exception {

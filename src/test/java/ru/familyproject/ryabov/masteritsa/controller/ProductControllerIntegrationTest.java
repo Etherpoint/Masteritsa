@@ -27,8 +27,7 @@ class ProductControllerIntegrationTest {
             "6,Корона Карнавал,image-2.jpg,Елена",
     })
     void contentLoadingWhenCallsMethodGetProductById(String id, String name, String imageSrc, String userOfComment) throws Exception {
-        this.mockMvc.perform(get("/product/"+id)
-                        .with(user("Наталья")))
+        this.mockMvc.perform(get("/product/"+id).with(user("Наталья")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString(name)))

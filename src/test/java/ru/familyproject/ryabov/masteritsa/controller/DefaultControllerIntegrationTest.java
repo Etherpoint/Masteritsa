@@ -20,8 +20,7 @@ class DefaultControllerIntegrationTest {
     private MockMvc mockMvc;
     @Test
     void contentLoadingWhenCallsMethodIndex() throws Exception {
-        this.mockMvc.perform(get("/")
-                        .with(user("Наталья")))
+        this.mockMvc.perform(get("/").with(user("Наталья")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Главная страница")))

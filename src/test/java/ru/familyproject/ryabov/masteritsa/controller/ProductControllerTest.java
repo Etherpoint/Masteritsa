@@ -13,6 +13,7 @@ import ru.familyproject.ryabov.masteritsa.entity.ProductType;
 import ru.familyproject.ryabov.masteritsa.entity.User;
 import ru.familyproject.ryabov.masteritsa.service.ProductService;
 import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
+import ru.familyproject.ryabov.masteritsa.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,12 +28,11 @@ class ProductControllerTest {
     @Autowired
     MockMvc mockMvc;
     @MockBean
-    RegistrationController registrationController;
-    @MockBean
     ProductService productService;
-
     @MockBean
     ProductTypeService productTypeService;
+    @MockBean
+    UserService userService;
 
     private List<ProductType> types;
 

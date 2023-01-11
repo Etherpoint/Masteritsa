@@ -24,15 +24,14 @@ class FilterControllerIntegrationTest {
 
     @Test
     void contentLoadingWhenCallsMethodGetAllProducts() throws Exception {
-        this.mockMvc.perform(get("/products/all")
-                        .with(user("Наталья")))
+        this.mockMvc.perform(get("/products/all").with(user("Наталья")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Корона Славяночка")))
                 .andExpect(content().string(containsString("Корона Карнавал")))
                 .andExpect(content().string(containsString("image-1.jpg")))
                 .andExpect(content().string(containsString("image-2.jpg")))
-                .andExpect(content().string(containsString("Наталья")));
+        .andExpect(content().string(containsString("Наталья")));
     }
 
     @ParameterizedTest
@@ -41,13 +40,12 @@ class FilterControllerIntegrationTest {
             "9,Корона Карнавал,image-2.jpg"
     })
     void contentLoadingWhenCallsMethodGetAllProductsByIdEqualsOne(String id, String name, String imageSrc) throws Exception {
-        this.mockMvc.perform(get("/products/" + id)
-                        .with(user("Наталья")))
+        this.mockMvc.perform(get("/products/" + id).with(user("Наталья")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString(name)))
                 .andExpect(content().string(containsString(imageSrc)))
-                .andExpect(content().string(containsString("Наталья")));
+        .andExpect(content().string(containsString("Наталья")));
     }
 
     @ParameterizedTest

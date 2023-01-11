@@ -17,11 +17,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class AboutInfoControllerIntegrationTest {
     @Autowired
     MockMvc mockMvc;
-
     @Test
     void getHtmlFileAboutWhenCallsMethodGetInfo() throws Exception {
-        this.mockMvc.perform(get("/about")
-                        .with(user("Наталья")))
+        this.mockMvc.perform(get("/about").with(user("Наталья")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(xpath("/html/body/section/header/div/div/h1[1]")
