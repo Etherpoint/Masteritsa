@@ -72,7 +72,7 @@ public class FilterController {
         List<Product> products = service.getAll();
         User entityUser = null;
         if (user != null){
-            entityUser = (User) userService.loadUserByUsername(user.getUsername());
+            entityUser = userService.loadUserByUsername(user.getUsername());
         }
         model.addAttribute("products", products);
         List<ProductType> types = productTypeService.getAll();
@@ -93,7 +93,7 @@ public class FilterController {
         List<Product> products = service.getAllById(id);
         User entityUser = null;
         if (user != null){
-            entityUser = (User) userService.loadUserByUsername(user.getUsername());
+            entityUser = userService.loadUserByUsername(user.getUsername());
         }
         model.addAttribute("products", products);
         List<ProductType> types = productTypeService.getAll();

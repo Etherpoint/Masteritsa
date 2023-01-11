@@ -34,7 +34,7 @@ public class AccountController {
      */
     @GetMapping(Endpoints.FIND_BY_ID)
     public String getAccount(@AuthenticationPrincipal UserDetails user, @PathVariable Long id, Model model) {
-        User entityUser = (User) userService.loadUserByUsername(user.getUsername());
+        User entityUser = userService.loadUserByUsername(user.getUsername());
 
         if (!((User) user).getId().equals(id)){
             throw new RuntimeException("ID АККАУНТА НЕ СОВПАДАЕТ С ЭНДПОИНТОМ");

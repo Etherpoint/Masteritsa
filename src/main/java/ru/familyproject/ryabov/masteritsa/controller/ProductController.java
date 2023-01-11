@@ -73,7 +73,7 @@ public class ProductController {
     public String getProduct(Model model, @PathVariable Long id, @AuthenticationPrincipal UserDetails user) {
         User entityUser = null;
         if (user != null){
-            entityUser = (User) userService.loadUserByUsername(user.getUsername());
+            entityUser = userService.loadUserByUsername(user.getUsername());
         }
         List<Comment> comments = productService.getAllCommentsById(id);
         List<ProductType> types = productTypeService.getAll();
