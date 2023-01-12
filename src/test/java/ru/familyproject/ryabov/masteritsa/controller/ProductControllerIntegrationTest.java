@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
 
 import static org.hamcrest.core.StringContains.containsString;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
@@ -26,8 +27,8 @@ class ProductControllerIntegrationTest {
             "1,Корона Славяночка,image-1.jpg,Анна",
             "6,Корона Карнавал,image-2.jpg,Елена",
     })
-    void contentLoadingWhenCallsMethodGetProductById(String id, String name, String imageSrc, String userOfComment) throws Exception {
-        this.mockMvc.perform(get("/product/"+id).with(user("Наталья")))
+    void contentLoadingWhenCallsMethodGetProduct(String id, String name, String imageSrc, String userOfComment) throws Exception {
+        this.mockMvc.perform(get(Endpoints.PRODUCT + "/" + id).with(user("Наталья")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString(name)))
@@ -45,9 +46,9 @@ class ProductControllerIntegrationTest {
             "1,Елена",
             "6,Анна"
     })
-    void ThrowsAssertionErrorWhenCallsMethodGetProductById(String id, String unfoundInfo) {
+    void ThrowsAssertionErrorWhenCallsMethodGetProduct(String id, String unfoundInfo) {
         Assertions.assertThrows(AssertionError.class,
-                () -> this.mockMvc.perform(get("/products/" + id))
+                () -> this.mockMvc.perform(get(Endpoints.PRODUCT + id))
                         .andDo(print())
                         .andExpect(status().isOk())
                         .andExpect(content().string(containsString(unfoundInfo))));

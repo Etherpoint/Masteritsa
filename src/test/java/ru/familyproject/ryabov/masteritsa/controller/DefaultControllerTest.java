@@ -11,6 +11,7 @@ import ru.familyproject.ryabov.masteritsa.entity.ProductType;
 import ru.familyproject.ryabov.masteritsa.service.ProductService;
 import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
 import ru.familyproject.ryabov.masteritsa.service.UserService;
+import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,7 @@ class DefaultControllerTest {
     @Test
     void getAllProductTypesOnMainPageWhenCallsMethod_index() throws Exception {
         Mockito.when(productTypeService.getAll()).thenReturn(types);
-        this.mockMvc.perform(get("/").with(user("Наталья")));
+        this.mockMvc.perform(get(Endpoints.MAIN_PAGE).with(user("Наталья")));
         verify(productTypeService, times(1)).getAll();
     }
 }

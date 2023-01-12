@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
 
 import static org.hamcrest.core.StringContains.containsString;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
@@ -20,7 +21,7 @@ class DefaultControllerIntegrationTest {
     private MockMvc mockMvc;
     @Test
     void contentLoadingWhenCallsMethodIndex() throws Exception {
-        this.mockMvc.perform(get("/").with(user("Наталья")))
+        this.mockMvc.perform(get(Endpoints.MAIN_PAGE).with(user("Наталья")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Главная страница")))
