@@ -1,30 +1,45 @@
 package ru.familyproject.ryabov.masteritsa.controller;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.web.servlet.MockMvc;
-import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.ui.Model;
+import ru.familyproject.ryabov.masteritsa.entity.User;
+import ru.familyproject.ryabov.masteritsa.service.UserService;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
+import static org.mockito.ArgumentMatchers.anyString;
 
 @SpringBootTest
-@AutoConfigureMockMvc
 class SaleControllerTest {
     @Autowired
-    MockMvc mockMvc;
-
+    SaleController saleController;
+    @MockBean
+    UserService userService;
+    @MockBean
+    UserDetails userDetails;
+    @MockBean
+    Model model;
+    @MockBean
+    User user;
     @Test
-    @WithMockUser(username = "Наталья")
-    void getHtmlFileSalesWhenCallsMethodGetSales() throws Exception {
-        this.mockMvc.perform(get(Endpoints.SALES))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(xpath("/html/body/h1").string("Страница находится в разработке"));
+    void shouldLoadUserByUsername_WhenUserIsNotNull(){
+        saleController.getSales(model, userDetails);
+        Mockito
+                .when(userService
+                        .loadUserByUsername(userDetails.getUsername()))
+                .thenReturn(user);
+        Mockito
+                .verify(userService, Mockito.times(1))
+                .loadUserByUsername(userDetails.getUsername());
+    }
+    @Test
+    void should_not_LoadUserByUsername_WhenUserIsNull(){
+        saleController.getSales(model, null);
+        Mockito
+                .verify(userService, Mockito.times(0))
+                .loadUserByUsername(anyString());
     }
 }

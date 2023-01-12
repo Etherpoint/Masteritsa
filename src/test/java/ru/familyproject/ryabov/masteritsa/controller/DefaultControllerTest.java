@@ -1,47 +1,48 @@
 package ru.familyproject.ryabov.masteritsa.controller;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.web.servlet.MockMvc;
-import ru.familyproject.ryabov.masteritsa.entity.ProductType;
-import ru.familyproject.ryabov.masteritsa.service.ProductService;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.ui.Model;
 import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
 import ru.familyproject.ryabov.masteritsa.service.UserService;
-import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-@WebMvcTest
+@SpringBootTest
 class DefaultControllerTest {
     @Autowired
-    private MockMvc mockMvc;
+    DefaultController defaultController;
     @MockBean
     UserService userService;
     @MockBean
     ProductTypeService productTypeService;
     @MockBean
-    ProductService productService;
-    private List<ProductType> types;
+    Model model;
+    @MockBean
+    UserDetails userDetails;
 
-    @BeforeEach
-    void init() {
-        this.types = new ArrayList<>();
-        types.add(new ProductType(1L, "Корона 1"));
+    @Test
+    void getAllProductTypesOnMainPageWhenCallsMethod_index(){
+        defaultController.index(model, userDetails);
+        verify(productTypeService, times(1)).getAll();
     }
     @Test
-    void getAllProductTypesOnMainPageWhenCallsMethod_index() throws Exception {
-        Mockito.when(productTypeService.getAll()).thenReturn(types);
-        this.mockMvc.perform(get(Endpoints.MAIN_PAGE).with(user("Наталья")));
-        verify(productTypeService, times(1)).getAll();
+    void shouldLoadUserByUsername_WhenUserIsNotNull(){
+        defaultController.index(model, userDetails);
+        verify(userService, times(1))
+                .loadUserByUsername(userDetails.getUsername());
+    }
+    @Test
+    void should_not_LoadUserByUsername_WhenUserIsNull(){
+        defaultController.index(model, null);
+        Mockito
+                .verify(userService, Mockito.times(0))
+                .loadUserByUsername(anyString());
     }
 }
