@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import ru.familyproject.ryabov.masteritsa.entity.User;
 import ru.familyproject.ryabov.masteritsa.service.UserService;
 
+import static org.mockito.ArgumentMatchers.anyString;
+
 @SpringBootTest
 class AboutInfoControllerTest {
     @Autowired
@@ -40,6 +42,6 @@ class AboutInfoControllerTest {
         aboutInfoController.getInfo(model, null);
         Mockito
                 .verify(userService, Mockito.times(0))
-                .loadUserByUsername(userDetails.getUsername());
+                .loadUserByUsername(anyString());
     }
 }
