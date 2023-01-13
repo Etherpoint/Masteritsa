@@ -2,7 +2,6 @@ package ru.familyproject.ryabov.masteritsa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,25 +43,27 @@ public class RegistrationController {
     /**
      * EN: GET method to the page with the user registration form<br>
      * RU: GET метод к странице с формой регистрации пользователя
+     *
      * @return file registration.html
      */
     @GetMapping(Endpoints.REGISTRATION)
-    public String registration(){
+    public String registration() {
         return "registration";
     }
 
     /**
      * EN: Service for working with entities <b>User</b> in the database<br>
      * RU: POST метод со страницы "registration" с редиректом на страницу "/" при успешной регистрации
+     *
      * @return file main.html
      */
     @PostMapping(Endpoints.REGISTRATION)
-    public String addUser(User user, @RequestParam("file") MultipartFile file){
-        UserDetails userByUsername = userService.loadUserByUsername(user.getUsername());
-        if (userByUsername == null){
-            if (!file.isEmpty()){
+    public String addUser(User user, @RequestParam("file") MultipartFile file) {
+        User userByUsername = userService.loadUserByUsername(user.getUsername());
+        if (userByUsername == null) {
+            if (!file.isEmpty()) {
                 uploadImage(user, file);
-            }else {
+            } else {
                 user.setImage("avatar.png");
             }
             userService.save(user);
@@ -74,7 +75,7 @@ public class RegistrationController {
      * EN: Utility method for saving a picture in a folder on a machine<br>
      * RU: Служебный метод для сохранения картинки в папке на машине
      */
-    private void uploadImage(User user, MultipartFile file){
+    private void uploadImage(User user, MultipartFile file) {
         String uuid = UUID.randomUUID().toString();
         String fileName = uuid + file.getOriginalFilename();
         user.setImage(fileName);
