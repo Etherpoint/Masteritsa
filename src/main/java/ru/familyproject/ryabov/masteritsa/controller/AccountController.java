@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.familyproject.ryabov.masteritsa.entity.User;
+import ru.familyproject.ryabov.masteritsa.exceptions.AccountException;
 import ru.familyproject.ryabov.masteritsa.service.UserService;
 import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
 
@@ -35,9 +36,8 @@ public class AccountController {
     @GetMapping(Endpoints.FIND_BY_ID)
     public String getAccount(@AuthenticationPrincipal UserDetails user, @PathVariable Long id, Model model) {
         User entityUser = userService.loadUserByUsername(user.getUsername());
-
-        if (!((User) user).getId().equals(id)){
-            throw new RuntimeException("ID АККАУНТА НЕ СОВПАДАЕТ С ЭНДПОИНТОМ");
+        if (!entityUser.getId().equals(id)) {
+            throw new AccountException("ID АККАУНТА НЕ СОВПАДАЕТ С ЭНДПОИНТОМ");
         }
         model.addAttribute("user", entityUser);
         return "account";
