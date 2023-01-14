@@ -33,7 +33,6 @@ public class UserRepositoryImpl implements UserRepository {
      * RU: Интерфейс для работы с БД
      */
     private final SessionFactory sessionFactory;
-
     /**
      * EN: Constructors with sessionFactory configuration<br>
      * RU: Конструкторы с конфигурацией sessionFactory
@@ -52,13 +51,12 @@ public class UserRepositoryImpl implements UserRepository {
      */
     @Override
     public void save(User user) {
-        Session session = sessionFactory.openSession();
-        try (session) {
+        try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
             session.save(user);
             transaction.commit();
         } catch (HibernateException e) {
-            session.getTransaction().rollback();
+            sessionFactory.getCurrentSession().getTransaction().rollback();
             LOGGER.error("Error when opened session on sessionFactory in method save from UserRepositoryImpl");
             throw new HibernateException("Error when opened session on sessionFactory in method save from UserRepositoryImpl", e);
         }
@@ -70,13 +68,12 @@ public class UserRepositoryImpl implements UserRepository {
      */
     @Override
     public void delete(User user) {
-        Session session = sessionFactory.openSession();
-        try (session) {
-            session.beginTransaction();
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
             session.delete(user);
-            session.getTransaction().commit();
+            transaction.commit();
         } catch (HibernateException e) {
-            session.getTransaction().rollback();
+            sessionFactory.getCurrentSession().getTransaction().rollback();
             LOGGER.error("Error when opened session on sessionFactory in method delete from UserRepositoryImpl");
             throw new HibernateException("Error when opened session on sessionFactory in method delete from UserRepositoryImpl", e);
         }
