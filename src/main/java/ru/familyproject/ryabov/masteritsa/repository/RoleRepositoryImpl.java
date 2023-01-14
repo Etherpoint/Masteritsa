@@ -38,6 +38,9 @@ public class RoleRepositoryImpl implements RoleRepository{
     public RoleRepositoryImpl() {
         sessionFactory = MySessionFactory.getSessionFactory();
     }
+    public RoleRepositoryImpl(SessionFactory sessionFactory){
+        this.sessionFactory = sessionFactory;
+    }
 
     /**
      * EN: Method for getting the entity <b>Role</b> by its field <b>name</b><br>
