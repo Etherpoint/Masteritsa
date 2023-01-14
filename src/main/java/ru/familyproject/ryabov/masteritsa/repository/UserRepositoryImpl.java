@@ -41,10 +41,6 @@ public class UserRepositoryImpl implements UserRepository {
         sessionFactory = MySessionFactory.getSessionFactory();
     }
 
-    public UserRepositoryImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
     /**
      * EN: Method for saving the entity <b>User</b> in the database<br>
      * RU: Метод для сохранения сущности <b>User</b> в БД
@@ -56,7 +52,6 @@ public class UserRepositoryImpl implements UserRepository {
             session.save(user);
             transaction.commit();
         } catch (HibernateException e) {
-            sessionFactory.getCurrentSession().getTransaction().rollback();
             LOGGER.error("Error when opened session on sessionFactory in method save from UserRepositoryImpl");
             throw new HibernateException("Error when opened session on sessionFactory in method save from UserRepositoryImpl", e);
         }
@@ -73,7 +68,6 @@ public class UserRepositoryImpl implements UserRepository {
             session.delete(user);
             transaction.commit();
         } catch (HibernateException e) {
-            sessionFactory.getCurrentSession().getTransaction().rollback();
             LOGGER.error("Error when opened session on sessionFactory in method delete from UserRepositoryImpl");
             throw new HibernateException("Error when opened session on sessionFactory in method delete from UserRepositoryImpl", e);
         }
