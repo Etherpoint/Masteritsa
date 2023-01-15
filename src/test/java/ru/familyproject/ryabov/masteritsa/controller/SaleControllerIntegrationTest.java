@@ -4,28 +4,27 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
 
-import static org.hamcrest.core.StringContains.containsString;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class DefaultControllerIntegrationTest {
+class SaleControllerIntegrationTest {
     @Autowired
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
+
     @Test
-    void contentLoadingWhenCallsMethodIndex() throws Exception {
-        this.mockMvc.perform(get(Endpoints.MAIN_PAGE).with(user("Наталья")))
+    @WithMockUser(username = "Наталья")
+    void getHtmlFileSalesWhenCallsMethodGetSales() throws Exception {
+        this.mockMvc.perform(get(Endpoints.SALES))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Главная страница")))
-                .andExpect(content().string(containsString("Славяночка")))
-                .andExpect(content().string(containsString("Наталья")));
+                .andExpect(xpath("/html/body/h1").string("Страница находится в разработке"));
     }
 }

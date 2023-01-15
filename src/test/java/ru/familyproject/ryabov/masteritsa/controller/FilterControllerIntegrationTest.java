@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
 
 import static org.hamcrest.core.StringContains.containsString;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
@@ -24,8 +25,7 @@ class FilterControllerIntegrationTest {
 
     @Test
     void contentLoadingWhenCallsMethodGetAllProducts() throws Exception {
-        this.mockMvc.perform(get("/products/all")
-                        .with(user("Наталья")))
+        this.mockMvc.perform(get(Endpoints.FILTER + Endpoints.FILTER_ALL).with(user("Наталья")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Корона Славяночка")))
@@ -41,8 +41,7 @@ class FilterControllerIntegrationTest {
             "9,Корона Карнавал,image-2.jpg"
     })
     void contentLoadingWhenCallsMethodGetAllProductsByIdEqualsOne(String id, String name, String imageSrc) throws Exception {
-        this.mockMvc.perform(get("/products/" + id)
-                        .with(user("Наталья")))
+        this.mockMvc.perform(get(Endpoints.FILTER + "/" + id).with(user("Наталья")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString(name)))
@@ -59,7 +58,7 @@ class FilterControllerIntegrationTest {
     })
     void ThrowsAssertionErrorWhenCallsMethodGetAllProducts(String id, String unfoundInfo) {
         Assertions.assertThrows(AssertionError.class,
-                () -> this.mockMvc.perform(get("/products/" + id))
+                () -> this.mockMvc.perform(get(Endpoints.FILTER + "/" + id))
                         .andDo(print())
                         .andExpect(status().isOk())
                         .andExpect(content().string(containsString(unfoundInfo)))

@@ -122,19 +122,19 @@ public class User implements UserDetails {
         this.name = name;
     }
 
-    public String getFirstName() {
+    @SuppressWarnings("unused")public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    @SuppressWarnings("unused")public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    @SuppressWarnings("unused")public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    @SuppressWarnings("unused")public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -179,19 +179,19 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public String getEmail() {
+    @SuppressWarnings("unused")public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    @SuppressWarnings("unused")public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getConfirmPassword() {
+    @SuppressWarnings("unused")public String getConfirmPassword() {
         return confirmPassword;
     }
 
-    public void setConfirmPassword(String confirmPassword) {
+    @SuppressWarnings("unused")public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
 

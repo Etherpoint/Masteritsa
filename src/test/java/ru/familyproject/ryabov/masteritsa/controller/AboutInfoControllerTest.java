@@ -13,31 +13,33 @@ import ru.familyproject.ryabov.masteritsa.service.UserService;
 import static org.mockito.ArgumentMatchers.anyString;
 
 @SpringBootTest
-class SaleControllerTest {
+class AboutInfoControllerTest {
     @Autowired
-    SaleController saleController;
+    AboutInfoController aboutInfoController;
     @MockBean
     UserService userService;
     @MockBean
-    UserDetails userDetails;
-    @MockBean
     Model model;
     @MockBean
+    UserDetails userDetails;
+    @MockBean
     User user;
+
     @Test
     void shouldLoadUserByUsername_WhenUserIsNotNull(){
-        saleController.getSales(model, userDetails);
+        aboutInfoController.getInfo(model, userDetails);
         Mockito
                 .when(userService
-                        .loadUserByUsername(userDetails.getUsername()))
+                .loadUserByUsername(userDetails.getUsername()))
                 .thenReturn(user);
         Mockito
                 .verify(userService, Mockito.times(1))
                 .loadUserByUsername(userDetails.getUsername());
     }
+
     @Test
     void should_not_LoadUserByUsername_WhenUserIsNull(){
-        saleController.getSales(model, null);
+        aboutInfoController.getInfo(model, null);
         Mockito
                 .verify(userService, Mockito.times(0))
                 .loadUserByUsername(anyString());

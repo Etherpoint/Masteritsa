@@ -123,7 +123,7 @@ public class Product {
         return price;
     }
 
-    public void setPrice(Double price) {
+    @SuppressWarnings("unused")public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -140,31 +140,31 @@ public class Product {
         return description;
     }
 
-    public void setDescription(String description) {
+    @SuppressWarnings("unused")public void setDescription(String description) {
         this.description = description;
     }
 
-    public String getColor() {
+    @SuppressWarnings("unused")public String getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    @SuppressWarnings("unused")public void setColor(String color) {
         this.color = color;
     }
 
-    public ProductType getProductType() {
+    @SuppressWarnings("unused")public ProductType getProductType() {
         return productType;
     }
 
-    public void setProductType(ProductType productType) {
+    @SuppressWarnings("unused")public void setProductType(ProductType productType) {
         this.productType = productType;
     }
 
-    public List<Comment> getComments() {
+    @SuppressWarnings("unused")public List<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(List<Comment> comments) {
+    @SuppressWarnings("unused")public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
 }
