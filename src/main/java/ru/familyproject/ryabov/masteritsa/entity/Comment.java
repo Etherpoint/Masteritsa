@@ -57,14 +57,6 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(Long id, String description, String dateOfCreate, User user, Product product) {
-        this.id = id;
-        this.description = description;
-        this.dateOfCreate = dateOfCreate;
-        this.user = user;
-        this.product = product;
-    }
-
     public Long getId() {
         return id;
     }
