@@ -1,0 +1,21 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="18012023_2057" author="Danila Ryabov">
+        <createTable tableName="product">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="color" type="VARCHAR(255)"/>
+            <column  name="description"  type="VARCHAR(65535)"/>
+            <column name="image" type="VARCHAR(65535)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="price" type="float"/>
+            <column name="product_type_id" type="bigint">
+                <constraints nullable="false" referencedTableName="product_type"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
