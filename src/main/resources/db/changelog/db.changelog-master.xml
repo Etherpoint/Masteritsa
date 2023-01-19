@@ -5,4 +5,9 @@
    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
     <include file="/db/changelog/18012023/18012023_2031-create_table_product_type.xml"/>
     <include file="/db/changelog/18012023/18012023_2057-create_table_product.xml"/>
+
+    <include file="/db/changelog/19012023/19012023_1329-create_table_roles.xml"/>
+    <include file="/db/changelog/19012023/19012023-1335-create_table_users.xml"/>
+    <include file="/db/changelog/19012023/19012023_1350-create_table_user_roles.xml"/>
+    <include file="/db/changelog/19012023/19012023_1356-create_table_comment.xml"/>
 </databaseChangeLog>
