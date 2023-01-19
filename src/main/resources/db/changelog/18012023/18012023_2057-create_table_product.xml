@@ -18,4 +18,60 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="18012023_2057-1" author="Danila Ryabov">
+        <insert tableName="product">
+            <column name="color" value="Синий"/>
+            <column name="description" value="Описание"/>
+            <column name="image" value="image-1.jpg"/>
+            <column name="name" value="Корона Славяночка"/>
+            <column name="price" value="800.0"/>
+            <column name="product_type_id" value="2"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="color" value="Зеленый"/>
+            <column name="description" value="Описание2"/>
+            <column name="image" value="image-1.jpg"/>
+            <column name="name" value="Корона Славяночка"/>
+            <column name="price" value="1000.0"/>
+            <column name="product_type_id" value="2"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="color" value="Зеленый"/>
+            <column name="description" value="Описание2"/>
+            <column name="image" value="image-1.jpg"/>
+            <column name="name" value="Корона Славяночка"/>
+            <column name="price" value="1000.0"/>
+            <column name="product_type_id" value="2"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="color" value="Зеленый"/>
+            <column name="description" value="Описание2"/>
+            <column name="image" value="image-1.jpg"/>
+            <column name="name" value="Корона Славяночка"/>
+            <column name="price" value="1000.0"/>
+            <column name="product_type_id" value="2"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="color" value="Зеленый"/>
+            <column name="description" value="Описание2"/>
+            <column name="image" value="image-1.jpg"/>
+            <column name="name" value="Корона Славяночка"/>
+            <column name="price" value="1000.0"/>
+            <column name="product_type_id" value="2"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="color" value="Красный"/>
+            <column name="description" value="Описание3"/>
+            <column name="image" value="image-2.jpg"/>
+            <column name="name" value="Корона Карнавал"/>
+            <column name="price" value="700.0"/>
+            <column name="product_type_id" value="9"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>
