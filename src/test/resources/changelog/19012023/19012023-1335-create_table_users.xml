@@ -1,0 +1,73 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="190122023_1335" author="Danila Ryabov">
+        <createTable tableName="users">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+
+            <column name="username" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="firstname" type="VARCHAR(255)"/>
+
+            <column name="lastname" type="VARCHAR(255)"/>
+
+            <column name="image" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="password" type="VARCHAR(255)"/>
+
+            <column name="email" type="VARCHAR(255)"/>
+
+            <column name="enabled" type="boolean"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="19012023_1355-1" author="Danila Ryabov">
+        <insert tableName="users">
+            <column name="username" value="Наталья"/>
+            <column name="image" value="avatar.png"/>
+            <column name="enabled" value="true"/>
+            <!--Поле с зашифрованным словом password-->
+            <column name="password" value="$2a$10$t./iRnQtO0aty.AHd9BmpeiKKj26UB0dluSQUDft/1qNWNqQmBn6m"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="username" value="Виктория"/>
+            <column name="image" value="avatar.png"/>
+            <column name="enabled" value="false"/>
+            <!--Поле с зашифрованным словом password-->
+            <column name="password" value="$2a$10$t./iRnQtO0aty.AHd9BmpeiKKj26UB0dluSQUDft/1qNWNqQmBn6m"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="username" value="Елена"/>
+            <column name="image" value="avatar.png"/>
+            <column name="enabled" value="true"/>
+            <!--Поле с зашифрованным словом password-->
+            <column name="password" value="$2a$10$t./iRnQtO0aty.AHd9BmpeiKKj26UB0dluSQUDft/1qNWNqQmBn6m"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="username" value="Светлана"/>
+            <column name="image" value="avatar.png"/>
+            <column name="enabled" value="false"/>
+            <!--Поле с зашифрованным словом password-->
+            <column name="password" value="$2a$10$t./iRnQtO0aty.AHd9BmpeiKKj26UB0dluSQUDft/1qNWNqQmBn6m"/>
+        </insert>
+
+        <insert tableName="users">
+            <column name="username" value="Анна"/>
+            <column name="image" value="avatar.png"/>
+            <column name="enabled" value="false"/>
+            <!--Поле с зашифрованным словом password-->
+            <column name="password" value="$2a$10$t./iRnQtO0aty.AHd9BmpeiKKj26UB0dluSQUDft/1qNWNqQmBn6m"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,48 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="18012023_2031" author="Danila Ryabov">
+        <createTable tableName="product_type">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column  name="name"  type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="18012023_2126" author="Danila Ryabov">
+        <insert tableName="product_type">
+            <column name="name" value="Косичка"/>
+        </insert>
+        <insert tableName="product_type">
+            <column name="name" value="Славяночка"/>
+        </insert>
+        <insert tableName="product_type">
+            <column name="name" value="Нежность"/>
+        </insert>
+        <insert tableName="product_type">
+            <column name="name" value="Звездочка"/>
+        </insert>
+        <insert tableName="product_type">
+            <column name="name" value="Язычок"/>
+        </insert>
+        <insert tableName="product_type">
+            <column name="name" value="С язычком 1"/>
+        </insert>
+        <insert tableName="product_type">
+            <column name="name" value="С язычком 2"/>
+        </insert>
+        <insert tableName="product_type">
+            <column name="name" value="Круглая"/>
+        </insert>
+        <insert tableName="product_type">
+            <column name="name" value="Карнавал"/>
+        </insert>
+        <insert tableName="product_type">
+            <column name="name" value="Резинка на пучок"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
