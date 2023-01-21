@@ -30,9 +30,9 @@
 ## Написание тестов🔧
 В данный момент покрытие unit-тестами составляет 81% (Данные за 16.01.23).
 <p align="center">
-  <img width="785" height="330" src="coverage_16.01.23.png" alt="">
+  <img width="785" height="330" src="coverage_21.01.23.png" alt="">
 </p>
 
 <p align="center">
-  <img width="785" height="275" src="bench_graph_15.01.23.png" alt="">
+  <img width="785" height="275" src="bench_graph_21.01.23.png" alt="">
 </p>
