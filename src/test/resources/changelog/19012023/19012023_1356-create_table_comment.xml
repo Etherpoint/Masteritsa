@@ -1,0 +1,113 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <!--Настройка получения даты для разных СУБД-->
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="to_char(now(), 'MM-dd-YYYY HH24:mi:ss')" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+    <property name="now" value="getdate()" dbms="mssql"/>
+
+    <changeSet id="19012023_1356" author="Danila Ryabov">
+        <createTable tableName="comment">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+
+            <column name="description" type="VARCHAR(255)"/>
+
+            <column name="date_of_create" type="VARCHAR(255)" defaultValueComputed="${now}"/>
+
+            <column name="user_id" type="bigint">
+                <constraints referencedTableName="users"/>
+            </column>
+
+            <column name="product_id" type="bigint">
+                <constraints referencedTableName="product"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="19012023_1356-1" author="Danila Ryabov">
+        <insert tableName="comment">
+            <column name="product_id" value="1"/>
+            <column name="description" value="Корона просто бомба"/>
+            <column name="user_id" value="1"/>
+        </insert>
+
+        <insert tableName="comment">
+            <column name="product_id" value="2"/>
+            <column name="description" value="Корона просто супер"/>
+            <column name="user_id" value="2"/>
+        </insert>
+
+        <insert tableName="comment">
+            <column name="product_id" value="3"/>
+            <column name="description" value="Корона просто замечательная"/>
+            <column name="user_id" value="4"/>
+        </insert>
+
+        <insert tableName="comment">
+            <column name="product_id" value="4"/>
+            <column name="description" value="Отличная корона, моя дочка довольна"/>
+            <column name="user_id" value="3"/>
+        </insert>
+
+        <insert tableName="comment">
+            <column name="product_id" value="5"/>
+            <column name="description" value="Короны отличного качества, спасибо!!!"/>
+            <column name="user_id" value="5"/>
+        </insert>
+
+        <insert tableName="comment">
+            <column name="product_id" value="6"/>
+            <column name="description" value="Корона просто супер"/>
+            <column name="user_id" value="2"/>
+        </insert>
+
+        <insert tableName="comment">
+            <column name="product_id" value="1"/>
+            <column name="description" value="Корона просто замечательная"/>
+            <column name="user_id" value="4"/>
+        </insert>
+
+        <insert tableName="comment">
+            <column name="product_id" value="2"/>
+            <column name="description" value="Отличная корона, моя дочка довольна"/>
+            <column name="user_id" value="3"/>
+        </insert>
+
+        <insert tableName="comment">
+            <column name="product_id" value="3"/>
+            <column name="description" value="Короны отличного качества, спасибо!!!"/>
+            <column name="user_id" value="5"/>
+        </insert>
+
+        <insert tableName="comment">
+            <column name="product_id" value="4"/>
+            <column name="description" value="Корона просто супер"/>
+            <column name="user_id" value="2"/>
+        </insert>
+
+        <insert tableName="comment">
+            <column name="product_id" value="5"/>
+            <column name="description" value="Корона просто замечательная"/>
+            <column name="user_id" value="4"/>
+        </insert>
+
+        <insert tableName="comment">
+            <column name="product_id" value="6"/>
+            <column name="description" value="Отличная корона, моя дочка довольна"/>
+            <column name="user_id" value="3"/>
+        </insert>
+
+        <insert tableName="comment">
+            <column name="product_id" value="1"/>
+            <column name="description" value="Короны отличного качества, спасибо!!!"/>
+            <column name="user_id" value="5"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,77 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="18012023_2057" author="Danila Ryabov">
+        <createTable tableName="product">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="color" type="VARCHAR(255)"/>
+            <column  name="description"  type="VARCHAR(65535)"/>
+            <column name="image" type="VARCHAR(65535)"/>
+            <column name="name" type="VARCHAR(64)"/>
+            <column name="price" type="float"/>
+            <column name="product_type_id" type="bigint">
+                <constraints nullable="false" referencedTableName="product_type"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="18012023_2057-1" author="Danila Ryabov">
+        <insert tableName="product">
+            <column name="color" value="Синий"/>
+            <column name="description" value="Описание"/>
+            <column name="image" value="image-1.jpg"/>
+            <column name="name" value="Корона Славяночка"/>
+            <column name="price" value="800.0"/>
+            <column name="product_type_id" value="2"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="color" value="Зеленый"/>
+            <column name="description" value="Описание2"/>
+            <column name="image" value="image-1.jpg"/>
+            <column name="name" value="Корона Славяночка"/>
+            <column name="price" value="1000.0"/>
+            <column name="product_type_id" value="2"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="color" value="Зеленый"/>
+            <column name="description" value="Описание2"/>
+            <column name="image" value="image-1.jpg"/>
+            <column name="name" value="Корона Славяночка"/>
+            <column name="price" value="1000.0"/>
+            <column name="product_type_id" value="2"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="color" value="Зеленый"/>
+            <column name="description" value="Описание2"/>
+            <column name="image" value="image-1.jpg"/>
+            <column name="name" value="Корона Славяночка"/>
+            <column name="price" value="1000.0"/>
+            <column name="product_type_id" value="2"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="color" value="Зеленый"/>
+            <column name="description" value="Описание2"/>
+            <column name="image" value="image-1.jpg"/>
+            <column name="name" value="Корона Славяночка"/>
+            <column name="price" value="1000.0"/>
+            <column name="product_type_id" value="2"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="color" value="Красный"/>
+            <column name="description" value="Описание3"/>
+            <column name="image" value="image-2.jpg"/>
+            <column name="name" value="Корона Карнавал"/>
+            <column name="price" value="700.0"/>
+            <column name="product_type_id" value="9"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
