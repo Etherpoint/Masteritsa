@@ -6,9 +6,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.familyproject.ryabov.masteritsa.entity.Comment;
-import ru.familyproject.ryabov.masteritsa.utils.MySessionFactory;
 
 import java.util.List;
 
@@ -30,19 +30,9 @@ public class CommentRepositoryImpl implements CommentRepository{
      * EN: Interface for working with the database<br>
      * RU: Интерфейс для работы с БД
      */
-    private final SessionFactory sessionFactory;
+    @Autowired
+    private SessionFactory sessionFactory;
 
-    /**
-     * EN: Constructors with <b>sessionFactory</b> configuration<br>
-     * RU: Конструкторы с конфигурацией <b>sessionFactory</b>
-     * @see SessionFactory
-     */
-    public CommentRepositoryImpl() {
-        sessionFactory = MySessionFactory.getSessionFactory();
-    }
-    public CommentRepositoryImpl(SessionFactory sessionFactory){
-        this.sessionFactory = sessionFactory;
-    }
     /**
      * EN: Method for getting a list of comments <b>Comment</b>, where product id = method parameter<br>
      * RU: Метод для получения списка комментариев <b>Comment</b>, где id продукта = параметру метода

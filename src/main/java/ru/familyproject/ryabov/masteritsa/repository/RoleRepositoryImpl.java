@@ -6,9 +6,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.familyproject.ryabov.masteritsa.entity.Role;
-import ru.familyproject.ryabov.masteritsa.utils.MySessionFactory;
 
 
 /**
@@ -30,17 +30,8 @@ public class RoleRepositoryImpl implements RoleRepository{
      * EN: Interface for working with the database<br>
      * RU: Интерфейс для работы с БД
      */
-    private final SessionFactory sessionFactory;
-    /**
-     * EN: Constructors with sessionFactory configuration<br>
-     * RU: Конструкторы с конфигурацией sessionFactory
-     */
-    public RoleRepositoryImpl() {
-        sessionFactory = MySessionFactory.getSessionFactory();
-    }
-    public RoleRepositoryImpl(SessionFactory sessionFactory){
-        this.sessionFactory = sessionFactory;
-    }
+    @Autowired
+    private SessionFactory sessionFactory;
 
     /**
      * EN: Method for getting the entity <b>Role</b> by its field <b>name</b><br>

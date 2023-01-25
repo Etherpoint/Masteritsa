@@ -6,9 +6,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.familyproject.ryabov.masteritsa.entity.ProductType;
-import ru.familyproject.ryabov.masteritsa.utils.MySessionFactory;
 
 import java.util.List;
 
@@ -31,19 +31,8 @@ public class ProductTypeRepositoryImpl implements ProductTypeRepository {
      * EN: Interface for working with the database<br>
      * RU: Интерфейс для работы с БД
      */
-    private final SessionFactory sessionFactory;
-
-    /**
-     * EN: Constructors with sessionFactory configuration<br>
-     * RU: Конструкторы с конфигурацией sessionFactory
-     */
-    public ProductTypeRepositoryImpl() {
-        sessionFactory = MySessionFactory.getSessionFactory();
-    }
-
-    public ProductTypeRepositoryImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    @Autowired
+    private SessionFactory sessionFactory;
 
     /**
      * EN: Method for getting the entire list of ProductType entities<br>
