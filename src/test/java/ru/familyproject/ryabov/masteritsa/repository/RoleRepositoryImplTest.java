@@ -27,7 +27,6 @@ class RoleRepositoryImplTest {
 
     @Test
     void getErrorMessage_ErrorWhenOpenedSession_AndThrowHibernateException_WhenSessionFactoryOpenSessionInMethod_GetRoleByName(){
-        roleRepository = new RoleRepositoryImpl(sessionFactory);
         Mockito.when(sessionFactory.openSession()).thenThrow(HibernateException.class);
         HibernateException exception = Assertions.assertThrows(HibernateException.class,
                 () -> roleRepository.getRoleByName("USER"));

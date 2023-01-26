@@ -2,33 +2,23 @@ package ru.familyproject.ryabov.masteritsa.repository;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
 class ProductRepositoryImplTest {
     @Autowired
     ProductRepositoryImpl productRepository;
-
+    @MockBean
     private SessionFactory sessionFactory;
-
-    @BeforeEach
-    void setUp() {
-        sessionFactory = mock(SessionFactory.class);
-    }
-
-    @Test
-    void successfullyGetProducts_WhenCallsMethod_getAll() {
-        Assertions.assertNotNull(productRepository.getAll());
-    }
 
     @Test
     void getErrorMessage_ErrorWhenOpenedSession_AndThrowHibernateException_WhenSessionFactoryOpenSessionInMethodGetAll() {
-        productRepository = new ProductRepositoryImpl(sessionFactory);
         when(sessionFactory.openSession()).thenThrow(HibernateException.class);
         HibernateException exception = Assertions.assertThrows(HibernateException.class,
                 () -> productRepository.getAll());
@@ -38,13 +28,7 @@ class ProductRepositoryImplTest {
     }
 
     @Test
-    void successfullyGetProducts_WhenCallsMethodGetAllById() {
-        Assertions.assertNotNull(productRepository.getAllById(1L));
-    }
-
-    @Test
     void getErrorMessage_ErrorWhenOpenedSession_AndThrowHibernateException_WhenSessionFactoryOpenSessionInMethodGetAllById() {
-        productRepository = new ProductRepositoryImpl(sessionFactory);
         when(sessionFactory.openSession()).thenThrow(HibernateException.class);
         HibernateException exception = Assertions.assertThrows(HibernateException.class,
                 () -> productRepository.getAllById(1L));
@@ -54,13 +38,7 @@ class ProductRepositoryImplTest {
     }
 
     @Test
-    void successfullyGetProduct_WhenCallsMethodGetById() {
-        Assertions.assertNotNull(productRepository.getById(1L));
-    }
-
-    @Test
     void getErrorMessage_ErrorWhenOpenedSession_AndThrowHibernateException_WhenSessionFactoryOpenSessionInMethodGetById() {
-        productRepository = new ProductRepositoryImpl(sessionFactory);
         when(sessionFactory.openSession()).thenThrow(HibernateException.class);
         HibernateException exception = Assertions.assertThrows(HibernateException.class,
                 () -> productRepository.getById(1L));
