@@ -12,8 +12,8 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 /**
- * EN: Singleton class for configuration <b>SessionFactory</b><br>
- * RU: Класс-синглтон для конфигурации <b>SessionFactory</b>
+ * EN: Class for configuration <b>SessionFactory</b><br>
+ * RU: Класс для конфигурации <b>SessionFactory</b>
  * @see SessionFactory
  */
 @Configuration
