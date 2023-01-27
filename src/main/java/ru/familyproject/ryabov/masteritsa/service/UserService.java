@@ -31,10 +31,14 @@ public class UserService implements UserDetailsService {
      *
      * @see UserRepositoryImpl
      */
-    @Autowired
     private final UserRepository userRepository;
 
-    @Autowired
+    /**
+     * EN:Private field for working with <b>Role</b> entities in the database<br>
+     * RU: Приватное поле для работы с сущностями <b>Role</b> в БД
+     *
+     * @see RoleRepositoryImpl
+     */
     private final RoleRepository roleRepository;
 
     /**
