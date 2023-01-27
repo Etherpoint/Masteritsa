@@ -30,8 +30,15 @@ public class CommentRepositoryImpl implements CommentRepository{
      * EN: Interface for working with the database<br>
      * RU: Интерфейс для работы с БД
      */
-    @Autowired
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
+
+    /**
+     * EN: Constructor to initialize SessionFactory<br>
+     * RU: Конструктор для инициализации SessionFactory
+     */
+    public CommentRepositoryImpl(@Autowired SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     /**
      * EN: Method for getting a list of comments <b>Comment</b>, where product id = method parameter<br>
