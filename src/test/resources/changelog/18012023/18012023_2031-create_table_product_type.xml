@@ -42,6 +42,12 @@
             <column name="name" value="Карнавал"/>
         </insert>
         <insert tableName="product_type">
+            <column name="name" value="Дорожка"/>
+        </insert>
+        <insert tableName="product_type">
+            <column name="name" value="Льдинка"/>
+        </insert>
+        <insert tableName="product_type">
             <column name="name" value="Резинка на пучок"/>
         </insert>
     </changeSet>
