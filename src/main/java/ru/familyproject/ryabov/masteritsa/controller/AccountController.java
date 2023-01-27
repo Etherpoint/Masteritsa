@@ -18,14 +18,24 @@ import ru.familyproject.ryabov.masteritsa.utils.Endpoints;
  * RU: Контроллер для отображения страницы с информацией о пользователе
  *
  * @author Danila Ryabov
- *
  * @version 1.0
  */
 @Controller
 @RequestMapping(Endpoints.ACCOUNT)
 public class AccountController {
-    @Autowired
-    UserService userService;
+    /**
+     * EN: Service for working with Entities <b>User</b> in the database<br>
+     * RU: Сервис для работы с сущностями <b>User</b> в БД
+     */
+    private final UserService userService;
+
+    /**
+     * EN: Service initialization constructor<br>
+     * RU: Конструктор для инициализации сервиса
+     */
+    public AccountController(@Autowired UserService userService) {
+        this.userService = userService;
+    }
 
     /**
      * EN: Controller for displaying a page with information about the user<br>
