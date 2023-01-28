@@ -31,8 +31,15 @@ public class ProductTypeRepositoryImpl implements ProductTypeRepository {
      * EN: Interface for working with the database<br>
      * RU: Интерфейс для работы с БД
      */
-    @Autowired
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
+
+    /**
+     * EN: Constructor to initialize SessionFactory<br>
+     * RU: Конструктор для инициализации SessionFactory
+     */
+    public ProductTypeRepositoryImpl(@Autowired SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     /**
      * EN: Method for getting the entire list of ProductType entities<br>

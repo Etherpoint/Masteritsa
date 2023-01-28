@@ -32,8 +32,15 @@ public class UserRepositoryImpl implements UserRepository {
      * EN: Interface for working with the database<br>
      * RU: Интерфейс для работы с БД
      */
-    @Autowired
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
+
+    /**
+     * EN: Constructor to initialize SessionFactory<br>
+     * RU: Конструктор для инициализации SessionFactory
+     */
+    public UserRepositoryImpl(@Autowired SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     /**
      * EN: Method for saving the entity <b>User</b> in the database<br>

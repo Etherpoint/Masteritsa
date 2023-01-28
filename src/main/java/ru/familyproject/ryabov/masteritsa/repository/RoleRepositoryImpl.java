@@ -30,8 +30,15 @@ public class RoleRepositoryImpl implements RoleRepository{
      * EN: Interface for working with the database<br>
      * RU: Интерфейс для работы с БД
      */
-    @Autowired
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
+
+    /**
+     * EN: Constructor to initialize SessionFactory<br>
+     * RU: Конструктор для инициализации SessionFactory
+     */
+    public RoleRepositoryImpl(@Autowired SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     /**
      * EN: Method for getting the entity <b>Role</b> by its field <b>name</b><br>
