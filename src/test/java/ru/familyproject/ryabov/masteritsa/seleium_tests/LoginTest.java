@@ -27,6 +27,14 @@ public class LoginTest {
         openMenu.click();
     }
 
+    @Test
+    void login(){
+        driver.manage().window().maximize();
+        driver.get("http://localhost:8080");
+        WebElement openMenu = driver.findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/form[2]/div/a"));
+        openMenu.click();
+    }
+
     @AfterAll
     static void closeBrowser(){
         driver.quit();
