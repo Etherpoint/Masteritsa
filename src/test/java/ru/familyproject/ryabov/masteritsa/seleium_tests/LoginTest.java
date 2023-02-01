@@ -23,18 +23,19 @@ public class LoginTest {
     }
 
     @Test
-    void openTheMenu(){
-        driver.get("http://localhost:8080");
-        WebElement openMenu = driver.findElement(By.xpath("/html/body/div/nav/div/button"));
-        openMenu.click();
-    }
-
-    @Test
     void login(){
         driver.manage().window().maximize();
         driver.get("http://localhost:8080");
         WebElement openMenu = driver.findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/form[2]/div/a"));
         openMenu.click();
+
+        WebElement username = driver.findElement(By.id("username"));
+        username.clear();
+        username.sendKeys("Наталья");
+
+        WebElement password = driver.findElement(By.id("password"));
+        password.clear();
+        password.sendKeys("password");
     }
 
     @AfterAll
