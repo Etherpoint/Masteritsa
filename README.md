@@ -11,7 +11,7 @@
 <a name="stack"><h2>Данный проект является учебным. Стек проекта 🖥️</h2></a>
 - Maven
 - Spring Boot, Spring Web, Spring Security
-- JUnit5, Mockito
+- JUnit5, Mockito, Selenium
 - Postgresql
 - Hibernate
 - Thymeleaf
