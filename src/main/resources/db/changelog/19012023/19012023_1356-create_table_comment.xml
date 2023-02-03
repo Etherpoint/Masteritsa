@@ -6,7 +6,7 @@
 
     <!--Настройка получения даты для разных СУБД-->
     <property name="now" value="now()" dbms="mysql,h2"/>
-    <property name="now" value="to_char(now(), 'MM-dd-YYYY HH24:mi:ss')" dbms="postgresql"/>
+    <property name="now" value="to_char(now(), 'dd-MM-YYYY HH24:mi:ss')" dbms="postgresql"/>
     <property name="now" value="sysdate" dbms="oracle"/>
     <property name="now" value="getdate()" dbms="mssql"/>
 
@@ -18,7 +18,7 @@
 
             <column name="description" type="VARCHAR(255)"/>
 
-            <column name="date_of_create" type="VARCHAR(255)" defaultValueComputed="${now}"/>
+            <column name="date_of_create" type="VARCHAR(255)" defaultValueDate="${now}"/>
 
             <column name="user_id" type="bigint">
                 <constraints referencedTableName="users"/>
