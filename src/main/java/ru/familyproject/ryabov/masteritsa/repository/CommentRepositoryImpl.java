@@ -3,6 +3,7 @@ package ru.familyproject.ryabov.masteritsa.repository;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,6 +55,22 @@ public class CommentRepositoryImpl implements CommentRepository{
         }catch (HibernateException e ) {
             LOGGER.error("Error when opened session on sessionFactory in method getAllCommentsById from CommentRepositoryImpl");
             throw new HibernateException("Error when opened session on sessionFactory in method getAllCommentsById from CommentRepositoryImpl", e);
+        }
+    }
+
+    /**
+     * EN: Method for saving a comment in the database<br>
+     * RU: Метод для сохранения комментария в БД
+     */
+    @Override
+    public void saveComment(Comment comment) {
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.save(comment);
+            transaction.commit();
+        } catch (HibernateException e) {
+            LOGGER.error("Error when opened session on sessionFactory in method saveComment from CommentRepositoryImpl");
+            throw new HibernateException("Error when opened session on sessionFactory in method saveComment from CommentRepositoryImpl", e);
         }
     }
 }

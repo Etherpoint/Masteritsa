@@ -17,4 +17,5 @@ import java.util.List;
 @Repository
 public interface CommentRepository {
     List<Comment> getAllCommentsById(Long id);
+    void saveComment(Comment comment);
 }
