@@ -10,6 +10,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
 import ru.familyproject.ryabov.masteritsa.entity.User;
+import ru.familyproject.ryabov.masteritsa.service.CommentService;
 import ru.familyproject.ryabov.masteritsa.service.ProductService;
 import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
 import ru.familyproject.ryabov.masteritsa.service.UserService;
@@ -31,6 +32,8 @@ class ProductControllerTest {
     UserService userService;
     @MockBean
     UserDetails userDetails;
+    @MockBean
+    CommentService commentService;
     @MockBean
     Model model;
     @MockBean
