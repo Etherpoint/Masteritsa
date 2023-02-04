@@ -100,15 +100,13 @@ public class ProductController {
     @PostMapping(Endpoints.FIND_BY_ID)
     public String saveComment(@AuthenticationPrincipal UserDetails user,
                               @PathVariable Long id,
-                              @RequestParam(value = "description") String description){
+                              Comment comment){
         User userEntity = null;
-        Comment comment = new Comment();
         if (user != null){
             userEntity = userService.loadUserByUsername(user.getUsername());
         }
         comment.setProduct(productService.getById(id));
         comment.setUser(userEntity);
-        comment.setDescription(description);
         commentService.saveComment(comment);
         return "redirect:" + Endpoints.PRODUCT + "/" + id;
     }
