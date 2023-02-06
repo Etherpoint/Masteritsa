@@ -71,5 +71,9 @@ class ProductControllerIntegrationTest {
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl(Endpoints.PRODUCT + "/" + id));
+
+        this.mockMvc.perform(get(Endpoints.PRODUCT + "/" + id).with(user("Наталья")))
+                .andDo(print())
+                .andExpect(content().string(containsString(comment)));
     }
 }
