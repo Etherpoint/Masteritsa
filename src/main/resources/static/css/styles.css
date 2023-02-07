@@ -2391,3 +2391,19 @@ textarea.form-control-sm {
     --bs-gutter-y: 3rem;
   }
 }
+.text-right{
+  position: absolute;
+  right: 0;
+}
+.figure{
+  width: 40%;
+}
+.text-top{
+  vertical-align: top;
+}
+.text-bottom{
+  vertical-align: bottom;
+}
+.grid{
+  display: grid;
+}
