@@ -49,11 +49,11 @@
                         <div class="d-flex" th:each="comment : ${comments}">
                             <!--delete icon-->
                             <div class="text-right grid">
-                                <a href="/delete-comment">
+                                <button th:onclick="'deleteComment(' + ${comment.id} + ')'">
                                     <img src="/images/delete-icon.svg" width="30" alt=""/>
-                                </a>
-                                <a href="/edit-comment">
-                                    <img href="/delete" src="/images/edit-icon.svg" width="30" alt=""/>
+                                </button>
+                                <a>
+                                    <img src="/images/edit-icon.svg" width="30" alt=""/>
                                 </a>
                             </div>
                             <div class="flex-shrink-0">

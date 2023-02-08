@@ -5,3 +5,14 @@
 */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
+
+function deleteComment(id) {
+    let url = "/comment/" + id
+    $.ajax({
+        url: url,
+        type: 'DELETE',
+        success: function (){
+            //добавить функцию для загрузки комментариев
+        }
+    })
+}
