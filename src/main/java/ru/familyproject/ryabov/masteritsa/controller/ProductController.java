@@ -5,12 +5,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ru.familyproject.ryabov.masteritsa.entity.Comment;
 import ru.familyproject.ryabov.masteritsa.entity.Product;
 import ru.familyproject.ryabov.masteritsa.entity.ProductType;
 import ru.familyproject.ryabov.masteritsa.entity.User;
-import ru.familyproject.ryabov.masteritsa.service.CommentService;
 import ru.familyproject.ryabov.masteritsa.service.ProductService;
 import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
 import ru.familyproject.ryabov.masteritsa.service.UserService;
@@ -49,23 +50,15 @@ public class ProductController {
     private final UserService userService;
 
     /**
-     * EN: Service for working with Entities <b>Comment</b> in the database<br>
-     * RU: Сервис для работы с сущностями <b>Comment</b> в БД
-     */
-    private final CommentService commentService;
-
-    /**
      * EN: Services initialization constructor<br>
      * RU: Конструктор для инициализации сервисов
      */
     public ProductController(@Autowired ProductService productService,
                              @Autowired ProductTypeService productTypeService,
-                             @Autowired UserService userService,
-                             @Autowired CommentService commentService) {
+                             @Autowired UserService userService) {
         this.productService = productService;
         this.productTypeService = productTypeService;
         this.userService = userService;
-        this.commentService = commentService;
     }
 
     /**
@@ -90,24 +83,5 @@ public class ProductController {
         model.addAttribute("product", product);
         model.addAttribute("user", entityUser);
         return "product";
-    }
-
-    /**
-     * EN: POST method for saving comment<br>
-     * RU: POST метод для сохранения комментария
-     * @return redirected file <b>product.html</b>
-     */
-    @PostMapping(Endpoints.FIND_BY_ID)
-    public String saveComment(@AuthenticationPrincipal UserDetails user,
-                              @PathVariable Long id,
-                              Comment comment){
-        User userEntity = null;
-        if (user != null){
-            userEntity = userService.loadUserByUsername(user.getUsername());
-        }
-        comment.setProduct(productService.getById(id));
-        comment.setUser(userEntity);
-        commentService.saveComment(comment);
-        return "redirect:" + Endpoints.PRODUCT + "/" + id;
     }
 }

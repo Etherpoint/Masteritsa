@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
 import ru.familyproject.ryabov.masteritsa.entity.Comment;
 import ru.familyproject.ryabov.masteritsa.entity.User;
-import ru.familyproject.ryabov.masteritsa.service.CommentService;
 import ru.familyproject.ryabov.masteritsa.service.ProductService;
 import ru.familyproject.ryabov.masteritsa.service.ProductTypeService;
 import ru.familyproject.ryabov.masteritsa.service.UserService;
@@ -31,8 +30,6 @@ class ProductControllerTest {
     UserService userService;
     @MockBean
     UserDetails userDetails;
-    @MockBean
-    CommentService commentService;
     @MockBean
     Model model;
     @MockBean
@@ -93,88 +90,5 @@ class ProductControllerTest {
         productController.getProduct(model, anyLong(), null);
         verify(userService, times(0))
                 .loadUserByUsername(anyString());
-    }
-
-    //---------------------------------------Тест кейсы для метода saveComment---------------------------
-
-
-    @ParameterizedTest
-    @CsvSource({
-            "1",
-            "2",
-            "3"
-    })
-    void shouldLoadUserByUsername_WhenUserIsNotNull_inMethod_saveComment(Long id) {
-        productController.saveComment(userDetails, id, mockComment);
-        when(userService
-                .loadUserByUsername(userDetails.getUsername()))
-                .thenReturn(user);
-        verify(userService, times(1))
-                .loadUserByUsername(userDetails.getUsername());
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-            "1",
-            "2",
-            "3"
-    })
-    void should_not_LoadUserByUsername_WhenUserIsNull_inMethod_saveComment(Long id) {
-        productController.saveComment(userDetails, id, mockComment);
-        verify(userService, times(0))
-                .loadUserByUsername(anyString());
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-            "1",
-            "2",
-            "3"
-    })
-    void shouldSetProductAndFieldShouldNotBeEqualsNull_inMethod_saveComment(Long id) {
-        productController.saveComment(userDetails, id, mockComment);
-        verify(mockComment, times(1))
-                .setProduct(productService.getById(id));
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-            "1",
-            "2",
-            "3"
-    })
-    void doesNotCallMethod_loadUserByUsernameIfUserEqualsNull_inMethod_saveComment(Long id) {
-        productController.saveComment(null, id, mockComment);
-        verify(userService, times(0))
-                .loadUserByUsername(userDetails.getUsername());
-        verify(mockComment, times(1))
-                .setUser(null);
-    }
-
-    @ParameterizedTest
-    @CsvSource(delimiterString = ", ",
-            value = {
-                    "1",
-                    "2",
-                    "3"
-            })
-    void shouldCallMethod_loadUserByUsernameIfUserNotEqualsNull_inMethod_saveComment(Long id) {
-        productController.saveComment(userDetails, id, mockComment);
-        verify(userService, times(1))
-                .loadUserByUsername(userDetails.getUsername());
-        verify(mockComment, times(1))
-                .setUser(userService.loadUserByUsername(userDetails.getUsername()));
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-            "1",
-            "2",
-            "3"
-    })
-    void shouldCallMethod_saveCommentOnTheCommentService_inMethod_saveComment(Long id) {
-        productController.saveComment(userDetails, id, mockComment);
-        verify(commentService, times(1))
-                .saveComment(mockComment);
     }
 }
