@@ -8,6 +8,7 @@
     <title>Заголовок вкладки</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico"/>
     <link href="/css/styles.css" rel="stylesheet"/>
+    <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
 </head>
 <body>
 <!-- Responsive navbar-->
@@ -37,7 +38,7 @@
                     <div class="card-body">
                         <!-- Comment form-->
                         <form class="mb-4" enctype="multipart/form-data" method="post"
-                              th:action="@{'/product/'+${product.id}}">
+                              th:action="@{'/comment/'+${product.id}}">
                             <label class="col-md-4 control-label" for="description"></label>
                             <textarea id="description" name="description" class="form-control" rows="3"
                                       placeholder="Введите свой комментарий"></textarea>
