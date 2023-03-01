@@ -16,7 +16,7 @@ public class Endpoints {
     public static final String ABOUT = "/about";
     public static final String SALES = "/sales";
     public static final String REGISTRATION = "/registration";
-
     public static final String ACCOUNT = "/account";
+    public static final String COMMENT = "/comment";
 
 }
