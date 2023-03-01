@@ -29,6 +29,8 @@ class ProductControllerTest {
     @MockBean
     UserService userService;
     @MockBean
+    CommentController commentController;
+    @MockBean
     UserDetails userDetails;
     @MockBean
     Model model;
