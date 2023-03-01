@@ -40,7 +40,7 @@ public class Comment {
      * EN: Field for communication with the user of this comment<br>
      * RU: Поле для связи с пользователем данного комментария
      */
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -48,7 +48,7 @@ public class Comment {
      * EN: Field for communication with the product to which the comment is written<br>
      * RU: Поле для связи с продуктом, к которому написан комментарий
      */
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "product_id")
     private Product product;
 
