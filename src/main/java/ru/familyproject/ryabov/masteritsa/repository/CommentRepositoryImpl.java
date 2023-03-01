@@ -73,4 +73,29 @@ public class CommentRepositoryImpl implements CommentRepository{
             throw new HibernateException("Error when opened session on sessionFactory in method saveComment from CommentRepositoryImpl", e);
         }
     }
+
+    @Override
+    public void deleteComment(Comment comment) {
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.delete(comment);
+            transaction.commit();
+        } catch (HibernateException e) {
+            LOGGER.error("Error when opened session on sessionFactory in method deleteComment from CommentRepositoryImpl");
+            throw new HibernateException("Error when opened session on sessionFactory in method deleteComment from CommentRepositoryImpl", e);
+        }
+    }
+
+    @Override
+    public Comment getCommentById(Long id) {
+        try(Session session = sessionFactory.openSession()){
+            Query<Comment> result = session.createQuery("SELECT c FROM comment c WHERE c.id = :id", Comment.class);
+            result.setParameter("id", id);
+            LOGGER.info("Method getAllCommentsById completed successfully");
+            return result.uniqueResult();
+        }catch (HibernateException e ) {
+            LOGGER.error("Error when opened session on sessionFactory in method getAllCommentsById from CommentRepositoryImpl");
+            throw new HibernateException("Error when opened session on sessionFactory in method getAllCommentsById from CommentRepositoryImpl", e);
+        }
+    }
 }

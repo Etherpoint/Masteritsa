@@ -35,4 +35,12 @@ public class CommentService {
         comment.setDateOfCreate(simpleDate.format(date));
         commentRepository.saveComment(comment);
     }
+
+    public void deleteComment(Comment comment){
+        commentRepository.deleteComment(comment);
+    }
+
+    public Comment getCommentById(Long id){
+        return commentRepository.getCommentById(id);
+    }
 }

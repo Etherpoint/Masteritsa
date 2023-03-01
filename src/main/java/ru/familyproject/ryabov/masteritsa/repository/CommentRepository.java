@@ -18,4 +18,6 @@ import java.util.List;
 public interface CommentRepository {
     List<Comment> getAllCommentsById(Long id);
     void saveComment(Comment comment);
+    void deleteComment(Comment comment);
+    Comment getCommentById(Long id);
 }
