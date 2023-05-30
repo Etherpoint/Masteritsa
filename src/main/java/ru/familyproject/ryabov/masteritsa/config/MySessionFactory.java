@@ -33,7 +33,7 @@ public class MySessionFactory {
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/family_shop");
+        dataSource.setUrl("jdbc:postgresql://postgres:5432/family_shop");
         dataSource.setUsername("postgres");
         dataSource.setPassword("postgres");
         return dataSource;
